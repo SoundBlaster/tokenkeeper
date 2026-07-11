@@ -35,6 +35,7 @@
 | [_Historical/REVIEW_P4-T1_user_security_docs.md](_Historical/REVIEW_P4-T1_user_security_docs.md) | Review report for P4-T1 user and security documentation |
 | [_Historical/REVIEW_P4-T2_homebrew_tap.md](_Historical/REVIEW_P4-T2_homebrew_tap.md) | Review report for P4-T2 Homebrew tap distribution |
 | [_Historical/REVIEW_P4-T3_linux_evaluation.md](_Historical/REVIEW_P4-T3_linux_evaluation.md) | Review report for P4-T3 Linux support evaluation |
+| [_Historical/REVIEW_v0_1_0_release.md](_Historical/REVIEW_v0_1_0_release.md) | Formal post-release review for Tokenkeeper v0.1.0 |
 
 ## Archive Log
 
@@ -63,3 +64,4 @@
 | 2026-07-11 | P4-T3 | Archived Evaluate_Linux_Support (PASS) |
 | 2026-07-11 | P4-T3 | Archived REVIEW_P4-T3_linux_evaluation report |
 | 2026-07-12 | P5-T1 | Archived Audit_v0_1_0_Release (PASS) |
+| 2026-07-12 | P5-T1 | Archived REVIEW_v0_1_0_release report |
