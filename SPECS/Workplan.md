@@ -77,7 +77,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 3: Profiles and Hardening
 
-#### P3-T1: Add Built-in Agent and Integration Profiles **INPROGRESS**
+#### P3-T1: Add Built-in Agent and Integration Profiles ✅ Complete
 - **Description:** Add validated embedded profiles for the required agents, MCP integrations, and credential-bearing utility configs using the researched evidence.
 - **Priority:** P0
 - **Dependencies:** P1-T2, P1-T3, P2-T1, P2-T3
