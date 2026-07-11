@@ -63,6 +63,7 @@
 | [_Historical/REVIEW_P5-T12_reproducible_ci.md](_Historical/REVIEW_P5-T12_reproducible_ci.md) | Review report for P5-T12 reproducible CI |
 | [_Historical/REVIEW_P5-T13_homebrew_lifecycle.md](_Historical/REVIEW_P5-T13_homebrew_lifecycle.md) | Review report for P5-T13 Homebrew lifecycle |
 | [_Historical/REVIEW_P5-T14_spec_lifecycle.md](_Historical/REVIEW_P5-T14_spec_lifecycle.md) | Review report for P5-T14 specification lifecycle |
+| [_Historical/REVIEW_P5-T15_successor_release.md](_Historical/REVIEW_P5-T15_successor_release.md) | Review report for P5-T15 successor release |
 
 ## Archive Log
 
@@ -118,4 +119,5 @@
 | 2026-07-12 | P5-T13 | Archived REVIEW_P5-T13_homebrew_lifecycle report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T14 | Archived Reconcile_the_Specification_Lifecycle (PASS) |
 | 2026-07-12 | P5-T15 | Archived Publish_a_Traceable_Successor_Release (PASS) |
+| 2026-07-12 | P5-T15 | Archived REVIEW_P5-T15_successor_release report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T14 | Archived REVIEW_P5-T14_spec_lifecycle report (FOLLOW-UP skipped) |
