@@ -23,6 +23,7 @@
 | [_Historical/REVIEW_P1-T3_profile_schema_resolver.md](_Historical/REVIEW_P1-T3_profile_schema_resolver.md) | Review report for P1-T3 schema/resolver |
 | [_Historical/REVIEW_P2-T1_unix_metadata_policies.md](_Historical/REVIEW_P2-T1_unix_metadata_policies.md) | Review report for P2-T1 Unix metadata policies |
 | [_Historical/REVIEW_P2-T2_cli_reporting_and_guidance.md](_Historical/REVIEW_P2-T2_cli_reporting_and_guidance.md) | Review report for P2-T2 CLI reporting and guidance |
+| [_Historical/REVIEW_P2-T3_macos_acl_backend.md](_Historical/REVIEW_P2-T3_macos_acl_backend.md) | Review report for P2-T3 macOS ACL backend |
 
 ## Archive Log
 
@@ -39,3 +40,4 @@
 | 2026-07-11 | P2-T2 | Archived Implement_CLI_Reporting_and_Guidance (PASS) |
 | 2026-07-11 | P2-T2 | Archived REVIEW_P2-T2_cli_reporting_and_guidance report |
 | 2026-07-11 | P2-T3 | Archived Implement_macOS_ACL_Backend (PASS) |
+| 2026-07-11 | P2-T3 | Archived REVIEW_P2-T3_macos_acl_backend report |

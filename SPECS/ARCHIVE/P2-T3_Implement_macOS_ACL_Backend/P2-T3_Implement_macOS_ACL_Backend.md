@@ -37,3 +37,7 @@ Add an isolated macOS ACL evaluator that composes with Unix mode inspection and 
 ## Out of scope
 
 Linux ACL semantics, profile data, JSON output, remediation execution and ACL mutation.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
