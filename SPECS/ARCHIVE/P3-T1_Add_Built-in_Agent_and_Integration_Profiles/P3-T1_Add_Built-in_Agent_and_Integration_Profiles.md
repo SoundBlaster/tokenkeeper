@@ -38,3 +38,7 @@ Add validated, data-only profiles for the researched credential-bearing agent, M
 ## Out of scope
 
 ACL implementation (P2-T3), full project discovery, GitHub Copilot, content scanning, custom profile files and Linux-specific profiles.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS

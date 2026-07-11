@@ -25,6 +25,7 @@
 | [_Historical/REVIEW_P2-T1_unix_metadata_policies.md](_Historical/REVIEW_P2-T1_unix_metadata_policies.md) | Review report for P2-T1 Unix metadata policies |
 | [_Historical/REVIEW_P2-T2_cli_reporting_and_guidance.md](_Historical/REVIEW_P2-T2_cli_reporting_and_guidance.md) | Review report for P2-T2 CLI reporting and guidance |
 | [_Historical/REVIEW_P2-T3_macos_acl_backend.md](_Historical/REVIEW_P2-T3_macos_acl_backend.md) | Review report for P2-T3 macOS ACL backend |
+| [_Historical/REVIEW_P3-T1_builtin_profiles.md](_Historical/REVIEW_P3-T1_builtin_profiles.md) | Review report for P3-T1 built-in profiles |
 
 ## Archive Log
 
@@ -43,3 +44,4 @@
 | 2026-07-11 | P2-T3 | Archived Implement_macOS_ACL_Backend (PASS) |
 | 2026-07-11 | P2-T3 | Archived REVIEW_P2-T3_macos_acl_backend report |
 | 2026-07-11 | P3-T1 | Archived Add_Built-in_Agent_and_Integration_Profiles (PASS) |
+| 2026-07-11 | P3-T1 | Archived REVIEW_P3-T1_builtin_profiles report |
