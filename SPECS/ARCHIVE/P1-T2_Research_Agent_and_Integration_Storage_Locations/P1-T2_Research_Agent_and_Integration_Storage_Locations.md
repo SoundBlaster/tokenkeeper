@@ -74,3 +74,7 @@ Secret scanning по содержимому, проверка token validity, ч
 ## Notes
 
 Если upstream docs и локальная установка расходятся, документировать обе версии и выбрать conservative profile rule. Не использовать реальные credentials даже в локальных fixtures.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
