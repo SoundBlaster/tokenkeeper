@@ -3,6 +3,8 @@ name = "tokenkeeper"
 version = "0.1.0"
 edition = "2021"
 description = "Read-only permission auditor for AI agent credentials and configuration"
+license = "MIT"
+rust-version = "1.85"
 repository = "https://github.com/SoundBlaster/tokenkeeper"
 readme = "README.md"
 

@@ -3,7 +3,8 @@ use std::path::PathBuf;
 use tokenkeeper::inspector::{FindingReason, InspectionResult, MetadataSummary, NodeType};
 use tokenkeeper::profiles::Policy;
 use tokenkeeper::report::{
-    label, remediation, status_of, structured_findings, Severity, Status, Summary,
+    label, remediation, render, status_of, structured_findings, summary_line, Severity, Status,
+    Summary,
 };
 
 fn finding(path: &str, reasons: Vec<FindingReason>) -> InspectionResult {
@@ -100,4 +101,74 @@ fn findings_have_stable_structured_contract() {
     assert!(records[0].current.contains("666"));
     assert!(records[0].expected.contains("write"));
     assert!(records[0].scope.contains("/tmp/config"));
+}
+
+#[test]
+fn every_finding_reason_has_a_structured_record() {
+    let result = finding(
+        "/tmp/config",
+        vec![
+            FindingReason::WrongOwner {
+                expected: 1,
+                actual: 2,
+            },
+            FindingReason::UnexpectedNodeType {
+                expected: tokenkeeper::profiles::NodeKind::File,
+                actual: NodeType::Directory,
+            },
+            FindingReason::GroupOrOtherAccess { mode: 0o644 },
+            FindingReason::GroupOrOtherWrite { mode: 0o664 },
+            FindingReason::WritableAncestor {
+                path: "/tmp".into(),
+                mode: 0o777,
+            },
+            FindingReason::SymlinkComponent {
+                path: "/tmp/link".into(),
+            },
+            FindingReason::AclNonOwnerAccess {
+                detail: "read".into(),
+            },
+            FindingReason::AncestorUnsafe {
+                path: "/tmp".into(),
+                detail: "incomplete".into(),
+            },
+            FindingReason::AncestorAclAccess {
+                path: "/tmp".into(),
+                detail: "add_file".into(),
+            },
+        ],
+    );
+    let records = structured_findings(&result);
+    assert_eq!(records.len(), 9);
+    assert!(records
+        .iter()
+        .all(|record| record.rule_id.starts_with("TK-")));
+}
+
+#[test]
+fn render_covers_status_and_structured_output_paths() {
+    let pass = InspectionResult::Pass {
+        path: "/tmp/pass".into(),
+        metadata: MetadataSummary {
+            uid: 1,
+            gid: 1,
+            mode: 0o600,
+            node: NodeType::RegularFile,
+        },
+    };
+    assert!(render(&pass, Some(Policy::SecretFile)).contains("PASS"));
+    let finding = finding(
+        "/tmp/finding",
+        vec![FindingReason::GroupOrOtherAccess { mode: 0o644 }],
+    );
+    let output = render(&finding, Some(Policy::CredentialConfig));
+    assert!(output.contains("rule=TK-META-002"));
+    let unknown = InspectionResult::Unknown {
+        path: "/tmp/unknown".into(),
+        reason: "incomplete".into(),
+    };
+    assert!(render(&unknown, None).contains("UNKNOWN"));
+    assert_eq!(label(Status::Finding), "FINDING");
+    assert_eq!(label(Status::Skip), "SKIP");
+    assert!(summary_line(Summary::default()).contains("Summary:"));
 }

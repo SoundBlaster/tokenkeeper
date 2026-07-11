@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T12 — Enforce Coverage and Reproducible Rust CI
+# Next Task Candidate: P5-T13 — Automate the Homebrew Release Lifecycle
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Enforce coverage threshold and reproducible Rust CI/toolchain behavior.
+Automate Homebrew formula style, audit, clean install, upgrade, uninstall, and preservation checks.
 
 ## Recently Archived
 
@@ -23,7 +23,8 @@ Enforce coverage threshold and reproducible Rust CI/toolchain behavior.
 - `P5-T9` — Implement Platform-aware Profile Availability — `PASS` (2026-07-12)
 - `P5-T10` — Complete Per-location Profile Evidence and Validation — `PASS` (2026-07-12)
 - `P5-T11` — Build the Native Security Acceptance Suite — `PASS` (2026-07-12)
+- `P5-T12` — Enforce Coverage and Reproducible Rust CI — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T12`, then PLAN coverage and reproducibility gates.
+Run SELECT to activate `P5-T13`, then PLAN the Homebrew lifecycle workflow.

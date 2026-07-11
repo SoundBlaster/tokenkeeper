@@ -92,6 +92,34 @@ fn replacement_capable_ancestor_permissions_are_relevant() {
     ));
 }
 
+#[test]
+fn native_headers_and_deny_forms_are_handled_conservatively() {
+    assert_eq!(
+        evaluate_text(
+            "!#acl 1\n0: group:everyone deny read\n",
+            501,
+            Policy::SecretFile
+        ),
+        AclDecision::Pass
+    );
+    assert!(matches!(
+        evaluate_text(
+            "group:everyone allow read unknown_flag",
+            501,
+            Policy::SecretFile
+        ),
+        AclDecision::Unknown { .. }
+    ));
+}
+
+#[test]
+fn empty_acl_is_not_present() {
+    assert_eq!(
+        evaluate_text("", 501, Policy::SecretFile),
+        AclDecision::NotPresent
+    );
+}
+
 #[cfg(not(target_os = "macos"))]
 #[test]
 fn non_macos_backend_is_explicitly_unsupported() {

@@ -272,7 +272,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Tests demonstrate that target contents are never opened, target metadata is not mutated, network is not used, and remediation subprocesses are never launched
   - Every PRD acceptance scenario maps to at least one named test
 
-#### P5-T12: Enforce Coverage and Reproducible Rust CI
+#### P5-T12: Enforce Coverage and Reproducible Rust CI ✅ Complete
 - **Description:** Add coverage and supply-chain/reproducibility gates for the Rust project. Covers the Rust/CI portions of `TK-REV-016` and metadata portion of `TK-REV-018`.
 - **Priority:** P1
 - **Dependencies:** P5-T11
