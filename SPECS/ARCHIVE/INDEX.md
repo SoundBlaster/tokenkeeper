@@ -15,6 +15,7 @@
 | P3-T1 | [P3-T1_Add_Built-in_Agent_and_Integration_Profiles/](P3-T1_Add_Built-in_Agent_and_Integration_Profiles/) | 2026-07-11 | PASS |
 | P3-T2 | [P3-T2_Complete_Security_Integration_Tests/](P3-T2_Complete_Security_Integration_Tests/) | 2026-07-11 | PASS |
 | P4-T1 | [P4-T1_Publish_User_and_Security_Documentation/](P4-T1_Publish_User_and_Security_Documentation/) | 2026-07-11 | PASS |
+| P4-T2 | [P4-T2_Add_Homebrew_Tap_Distribution/](P4-T2_Add_Homebrew_Tap_Distribution/) | 2026-07-11 | PASS |
 
 ## Historical Artifacts
 
@@ -53,3 +54,4 @@
 | 2026-07-11 | P3-T2 | Archived REVIEW_P3-T2_security_integration_tests report |
 | 2026-07-11 | P4-T1 | Archived Publish_User_and_Security_Documentation (PASS) |
 | 2026-07-11 | P4-T1 | Archived REVIEW_P4-T1_user_security_docs report |
+| 2026-07-11 | P4-T2 | Archived Add_Homebrew_Tap_Distribution (PASS) |

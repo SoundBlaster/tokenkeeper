@@ -113,7 +113,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Supported profile/version evidence is discoverable
   - Example output contains no real usernames or credentials
 
-#### P4-T2: Add Homebrew Tap Distribution **INPROGRESS**
+#### P4-T2: Add Homebrew Tap Distribution ✅ Complete
 - **Description:** Create the versioned release contract and Homebrew formula for installation from a maintainer-owned tap.
 - **Priority:** P1
 - **Dependencies:** P4-T1
