@@ -1,10 +1,10 @@
-# Next Task Candidate: P5-T4 — Compose Confidentiality and Integrity Policies
+# In Progress: P5-T4 — Compose Confidentiality and Integrity Policies
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Available
+**Status:** Selected
 
 ## Description
 
@@ -18,4 +18,4 @@ Compose confidentiality and integrity requirements and correct credential-bearin
 
 ## Next Step
 
-Run SELECT to activate `P5-T4`, then PLAN the composable policy model and profile corrections.
+EXECUTE complete: composable requirements and credential-bearing profile corrections are implemented.

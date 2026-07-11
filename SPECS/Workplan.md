@@ -174,7 +174,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Semantic-root components are walked no-follow from Home; a symlink in `Library/Application Support` or another root cannot be followed before diagnosis
   - Known target findings remain visible when another component is incomplete
 
-#### P5-T4: Compose Confidentiality and Integrity Policies
+#### P5-T4: Compose Confidentiality and Integrity Policies ✅ Complete
 - **Description:** Replace the single mutually exclusive policy choice with composable security requirements and correct all credential-bearing built-in locations. Covers `TK-REV-002` and the policy-model portion of `TK-REV-018`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
