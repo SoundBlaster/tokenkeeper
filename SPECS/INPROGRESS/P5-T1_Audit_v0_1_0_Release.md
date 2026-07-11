@@ -8,6 +8,7 @@ This task is documentation- and verification-only. It must not change production
 
 ## Deliverables
 
+- `docs/v0.1.0-post-release-review.md` as the permanent, standalone release review.
 - `SPECS/INPROGRESS/REVIEW_v0_1_0_release.md` containing the detailed traceability and code/security review.
 - `SPECS/INPROGRESS/P5-T1_Validation_Report.md` recording commands, results, reproducible scenarios, limitations, and verdict.
 - Atomic Phase 5 follow-up tasks in `SPECS/Workplan.md` for every actionable finding.
