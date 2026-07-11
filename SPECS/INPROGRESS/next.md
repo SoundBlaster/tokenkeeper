@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T13 — Automate the Homebrew Release Lifecycle
+# Next Task Candidate: P5-T14 — Reconcile the Specification Lifecycle
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Automate Homebrew formula style, audit, clean install, upgrade, uninstall, and preservation checks.
+Reconcile Workplan, PRD, archive, and release documentation lifecycle states.
 
 ## Recently Archived
 
@@ -24,7 +24,8 @@ Automate Homebrew formula style, audit, clean install, upgrade, uninstall, and p
 - `P5-T10` — Complete Per-location Profile Evidence and Validation — `PASS` (2026-07-12)
 - `P5-T11` — Build the Native Security Acceptance Suite — `PASS` (2026-07-12)
 - `P5-T12` — Enforce Coverage and Reproducible Rust CI — `PASS` (2026-07-12)
+- `P5-T13` — Automate the Homebrew Release Lifecycle — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T13`, then PLAN the Homebrew lifecycle workflow.
+Run SELECT to activate `P5-T14`, then PLAN specification lifecycle reconciliation.

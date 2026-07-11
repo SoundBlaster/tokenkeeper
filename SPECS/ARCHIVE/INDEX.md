@@ -29,6 +29,7 @@
 | P5-T10 | [P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/](P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/) | 2026-07-12 | PASS |
 | P5-T11 | [P5-T11_Build_the_Native_Security_Acceptance_Suite/](P5-T11_Build_the_Native_Security_Acceptance_Suite/) | 2026-07-12 | PASS |
 | P5-T12 | [P5-T12_Enforce_Coverage_and_Reproducible_Rust_CI/](P5-T12_Enforce_Coverage_and_Reproducible_Rust_CI/) | 2026-07-12 | PASS |
+| P5-T13 | [P5-T13_Automate_the_Homebrew_Release_Lifecycle/](P5-T13_Automate_the_Homebrew_Release_Lifecycle/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -109,3 +110,4 @@
 | 2026-07-12 | P5-T11 | Archived REVIEW_P5-T11_native_acceptance report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T12 | Archived Enforce_Coverage_and_Reproducible_Rust_CI (PASS) |
 | 2026-07-12 | P5-T12 | Archived REVIEW_P5-T12_reproducible_ci report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T13 | Archived Automate_the_Homebrew_Release_Lifecycle (PASS) |

@@ -284,7 +284,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Rust version is pinned/documented, GitHub Actions are commit-SHA pinned, and cache/toolchain behavior is reproducible
   - `Cargo.toml` declares the MIT license, supported Rust version, and release metadata consistently with `LICENSE`
 
-#### P5-T13: Automate the Homebrew Release Lifecycle
+#### P5-T13: Automate the Homebrew Release Lifecycle ✅ Complete
 - **Description:** Validate source installation and the full supported Homebrew lifecycle on clean macOS environments. Covers `TK-REV-009` and the Homebrew portion of `TK-REV-016`.
 - **Priority:** P1
 - **Dependencies:** P5-T11
