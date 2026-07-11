@@ -35,3 +35,7 @@ Exercise the complete read-only audit path against adversarial temporary filesys
 ## Out of scope
 
 New product profiles, ACL semantics implementation, content secret scanning, network tests and Linux-specific acceptance.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
