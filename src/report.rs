@@ -112,7 +112,7 @@ pub fn render(result: &InspectionResult, policy: Option<Policy>) -> String {
     let mut output = format!(
         "{}  {}\n",
         label(status_of(result)),
-        result_path(result).display()
+        display_path(result_path(result))
     );
     if let InspectionResult::Finding { reasons, .. } = result {
         output.push_str(&format!("         reasons: {reasons:?}\n"));
@@ -121,6 +121,22 @@ pub fn render(result: &InspectionResult, policy: Option<Policy>) -> String {
         output.push_str(&format!("         suggested: {policy}\n"));
     }
     output
+}
+
+fn display_path(path: &Path) -> String {
+    let Some(value) = path.to_str() else {
+        return "<non-utf8 path>".into();
+    };
+    value
+        .chars()
+        .map(|character| match character {
+            '\n' => "\\n".to_owned(),
+            '\r' => "\\r".to_owned(),
+            '\t' => "\\t".to_owned(),
+            character if character.is_control() => format!("\\u{{{:x}}}", character as u32),
+            character => character.to_string(),
+        })
+        .collect()
 }
 
 fn result_path(result: &InspectionResult) -> &Path {
