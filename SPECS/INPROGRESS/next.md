@@ -1,19 +1,20 @@
-# Next Task: P1-T3 — Implement Profile Schema and Resolver
+# Next Task: P2-T1 — Implement Unix Metadata Policies
 
 **Priority:** P0
-**Phase:** Foundation
-**Effort:** 8–12 hours
-**Dependencies:** P1-T1, P1-T2
+**Phase:** Audit Core
+**Effort:** 10–14 hours
+**Dependencies:** P1-T3
 **Status:** Selected
 
 ## Description
 
-Add the data-only embedded profile model, registry validation, semantic roots, and bounded path resolution using the P1-T2 storage inventory.
+Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
 
 ## Recently Archived
 
 - `P1-T1` — Bootstrap Rust Project — `PASS` (2026-07-11)
 - `P1-T2` — Research Agent and Integration Storage Locations — `PASS` (2026-07-11)
+- `P1-T3` — Implement Profile Schema and Resolver — `PASS` (2026-07-11)
 
 ## Next Step
 

@@ -46,3 +46,7 @@ Unix mode/owner policy evaluation, macOS ACL backend, CLI profile selection, con
 ## Notes
 
 The archived P1-T2 inventory is the source for later profile definitions. This task establishes the schema and resolver contract those profiles will consume.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS

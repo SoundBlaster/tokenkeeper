@@ -28,7 +28,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Keychain-only or unknown storage is documented without a false coverage claim
   - No real credential content enters documentation or fixtures
 
-#### P1-T3: Implement Profile Schema and Resolver **INPROGRESS**
+#### P1-T3: Implement Profile Schema and Resolver ✅ Complete
 - **Description:** Add the data-only embedded profile model, registry validation, semantic roots, and bounded path resolution.
 - **Priority:** P0
 - **Dependencies:** P1-T1, P1-T2
