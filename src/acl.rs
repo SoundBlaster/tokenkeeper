@@ -180,20 +180,16 @@ fn is_owner(principal: &str, owner_uid: u32) -> bool {
 }
 
 fn relevant_permission(permissions: &str, policy: Policy) -> bool {
-    match policy {
-        Policy::SecretFile | Policy::CredentialConfig | Policy::PrivateDirectory => {
-            permissions.contains("read")
-                || permissions.contains("write")
-                || permissions.contains("execute")
-        }
-        Policy::TrustedConfig | Policy::ExecutableConfig => {
-            permissions.contains("write")
+    (policy.requires_confidentiality()
+        && (permissions.contains("read")
+            || permissions.contains("write")
+            || permissions.contains("execute")))
+        || (policy.requires_integrity()
+            && (permissions.contains("write")
                 || permissions.contains("add_file")
                 || permissions.contains("add_subdirectory")
                 || permissions.contains("delete_child")
-                || permissions.contains("search")
-        }
-    }
+                || permissions.contains("search")))
 }
 
 #[cfg(target_os = "macos")]

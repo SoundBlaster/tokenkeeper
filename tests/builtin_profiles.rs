@@ -32,7 +32,7 @@ fn credential_locations_use_conservative_policies_and_semantic_roots() {
     assert!(codex
         .locations
         .iter()
-        .any(|location| location.policy == Policy::ExecutableConfig));
+        .all(|location| location.policy == Policy::CredentialConfig));
     let opencode = registry.find("opencode").unwrap();
     assert!(opencode
         .locations

@@ -209,16 +209,11 @@ impl MetadataInspector {
                 actual: summary.node,
             });
         }
-        match policy {
-            Policy::SecretFile | Policy::CredentialConfig | Policy::PrivateDirectory
-                if summary.mode & 0o077 != 0 =>
-            {
-                reasons.push(FindingReason::GroupOrOtherAccess { mode: summary.mode })
-            }
-            Policy::TrustedConfig | Policy::ExecutableConfig if summary.mode & 0o022 != 0 => {
-                reasons.push(FindingReason::GroupOrOtherWrite { mode: summary.mode })
-            }
-            _ => {}
+        if policy.requires_confidentiality() && summary.mode & 0o077 != 0 {
+            reasons.push(FindingReason::GroupOrOtherAccess { mode: summary.mode });
+        }
+        if policy.requires_integrity() && summary.mode & 0o022 != 0 {
+            reasons.push(FindingReason::GroupOrOtherWrite { mode: summary.mode });
         }
         self.add_writable_ancestor_reasons(path, &mut reasons);
         match acl::evaluate_path(path, self.owner_uid, policy) {

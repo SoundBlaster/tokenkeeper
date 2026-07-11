@@ -31,6 +31,24 @@ pub enum Policy {
     ExecutableConfig,
 }
 
+impl Policy {
+    /// Confidentiality and integrity are independent requirements. Credential
+    /// locations intentionally compose both, rather than choosing one mode.
+    pub const fn requires_confidentiality(self) -> bool {
+        matches!(
+            self,
+            Self::SecretFile | Self::CredentialConfig | Self::PrivateDirectory
+        )
+    }
+
+    pub const fn requires_integrity(self) -> bool {
+        matches!(
+            self,
+            Self::CredentialConfig | Self::TrustedConfig | Self::ExecutableConfig
+        )
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Traversal {
     Exact,
@@ -280,7 +298,7 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".codex/config.toml",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],
@@ -302,14 +320,14 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".claude/settings.json",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
                 LocationSpec::exact(
                     Root::Home,
                     ".claude/settings.local.json",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],
@@ -373,7 +391,7 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".aws/config",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],
