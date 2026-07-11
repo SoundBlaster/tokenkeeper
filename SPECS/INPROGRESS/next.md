@@ -1,10 +1,10 @@
-# Next Task Candidate: P5-T6 — Make Bounded Traversal Fail-closed and Resource-bounded
+# In Progress: P5-T6 — Make Bounded Traversal Fail-closed and Resource-bounded
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Available
+**Status:** Selected
 
 ## Description
 
@@ -20,4 +20,4 @@ Make bounded traversal fail closed without partial success and enforce resource 
 
 ## Next Step
 
-Run SELECT to activate `P5-T6`, then PLAN bounded traversal resource and error semantics.
+PLAN: stream bounded directory traversal, enforce entry limits before emitting paths, and preserve fail-closed errors.
