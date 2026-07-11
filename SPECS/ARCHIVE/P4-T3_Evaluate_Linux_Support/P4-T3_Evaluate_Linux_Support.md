@@ -32,3 +32,7 @@ Verify that the Unix resolver, metadata policy core and CLI compile/test on Linu
 ## Out of scope
 
 Linux POSIX/NFS ACL implementation, distribution packaging and changes to macOS ACL semantics.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
