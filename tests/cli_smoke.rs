@@ -46,3 +46,21 @@ fn unknown_argument_returns_usage_error_without_panicking() {
     assert!(stderr.contains("unknown argument"));
     assert!(!stderr.contains("panic"));
 }
+
+#[test]
+fn mixed_scope_and_duplicate_flags_are_rejected() {
+    let output = tokenkeeper()
+        .args([
+            "check",
+            "--profile",
+            "codex",
+            "--path",
+            "x",
+            "--policy",
+            "trusted-config",
+        ])
+        .output()
+        .expect("tokenkeeper should start");
+    assert_eq!(output.status.code(), Some(2));
+    assert!(String::from_utf8_lossy(&output.stderr).contains("cannot be combined"));
+}

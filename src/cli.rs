@@ -56,13 +56,27 @@ where
     let mut args = args.peekable();
     while let Some(arg) = args.next() {
         match arg.to_str() {
-            Some("--profile") => options.profiles.push(
-                next_value(&mut args, "--profile")?
-                    .to_string_lossy()
-                    .into_owned(),
-            ),
-            Some("--path") => options.path = Some(PathBuf::from(next_value(&mut args, "--path")?)),
+            Some("--profile") => options.profiles.push({
+                let value = next_value(&mut args, "--profile")?;
+                if value.is_empty() {
+                    return Err("--profile requires a non-empty profile id".into());
+                }
+                value.to_string_lossy().into_owned()
+            }),
+            Some("--path") => {
+                if options.path.is_some() {
+                    return Err("--path may be supplied only once".into());
+                }
+                let value = next_value(&mut args, "--path")?;
+                if value.is_empty() {
+                    return Err("--path requires a non-empty path".into());
+                }
+                options.path = Some(PathBuf::from(value));
+            }
             Some("--policy") => {
+                if options.policy.is_some() {
+                    return Err("--policy may be supplied only once".into());
+                }
                 options.policy = Some(parse_policy(&next_value(&mut args, "--policy")?)?)
             }
             Some("-h") | Some("--help") => {
@@ -76,6 +90,9 @@ where
     }
     if options.path.is_some() != options.policy.is_some() {
         return Err("--path and --policy must be supplied together".into());
+    }
+    if options.path.is_some() && !options.profiles.is_empty() {
+        return Err("--path/--policy cannot be combined with --profile".into());
     }
     if options.path.is_none() && options.profiles.is_empty() {
         return Ok(options);

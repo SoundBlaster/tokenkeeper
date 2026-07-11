@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T8 — Make CLI Scope Selection and Errors Unambiguous
+# Next Task Candidate: P5-T9 — Implement Platform-aware Profile Availability
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Make CLI scope selection, profile/platform handling, and error exits unambiguous.
+Implement platform-aware profile availability and avoid advertising unsupported integrations.
 
 ## Recently Archived
 
@@ -19,7 +19,8 @@ Make CLI scope selection, profile/platform handling, and error exits unambiguous
 - `P5-T5` — Resolve Canonical User Home and Elevated Invocation — `PASS` (2026-07-12)
 - `P5-T6` — Make Bounded Traversal Fail-closed and Resource-bounded — `PASS` (2026-07-12)
 - `P5-T7` — Implement the Structured Finding and Report Contract — `PASS` (2026-07-12)
+- `P5-T8` — Make CLI Scope Selection and Errors Unambiguous — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T8`, then PLAN CLI scope and error semantics.
+Run SELECT to activate `P5-T9`, then PLAN platform-aware profile availability.

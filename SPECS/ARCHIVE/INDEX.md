@@ -24,6 +24,7 @@
 | P5-T5 | [P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/](P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/) | 2026-07-12 | PASS |
 | P5-T6 | [P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/](P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/) | 2026-07-12 | PASS |
 | P5-T7 | [P5-T7_Implement_the_Structured_Finding_and_Report_Contract/](P5-T7_Implement_the_Structured_Finding_and_Report_Contract/) | 2026-07-12 | PASS |
+| P5-T8 | [P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/](P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -89,3 +90,4 @@
 | 2026-07-12 | P5-T6 | Archived REVIEW_P5-T6_bounded_traversal report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T7 | Archived Implement_the_Structured_Finding_and_Report_Contract (PASS) |
 | 2026-07-12 | P5-T7 | Archived REVIEW_P5-T7_structured_report report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T8 | Archived Make_CLI_Scope_Selection_and_Errors_Unambiguous (PASS) |

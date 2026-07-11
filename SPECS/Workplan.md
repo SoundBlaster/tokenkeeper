@@ -223,7 +223,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Known findings and incomplete checks can coexist without losing evidence; zero checked targets cannot claim a complete clean audit
   - Modes render in conventional octal and output remains stable under golden tests
 
-#### P5-T8: Make CLI Scope Selection and Errors Unambiguous
+#### P5-T8: Make CLI Scope Selection and Errors Unambiguous ✅ Complete
 - **Description:** Define selector composition, duplicate handling, zero-scope behavior, and control-safe rendering for all user-controlled CLI input. Covers `TK-REV-012` and `TK-REV-017`.
 - **Priority:** P1
 - **Dependencies:** P5-T7
