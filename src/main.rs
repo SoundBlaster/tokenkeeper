@@ -1,9 +1,8 @@
 use std::os::unix::fs::MetadataExt;
-use std::path::PathBuf;
 use std::process::ExitCode;
 
 use tokenkeeper::cli::{self, CheckOptions};
-use tokenkeeper::identity::current_uid;
+use tokenkeeper::identity::{canonical_home, current_uid};
 use tokenkeeper::inspector::MetadataInspector;
 use tokenkeeper::profiles::{
     builtin_registry, LocationSpec, NodeKind, Platform, Policy, ProfileSpec, Root,
@@ -47,10 +46,10 @@ fn run_check(options: CheckOptions) -> ExitCode {
             "warning: macOS ACL evaluation is unsupported on this platform; audit is incomplete"
         );
     }
-    let home = match std::env::var_os("HOME") {
-        Some(home) => PathBuf::from(home),
-        None => {
-            eprintln!("HOME is not set");
+    let home = match canonical_home() {
+        Ok(home) => home,
+        Err(error) => {
+            eprintln!("cannot resolve canonical HOME: {error}");
             return ExitCode::from(2);
         }
     };
