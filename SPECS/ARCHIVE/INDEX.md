@@ -14,6 +14,7 @@
 | P2-T3 | [P2-T3_Implement_macOS_ACL_Backend/](P2-T3_Implement_macOS_ACL_Backend/) | 2026-07-11 | PASS |
 | P3-T1 | [P3-T1_Add_Built-in_Agent_and_Integration_Profiles/](P3-T1_Add_Built-in_Agent_and_Integration_Profiles/) | 2026-07-11 | PASS |
 | P3-T2 | [P3-T2_Complete_Security_Integration_Tests/](P3-T2_Complete_Security_Integration_Tests/) | 2026-07-11 | PASS |
+| P4-T1 | [P4-T1_Publish_User_and_Security_Documentation/](P4-T1_Publish_User_and_Security_Documentation/) | 2026-07-11 | PASS |
 
 ## Historical Artifacts
 
@@ -49,3 +50,4 @@
 | 2026-07-11 | P3-T1 | Archived REVIEW_P3-T1_builtin_profiles report |
 | 2026-07-11 | P3-T2 | Archived Complete_Security_Integration_Tests (PASS) |
 | 2026-07-11 | P3-T2 | Archived REVIEW_P3-T2_security_integration_tests report |
+| 2026-07-11 | P4-T1 | Archived Publish_User_and_Security_Documentation (PASS) |
