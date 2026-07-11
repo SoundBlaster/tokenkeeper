@@ -89,7 +89,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Optional, version-dependent, Keychain, and unsupported storage are reported honestly
   - Profile fixtures contain no secrets
 
-#### P3-T2: Complete Security Integration Tests
+#### P3-T2: Complete Security Integration Tests **INPROGRESS**
 - **Description:** Validate the full CLI against adversarial filesystem trees and all PRD acceptance scenarios.
 - **Priority:** P0
 - **Dependencies:** P2-T2, P2-T3, P3-T1
