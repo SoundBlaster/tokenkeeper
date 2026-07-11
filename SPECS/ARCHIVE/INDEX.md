@@ -55,6 +55,7 @@
 | [_Historical/REVIEW_P5-T8_cli_scope.md](_Historical/REVIEW_P5-T8_cli_scope.md) | Review report for P5-T8 CLI scope |
 | [_Historical/REVIEW_P5-T9_platform_profiles.md](_Historical/REVIEW_P5-T9_platform_profiles.md) | Review report for P5-T9 platform profiles |
 | [_Historical/REVIEW_P5-T10_location_evidence.md](_Historical/REVIEW_P5-T10_location_evidence.md) | Review report for P5-T10 location evidence |
+| [_Historical/REVIEW_P5-T11_native_acceptance.md](_Historical/REVIEW_P5-T11_native_acceptance.md) | Review report for P5-T11 native acceptance |
 
 ## Archive Log
 
@@ -103,3 +104,4 @@
 | 2026-07-12 | P5-T10 | Archived Complete_Per-location_Profile_Evidence_and_Validation (PASS) |
 | 2026-07-12 | P5-T10 | Archived REVIEW_P5-T10_location_evidence report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T11 | Archived Build_the_Native_Security_Acceptance_Suite (PASS) |
+| 2026-07-12 | P5-T11 | Archived REVIEW_P5-T11_native_acceptance report (FOLLOW-UP skipped) |
