@@ -37,6 +37,7 @@
 | [_Historical/REVIEW_P4-T2_homebrew_tap.md](_Historical/REVIEW_P4-T2_homebrew_tap.md) | Review report for P4-T2 Homebrew tap distribution |
 | [_Historical/REVIEW_P4-T3_linux_evaluation.md](_Historical/REVIEW_P4-T3_linux_evaluation.md) | Review report for P4-T3 Linux support evaluation |
 | [_Historical/REVIEW_v0_1_0_release.md](_Historical/REVIEW_v0_1_0_release.md) | Formal post-release review for Tokenkeeper v0.1.0 |
+| [_Historical/REVIEW_P5-T2_native_acl.md](_Historical/REVIEW_P5-T2_native_acl.md) | Review report for P5-T2 native ACL evaluation |
 
 ## Archive Log
 
@@ -67,3 +68,4 @@
 | 2026-07-12 | P5-T1 | Archived Audit_v0_1_0_Release (PASS) |
 | 2026-07-12 | P5-T1 | Archived REVIEW_v0_1_0_release report |
 | 2026-07-12 | P5-T2 | Archived Correct_Native_macOS_ACL_Evaluation (PASS with repository coverage gap) |
+| 2026-07-12 | P5-T2 | Archived REVIEW_P5-T2_native_acl report (FOLLOW-UP skipped) |
