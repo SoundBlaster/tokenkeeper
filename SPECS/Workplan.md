@@ -16,14 +16,15 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `cargo clippy --all-targets --all-features -- -D warnings` passes
   - `cargo fmt --all --check` passes
 
-#### P1-T2: Research Agent Storage Locations
-- **Description:** Verify filesystem and Keychain storage behavior for Codex, Claude Code, OpenCode, Cursor, and GitHub Copilot.
+#### P1-T2: Research Agent and Integration Storage Locations
+- **Description:** Verify filesystem and Keychain storage behavior for Codex, Claude Code, OpenCode, Cursor, MCP servers, and credential-bearing utility configs. GitHub Copilot is optional.
 - **Priority:** P0
 - **Dependencies:** None
 - **Parallelizable:** yes
 - **Acceptance Criteria:**
   - Every claimed location records product/version, platform, source, and verification date
   - File-based credentials and integrity-sensitive configs are classified separately
+  - MCP server and utility configs that may contain credentials are identified and classified as `CredentialConfig`
   - Keychain-only or unknown storage is documented without a false coverage claim
   - No real credential content enters documentation or fixtures
 
@@ -46,7 +47,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 - **Dependencies:** P1-T3
 - **Parallelizable:** no
 - **Acceptance Criteria:**
-  - `SecretFile`, `PrivateDirectory`, `TrustedConfig`, and `ExecutableConfig` policies match the PRD matrix
+  - `SecretFile`, `CredentialConfig`, `PrivateDirectory`, `TrustedConfig`, and `ExecutableConfig` policies match the PRD matrix
   - Component-wise inspection stops on unexpected symlinks
   - Missing optional, missing required, access denied, and unsafe permissions remain distinct outcomes
   - Tests cover safe, unsafe, malformed, and incomplete filesystem states
@@ -76,14 +77,15 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 3: Profiles and Hardening
 
-#### P3-T1: Add Built-in Agent Profiles
-- **Description:** Add validated embedded profiles for all five target agents using the researched evidence.
+#### P3-T1: Add Built-in Agent and Integration Profiles
+- **Description:** Add validated embedded profiles for the required agents, MCP integrations, and credential-bearing utility configs using the researched evidence.
 - **Priority:** P0
 - **Dependencies:** P1-T2, P1-T3, P2-T1, P2-T3
 - **Parallelizable:** no
 - **Acceptance Criteria:**
-  - `tokenkeeper profiles` lists Codex, Claude Code, OpenCode, Cursor, and GitHub Copilot
+  - `tokenkeeper profiles` lists Codex, Claude Code, OpenCode, Cursor, and MCP/integration profiles; GitHub Copilot is optional
   - Every location has an appropriate policy and bounded selector
+  - Known credential-bearing configs use `CredentialConfig` without reading their contents
   - Optional, version-dependent, Keychain, and unsupported storage are reported honestly
   - Profile fixtures contain no secrets
 

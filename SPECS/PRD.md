@@ -10,13 +10,13 @@
 
 ## 1. Резюме
 
-Tokenkeeper — минимальная локальная CLI-утилита для ручного аудита filesystem permissions файлов конфигурации и credentials AI coding agents в домашней директории пользователя. Утилита проверяет только metadata, объясняет найденный риск и предлагает стандартную команду исправления. Она не читает токены, не изменяет файлы и не выполняет предложенные команды.
+Tokenkeeper — минимальная локальная CLI-утилита для ручного аудита filesystem permissions файлов конфигурации, credentials AI coding agents и MCP/utility integrations в домашней директории пользователя. Утилита проверяет только metadata, объясняет найденный риск и предлагает стандартную команду исправления. Она не читает токены, не изменяет файлы и не выполняет предложенные команды.
 
 Первая версия ориентирована на macOS и распространяется через Homebrew tap. Общая Unix-логика проектируется переносимой, чтобы позднее добавить подтверждённую поддержку Linux.
 
 ## 2. Проблема
 
-Agent tools сохраняют credentials, настройки, state databases и конфигурации интеграций в разных locations внутри `$HOME`. Избыточные mode bits, неверный owner, extended ACL, небезопасный symlink или writable parent directory могут раскрыть token другому локальному пользователю либо позволить изменить конфигурацию агента.
+Agent tools, MCP servers и сторонние utilities сохраняют credentials, настройки, state databases и integration configs в разных locations внутри `$HOME`. Такие config files часто содержат embedded tokens или credentials для MCP и внешних сервисов. Избыточные mode bits, неверный owner, extended ACL, небезопасный symlink или writable parent directory могут раскрыть token другому локальному пользователю либо позволить изменить конфигурацию агента.
 
 Ручная проверка требует знания всех locations и различий между confidentiality и integrity policies. Пользователю нужен короткий, понятный и воспроизводимый отчёт без автоматического вмешательства в систему.
 
@@ -47,7 +47,7 @@ Agent tools сохраняют credentials, настройки, state databases 
 
 ## 5. Пользователи и сценарии
 
-Основной пользователь — developer, который локально использует AI coding agents и хочет проверить хранение их credentials.
+Основной пользователь — developer, который локально использует AI coding agents, MCP servers и сторонние utilities и хочет проверить exposure их credential-bearing configs.
 
 - Запустить `tokenkeeper check` и проверить все встроенные profiles.
 - Проверить только один agent: `tokenkeeper check --profile codex`.
@@ -57,15 +57,19 @@ Agent tools сохраняют credentials, настройки, state databases 
 
 ## 6. Scope `v0.1`
 
-Встроенный registry должен содержать profiles:
+Встроенный registry должен содержать обязательные profiles:
 
 - Codex;
 - Claude Code;
 - OpenCode;
 - Cursor;
-- GitHub Copilot, только в части подтверждённых file-based locations.
+- MCP/integration configs с подтверждёнными file-based locations.
 
-Точные paths и типы хранилищ должны быть проверены по upstream documentation и локальными fixtures до реализации каждого profile. Если продукт хранит credential в Keychain, Tokenkeeper сообщает об ограничении и не заявляет, что credential был проверен.
+GitHub Copilot остаётся optional profile и может быть отложен после `v0.1`, если его file-based storage не даёт полезного покрытия.
+
+Точные paths и типы хранилищ должны быть проверены по upstream documentation и локальными fixtures до реализации каждого profile. Profile location может принадлежать агенту, MCP server или utility. Если продукт хранит credential в Keychain, Tokenkeeper сообщает об ограничении и не заявляет, что credential был проверен.
+
+Profile или пользовательская policy может объявить config как `CredentialConfig`, если он известен как потенциально содержащий token/credential. Tokenkeeper проверяет exposure такого файла, но не читает contents и не пытается самостоятельно доказать наличие секрета.
 
 Публичный `v0.1` должен быть доступен как Homebrew formula из maintainer-owned tap. Formula собирается из versioned source release; bottles могут быть добавлены позднее как optimization.
 
@@ -102,11 +106,12 @@ Access denied, unsupported ACL backend и другие неполные пров
 | Policy | Требование |
 | --- | --- |
 | `SecretFile` | Regular file текущего пользователя; запрещён весь доступ `group/others` и несовместимый ACL. `0600` — рекомендуемое, но более строгое состояние, например `0400`, допустимо. |
+| `CredentialConfig` | Config file, который может содержать token или credential для agent, MCP или utility; применяется та же confidentiality policy, что и для `SecretFile`. Наличие credential не определяется чтением contents. |
 | `PrivateDirectory` | Directory текущего пользователя; запрещён весь доступ `group/others` и несовместимый ACL. Рекомендуемое состояние — `0700`. |
 | `TrustedConfig` | Текущий owner; запрещена запись через `group/others` или ACL. Чтение может быть разрешено. |
 | `ExecutableConfig` | Требования `TrustedConfig` плюс строгая проверка writable ancestors, поскольку изменение может привести к выполнению команд агентом. |
 
-Config, содержащий credential, всегда классифицируется как `SecretFile`, независимо от extension. Writable ancestor между trusted Home и target создаёт отдельный integrity finding.
+Известный или явно объявленный credential-bearing config классифицируется как `CredentialConfig`, независимо от extension. Writable ancestor между trusted Home и target создаёт отдельный integrity finding.
 
 ACL backend должен либо корректно вычислять effective rights с учётом inherited entries и порядка allow/deny, либо применять консервативное правило: любой релевантный non-owner `ALLOW`, безопасность которого нельзя доказать, даёт `FINDING` или `UNKNOWN`, но не `PASS`.
 
@@ -218,7 +223,7 @@ CLI → Profile Registry → Path Resolver → Platform Inspector
 ```
 
 - `cli` — arguments и exit codes;
-- `profiles` — встроенные data-only definitions;
+- `profiles` — встроенные data-only definitions для agent, MCP и utility categories;
 - `resolver` — semantic roots и bounded discovery;
 - `platform` — Unix metadata и macOS ACL backend;
 - `policy` — platform-neutral evaluation;
@@ -241,11 +246,11 @@ Unit tests покрывают policy matrix и profile validation. Integration t
 - paths с spaces, quotes, leading dash, newline и ANSI bytes;
 - отсутствие content reads, filesystem mutations, network access и выполнения remediation.
 
-Golden tests фиксируют человекочитаемый report и exit codes. Profile fixtures подтверждают все пять built-in IDs и заявленные locations.
+Golden tests фиксируют человекочитаемый report и exit codes. Profile fixtures подтверждают все обязательные built-in IDs и заявленные agent/MCP/utility locations.
 
 ## 14. Acceptance criteria `v0.1`
 
-- Все пять profiles отображаются через `tokenkeeper profiles`.
+- Все обязательные profiles отображаются через `tokenkeeper profiles`: Codex, Claude Code, OpenCode, Cursor и MCP/integration configs. GitHub Copilot может быть optional.
 - Любой selector соблюдает limits по depth и entry count; превышение limit даёт `INCOMPLETE`, а не частичный `PASS`.
 - `SecretFile` текущего пользователя с mode `0644` даёт finding и shell-safe предложение убрать доступ `group/others`; `0600` и `0400` проходят проверку.
 - `PrivateDirectory` с mode `0777` даёт finding; `0700` проходит проверку.
@@ -292,7 +297,7 @@ Golden tests фиксируют человекочитаемый report и exit 
 
 ## 18. Открытые вопросы
 
-- Какие versions каждого агента считаются baseline для location research?
+- Какие versions каждого агента и MCP/utility integrations считаются baseline для location research?
 - Нужен ли bounded glob/recursion всем profiles уже в `v0.1`?
 - Следует ли публиковать inspection-only команды для сложных ACL findings?
 - Нужны ли JSON или SARIF раньше пользовательских external profiles?
