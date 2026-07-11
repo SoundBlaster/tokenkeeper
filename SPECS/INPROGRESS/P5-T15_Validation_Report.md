@@ -9,7 +9,7 @@
 - Cargo package and lockfile are versioned `0.2.0`.
 - `rustup run 1.85.0 cargo check --locked --all-targets --all-features` — PASS.
 - Existing `v0.1.0` tag has not been modified.
-- Immutable `v0.2.1` tag points to the reviewed successor tree; archive SHA-256 is `562e9226fc3da243efc7faff75832d17c2776f5d44e5e131a73a35e69b586ee3`.
+- Immutable `v0.2.2` tag points to the reviewed successor tree; archive SHA-256 is `2f76f4b19cb57bb1088461e12a2cc66f6a3300fc36875f706d23bb53c5264b96`.
 
 ## Remaining publication gates
 
