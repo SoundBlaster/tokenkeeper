@@ -115,7 +115,7 @@ impl Resolver {
                 max_entries,
             } => {
                 let mut resolved = Vec::new();
-                self.walk(&path, 0, max_depth, max_entries, &mut resolved)?;
+                Self::walk(&path, 0, max_depth, max_entries, &mut resolved)?;
                 Ok(resolved)
             }
         }
@@ -153,7 +153,6 @@ impl Resolver {
     }
 
     fn walk(
-        &self,
         path: &Path,
         depth: u8,
         max_depth: u8,
@@ -184,7 +183,7 @@ impl Resolver {
             let child = entry
                 .map_err(|error| io_error(path.to_path_buf(), error))?
                 .path();
-            self.walk(&child, depth + 1, max_depth, max_entries, resolved)?;
+            Self::walk(&child, depth + 1, max_depth, max_entries, resolved)?;
         }
         Ok(())
     }
