@@ -53,6 +53,7 @@
 | [_Historical/REVIEW_P5-T7_structured_report.md](_Historical/REVIEW_P5-T7_structured_report.md) | Review report for P5-T7 structured report |
 | [_Historical/REVIEW_P5-T8_cli_scope.md](_Historical/REVIEW_P5-T8_cli_scope.md) | Review report for P5-T8 CLI scope |
 | [_Historical/REVIEW_P5-T9_platform_profiles.md](_Historical/REVIEW_P5-T9_platform_profiles.md) | Review report for P5-T9 platform profiles |
+| [_Historical/REVIEW_P5-T10_location_evidence.md](_Historical/REVIEW_P5-T10_location_evidence.md) | Review report for P5-T10 location evidence |
 
 ## Archive Log
 
@@ -99,3 +100,4 @@
 | 2026-07-12 | P5-T9 | Archived Implement_Platform-aware_Profile_Availability (PASS) |
 | 2026-07-12 | P5-T9 | Archived REVIEW_P5-T9_platform_profiles report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T10 | Archived Complete_Per-location_Profile_Evidence_and_Validation (PASS) |
+| 2026-07-12 | P5-T10 | Archived REVIEW_P5-T10_location_evidence report (FOLLOW-UP skipped) |
