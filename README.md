@@ -2,9 +2,25 @@
 
 Tokenkeeper is a minimal Rust CLI for a read-only, metadata-only audit of AI-agent, MCP and utility configuration files under the current user’s Home. It checks ownership, Unix modes, macOS ACLs, node types, symlinks and writable ancestors; it never reads token contents or executes remediation.
 
-## Install from source
+## Installation
 
-Rust stable and Cargo are required until the Homebrew release work is complete:
+Recommended installation via the published Homebrew tap:
+
+```bash
+brew tap SoundBlaster/homebrew-tap
+brew install SoundBlaster/homebrew-tap/tokenkeeper
+```
+
+To update or remove it:
+
+```bash
+brew update && brew upgrade tokenkeeper
+brew uninstall tokenkeeper
+```
+
+### From source
+
+Rust stable and Cargo are required for a source build:
 
 ```bash
 git clone https://github.com/SoundBlaster/tokenkeeper.git
@@ -12,14 +28,7 @@ cd tokenkeeper
 cargo install --path .
 ```
 
-The maintainer-owned tap contract is documented in [`docs/homebrew.md`](docs/homebrew.md). After the formula is published to the tap:
-
-```bash
-brew tap SoundBlaster/homebrew-tap
-brew install SoundBlaster/homebrew-tap/tokenkeeper
-brew update && brew upgrade tokenkeeper
-brew uninstall tokenkeeper
-```
+The maintainer-owned tap contract is documented in [`docs/homebrew.md`](docs/homebrew.md).
 
 ## Usage
 
