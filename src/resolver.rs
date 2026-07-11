@@ -29,6 +29,7 @@ pub enum ResolveError {
     HomeSymlink(PathBuf),
     InvalidRelativePath(PathBuf),
     SymlinkComponent(PathBuf),
+    AccessDenied { path: PathBuf },
     Io { path: PathBuf, message: String },
     TraversalLimitExceeded { path: PathBuf, max_entries: usize },
 }
@@ -44,6 +45,7 @@ impl fmt::Display for ResolveError {
             Self::SymlinkComponent(path) => {
                 write!(f, "symlink component is not followed: {path:?}")
             }
+            Self::AccessDenied { path } => write!(f, "access denied at {path:?}"),
             Self::Io { path, message } => write!(f, "filesystem error at {path:?}: {message}"),
             Self::TraversalLimitExceeded { path, max_entries } => {
                 write!(
@@ -212,6 +214,9 @@ fn validate_relative_path(path: &Path) -> Result<(), ResolveError> {
 }
 
 fn io_error(path: PathBuf, error: io::Error) -> ResolveError {
+    if error.kind() == io::ErrorKind::PermissionDenied {
+        return ResolveError::AccessDenied { path };
+    }
     ResolveError::Io {
         path,
         message: error.to_string(),
