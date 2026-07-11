@@ -29,7 +29,7 @@ fn version_reports_the_package_version() {
     assert!(output.status.success());
     assert_eq!(
         String::from_utf8_lossy(&output.stdout).trim(),
-        "tokenkeeper 0.2.1"
+        "tokenkeeper 0.2.2"
     );
     assert!(output.stderr.is_empty());
 }
