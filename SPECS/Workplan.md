@@ -186,7 +186,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Node, confidentiality, integrity, ancestor, and ACL requirements compose without profile-specific branching
   - Every built-in location has one explicit, tested effective requirement set
 
-#### P5-T5: Resolve Canonical User Home and Elevated Invocation
+#### P5-T5: Resolve Canonical User Home and Elevated Invocation ✅ Complete
 - **Description:** Derive the audited Home from the OS account identity, compare environment state safely, and define root/sudo behavior. Covers `TK-REV-006`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
