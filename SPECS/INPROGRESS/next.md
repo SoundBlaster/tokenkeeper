@@ -4,7 +4,7 @@
 **Phase:** Audit Core
 **Effort:** 12–16 hours
 **Dependencies:** P2-T1
-**Status:** Ready
+**Status:** Selected
 
 ## Description
 
@@ -20,4 +20,4 @@ Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading t
 
 ## Next Step
 
-Run the SELECT command to begin P2-T3.
+Run the PLAN command to create the implementation-ready task PRD.

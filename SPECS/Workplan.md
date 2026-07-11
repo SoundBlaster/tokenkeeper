@@ -64,7 +64,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Spaces, quotes, control characters, and shell metacharacters cannot inject commands or terminal output
   - Tokenkeeper never executes remediation
 
-#### P2-T3: Implement macOS ACL Backend
+#### P2-T3: Implement macOS ACL Backend **INPROGRESS**
 - **Description:** Inspect macOS extended ACL and map effective or conservatively unknown non-owner access into policy results.
 - **Priority:** P0
 - **Dependencies:** P2-T1
