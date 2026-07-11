@@ -1,9 +1,10 @@
 # Homebrew distribution
 
-The maintainer-owned tap is `SoundBlaster/homebrew-tap`. Until the formula is copied to that tap, install it locally for validation with:
+The maintainer-owned tap is `SoundBlaster/homebrew-tap`. Install the published formula from the tap for validation with:
 
 ```bash
-brew install --build-from-source ./Formula/tokenkeeper.rb
+brew tap SoundBlaster/homebrew-tap
+brew install --build-from-source SoundBlaster/homebrew-tap/tokenkeeper
 ```
 
 The published tap workflow is:
