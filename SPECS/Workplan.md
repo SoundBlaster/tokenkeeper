@@ -210,7 +210,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Symlink/error branches do not erase prior scope and cannot convert unvisited siblings into a complete exit code
   - Time and memory scale with declared budgets rather than total directory size
 
-#### P5-T7: Implement the Structured Finding and Report Contract
+#### P5-T7: Implement the Structured Finding and Report Contract ✅ Complete
 - **Description:** Implement the full FR-05 result/report model with stable rules, completeness, human guidance, and checked scope. Covers `TK-REV-005` and report-related parts of `TK-REV-012`/`TK-REV-018`.
 - **Priority:** P0
 - **Dependencies:** P5-T3, P5-T4, P5-T5, P5-T6

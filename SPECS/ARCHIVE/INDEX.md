@@ -23,6 +23,7 @@
 | P5-T4 | [P5-T4_Compose_Confidentiality_and_Integrity_Policies/](P5-T4_Compose_Confidentiality_and_Integrity_Policies/) | 2026-07-12 | PASS |
 | P5-T5 | [P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/](P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/) | 2026-07-12 | PASS |
 | P5-T6 | [P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/](P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/) | 2026-07-12 | PASS |
+| P5-T7 | [P5-T7_Implement_the_Structured_Finding_and_Report_Contract/](P5-T7_Implement_the_Structured_Finding_and_Report_Contract/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -85,3 +86,4 @@
 | 2026-07-12 | P5-T5 | Archived REVIEW_P5-T5_canonical_home report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T6 | Archived Make_Bounded_Traversal_Fail-closed_and_Resource-bounded (PASS) |
 | 2026-07-12 | P5-T6 | Archived REVIEW_P5-T6_bounded_traversal report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T7 | Archived Implement_the_Structured_Finding_and_Report_Contract (PASS) |

@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T7 — Implement the Structured Finding and Report Contract
+# Next Task Candidate: P5-T8 — Make CLI Scope Selection and Errors Unambiguous
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Implement stable structured findings with rule ID, severity, current/expected state, risk, and scope.
+Make CLI scope selection, profile/platform handling, and error exits unambiguous.
 
 ## Recently Archived
 
@@ -18,7 +18,8 @@ Implement stable structured findings with rule ID, severity, current/expected st
 - `P5-T4` — Compose Confidentiality and Integrity Policies — `PASS` (2026-07-12)
 - `P5-T5` — Resolve Canonical User Home and Elevated Invocation — `PASS` (2026-07-12)
 - `P5-T6` — Make Bounded Traversal Fail-closed and Resource-bounded — `PASS` (2026-07-12)
+- `P5-T7` — Implement the Structured Finding and Report Contract — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T7`, then PLAN the structured report contract.
+Run SELECT to activate `P5-T8`, then PLAN CLI scope and error semantics.
