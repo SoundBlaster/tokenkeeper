@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T10 — Complete Per-location Profile Evidence and Validation
+# Next Task Candidate: P5-T11 — Build the Native Security Acceptance Suite
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Complete per-location evidence and validation for built-in integration profiles.
+Build native security acceptance fixtures covering ACLs, ancestors, identity, policies, traversal, and reporting.
 
 ## Recently Archived
 
@@ -21,7 +21,8 @@ Complete per-location evidence and validation for built-in integration profiles.
 - `P5-T7` — Implement the Structured Finding and Report Contract — `PASS` (2026-07-12)
 - `P5-T8` — Make CLI Scope Selection and Errors Unambiguous — `PASS` (2026-07-12)
 - `P5-T9` — Implement Platform-aware Profile Availability — `PASS` (2026-07-12)
+- `P5-T10` — Complete Per-location Profile Evidence and Validation — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T10`, then PLAN per-location evidence and validation.
+Run SELECT to activate `P5-T11`, then PLAN the native security acceptance suite.

@@ -247,7 +247,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - A safe `XDG_CONFIG_HOME` inside canonical Home is handled according to documented semantics; an external value is rejected or reported incomplete
   - Unsupported Linux ACL coverage is incomplete at the per-result level and no target line claims an unconditional `PASS`
 
-#### P5-T10: Complete Per-location Profile Evidence and Validation
+#### P5-T10: Complete Per-location Profile Evidence and Validation ✅ Complete
 - **Description:** Record and validate versioned provenance, availability, and exact fixtures for every built-in location. Covers `TK-REV-014`.
 - **Priority:** P1
 - **Dependencies:** P5-T4, P5-T9

@@ -15,6 +15,10 @@ fn required_profiles_are_embedded_with_evidence() {
         assert!(profile.source.is_some());
         assert_eq!(profile.verified_on.as_deref(), Some("2026-07-11"));
         assert!(!profile.locations.is_empty());
+        assert!(profile
+            .locations
+            .iter()
+            .all(|location| location.source.is_some() && location.verified_on.is_some()));
     }
 }
 

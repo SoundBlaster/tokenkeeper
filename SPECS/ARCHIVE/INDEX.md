@@ -26,6 +26,7 @@
 | P5-T7 | [P5-T7_Implement_the_Structured_Finding_and_Report_Contract/](P5-T7_Implement_the_Structured_Finding_and_Report_Contract/) | 2026-07-12 | PASS |
 | P5-T8 | [P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/](P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/) | 2026-07-12 | PASS |
 | P5-T9 | [P5-T9_Implement_Platform-aware_Profile_Availability/](P5-T9_Implement_Platform-aware_Profile_Availability/) | 2026-07-12 | PASS |
+| P5-T10 | [P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/](P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -97,3 +98,4 @@
 | 2026-07-12 | P5-T8 | Archived REVIEW_P5-T8_cli_scope report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T9 | Archived Implement_Platform-aware_Profile_Availability (PASS) |
 | 2026-07-12 | P5-T9 | Archived REVIEW_P5-T9_platform_profiles report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T10 | Archived Complete_Per-location_Profile_Evidence_and_Validation (PASS) |
