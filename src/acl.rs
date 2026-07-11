@@ -28,9 +28,13 @@ struct Entry {
 pub fn evaluate_text(text: &str, owner_uid: u32, policy: Policy) -> AclDecision {
     let mut entries = Vec::new();
     for line in text.lines().map(str::trim).filter(|line| !line.is_empty()) {
-        if line.starts_with("flags:") {
+        if line.starts_with("flags:") || line.starts_with("!#acl") {
             continue;
         }
+        let line = line
+            .split_once(':')
+            .filter(|(prefix, _)| prefix.chars().all(|character| character.is_ascii_digit()))
+            .map_or(line, |(_, entry)| entry.trim());
         match parse_entry(line) {
             Ok(entry) => entries.push(entry),
             Err(detail) => return AclDecision::Unknown { detail },
@@ -69,40 +73,149 @@ pub fn evaluate_text(text: &str, owner_uid: u32, policy: Policy) -> AclDecision 
 }
 
 fn parse_entry(line: &str) -> Result<Entry, String> {
+    if line
+        .split_whitespace()
+        .any(|field| matches!(field.to_ascii_lowercase().as_str(), "allow" | "deny"))
+    {
+        return parse_space_entry(line);
+    }
     let fields: Vec<_> = line.split(':').map(str::trim).collect();
-    if fields.len() < 3 {
+    if fields.len() < 3 || fields.iter().any(|field| field.is_empty()) {
         return Err(format!("malformed ACL entry: {line}"));
     }
-    let (principal, effect_index, permission_index) =
-        if matches!(fields[1].to_ascii_lowercase().as_str(), "allow" | "deny") {
-            (fields[0].to_owned(), 1, 2)
-        } else if fields.len() >= 4
-            && matches!(fields[2].to_ascii_lowercase().as_str(), "allow" | "deny")
-        {
-            (format!("{}:{}", fields[0], fields[1]), 2, 3)
-        } else {
-            return Err(format!("unknown ACL effect: {line}"));
-        };
-    if fields[permission_index].is_empty() {
+    let effect_index = fields
+        .iter()
+        .position(|field| matches!(field.to_ascii_lowercase().as_str(), "allow" | "deny"))
+        .ok_or_else(|| format!("unknown ACL effect: {line}"))?;
+    if effect_index == 0 || (effect_index + 1 >= fields.len() && effect_index < 2) {
         return Err(format!("malformed ACL entry: {line}"));
     }
+    let effect_before_permissions = effect_index + 1 < fields.len();
+    let permission_index = if effect_before_permissions {
+        effect_index + 1
+    } else {
+        effect_index - 1
+    };
+    let principal_end = if effect_before_permissions {
+        effect_index
+    } else {
+        permission_index
+    };
+    let principal = fields[..principal_end].join(":");
     let effect = match fields[effect_index].to_ascii_lowercase().as_str() {
         "allow" => Effect::Allow,
         "deny" => Effect::Deny,
         _ => unreachable!(),
     };
-    let inherited = fields
-        .get(permission_index + 1)
-        .is_some_and(|value| value.eq_ignore_ascii_case("inherited"));
-    if fields.len() > permission_index + 1 && !inherited {
+    let suffix_start = if effect_before_permissions {
+        permission_index + 1
+    } else {
+        effect_index + 1
+    };
+    let inherited = fields[suffix_start..].iter().any(|value| {
+        matches!(
+            value.to_ascii_lowercase().as_str(),
+            "inherited" | "file_inherit" | "directory_inherit" | "inherit_only" | "limit_inherit"
+        )
+    });
+    if fields[suffix_start..]
+        .iter()
+        .any(|value| !is_acl_flag(value))
+    {
         return Err(format!("unknown ACL entry suffix: {line}"));
+    }
+    let permissions = fields[permission_index]
+        .split([',', '/', ' ', '\t'])
+        .filter(|permission| !permission.is_empty())
+        .map(str::to_ascii_lowercase)
+        .collect::<Vec<_>>();
+    if permissions.is_empty()
+        || permissions
+            .iter()
+            .any(|permission| !is_acl_permission(permission))
+    {
+        return Err(format!("unknown ACL permission: {line}"));
     }
     Ok(Entry {
         principal,
         effect,
-        permissions: fields[permission_index].to_ascii_lowercase(),
+        permissions: permissions.join(","),
         inherited,
     })
+}
+
+fn parse_space_entry(line: &str) -> Result<Entry, String> {
+    let fields: Vec<_> = line.split_whitespace().collect();
+    let effect_index = fields
+        .iter()
+        .position(|field| matches!(field.to_ascii_lowercase().as_str(), "allow" | "deny"))
+        .ok_or_else(|| format!("unknown ACL effect: {line}"))?;
+    if effect_index == 0 || effect_index + 1 >= fields.len() {
+        return Err(format!("malformed ACL entry: {line}"));
+    }
+    let permissions = fields[effect_index + 1..]
+        .join(",")
+        .split([',', '/', ' ', '\t'])
+        .filter(|permission| !permission.is_empty())
+        .map(str::to_ascii_lowercase)
+        .collect::<Vec<_>>();
+    if permissions.is_empty()
+        || permissions
+            .iter()
+            .any(|permission| !is_acl_permission(permission))
+    {
+        return Err(format!("unknown ACL permission: {line}"));
+    }
+    Ok(Entry {
+        principal: fields[..effect_index].join(" "),
+        effect: if fields[effect_index].eq_ignore_ascii_case("allow") {
+            Effect::Allow
+        } else {
+            Effect::Deny
+        },
+        permissions: permissions.join(","),
+        inherited: fields[effect_index + 1..]
+            .iter()
+            .any(|field| is_acl_flag(field)),
+    })
+}
+
+fn is_acl_permission(permission: &str) -> bool {
+    matches!(
+        permission,
+        "read"
+            | "write"
+            | "execute"
+            | "read_data"
+            | "write_data"
+            | "append_data"
+            | "readattr"
+            | "writeattr"
+            | "readextattr"
+            | "writeextattr"
+            | "readsecurity"
+            | "writesecurity"
+            | "chown"
+            | "delete"
+            | "add_file"
+            | "add_subdirectory"
+            | "delete_child"
+            | "list"
+            | "search"
+            | "approach"
+    )
+}
+
+fn is_acl_flag(flag: &str) -> bool {
+    matches!(
+        flag.to_ascii_lowercase().as_str(),
+        "inherited"
+            | "file_inherit"
+            | "directory_inherit"
+            | "inherit_only"
+            | "limit_inherit"
+            | "no_inherit"
+    )
 }
 
 fn is_owner(principal: &str, owner_uid: u32) -> bool {
@@ -113,14 +226,16 @@ fn is_owner(principal: &str, owner_uid: u32) -> bool {
 }
 
 fn relevant_permission(permissions: &str, policy: Policy) -> bool {
-    match policy {
-        Policy::SecretFile | Policy::CredentialConfig | Policy::PrivateDirectory => {
-            permissions.contains("read")
-                || permissions.contains("write")
-                || permissions.contains("execute")
-        }
-        Policy::TrustedConfig | Policy::ExecutableConfig => permissions.contains("write"),
-    }
+    (policy.requires_confidentiality()
+        && (permissions.contains("read")
+            || permissions.contains("write")
+            || permissions.contains("execute")))
+        || (policy.requires_integrity()
+            && (permissions.contains("write")
+                || permissions.contains("add_file")
+                || permissions.contains("add_subdirectory")
+                || permissions.contains("delete_child")
+                || permissions.contains("search")))
 }
 
 #[cfg(target_os = "macos")]
@@ -144,18 +259,27 @@ fn read_acl_text(path: &Path) -> Result<Option<String>, String> {
     use std::ffi::{CStr, CString};
     use std::os::raw::{c_char, c_int, c_void};
     const ACL_TYPE_EXTENDED: c_int = 0x0000_0100;
+    const ENOATTR: c_int = 93;
     unsafe extern "C" {
         fn acl_get_file(path: *const c_char, acl_type: c_int) -> *mut c_void;
         fn acl_to_text(acl: *mut c_void, len: *mut usize) -> *mut c_char;
         fn acl_free(value: *mut c_void) -> c_int;
+        fn __error() -> *mut c_int;
     }
+    let original_path = path;
     let path = path
         .to_str()
         .ok_or_else(|| "path is not valid UTF-8".to_owned())?;
     let path = CString::new(path).map_err(|_| "path contains NUL".to_owned())?;
     let acl = unsafe { acl_get_file(path.as_ptr(), ACL_TYPE_EXTENDED) };
     if acl.is_null() {
-        return Ok(None);
+        let errno = unsafe { *__error() };
+        let path_still_exists = std::fs::symlink_metadata(original_path).is_ok();
+        return if errno == ENOATTR || (errno == 2 && path_still_exists) {
+            Ok(None)
+        } else {
+            Err(format!("acl_get_file failed: errno {errno}"))
+        };
     }
     let mut length = 0usize;
     let text = unsafe { acl_to_text(acl, &mut length) };

@@ -18,6 +18,19 @@
 | P4-T2 | [P4-T2_Add_Homebrew_Tap_Distribution/](P4-T2_Add_Homebrew_Tap_Distribution/) | 2026-07-11 | PASS |
 | P4-T3 | [P4-T3_Evaluate_Linux_Support/](P4-T3_Evaluate_Linux_Support/) | 2026-07-11 | PASS |
 | P5-T1 | [P5-T1_Audit_v0_1_0_Release/](P5-T1_Audit_v0_1_0_Release/) | 2026-07-12 | PASS |
+| P5-T2 | [P5-T2_Correct_Native_macOS_ACL_Evaluation/](P5-T2_Correct_Native_macOS_ACL_Evaluation/) | 2026-07-12 | PASS with repository coverage gap |
+| P5-T3 | [P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/](P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/) | 2026-07-12 | PASS |
+| P5-T4 | [P5-T4_Compose_Confidentiality_and_Integrity_Policies/](P5-T4_Compose_Confidentiality_and_Integrity_Policies/) | 2026-07-12 | PASS |
+| P5-T5 | [P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/](P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/) | 2026-07-12 | PASS |
+| P5-T6 | [P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/](P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/) | 2026-07-12 | PASS |
+| P5-T7 | [P5-T7_Implement_the_Structured_Finding_and_Report_Contract/](P5-T7_Implement_the_Structured_Finding_and_Report_Contract/) | 2026-07-12 | PASS |
+| P5-T8 | [P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/](P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/) | 2026-07-12 | PASS |
+| P5-T9 | [P5-T9_Implement_Platform-aware_Profile_Availability/](P5-T9_Implement_Platform-aware_Profile_Availability/) | 2026-07-12 | PASS |
+| P5-T10 | [P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/](P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/) | 2026-07-12 | PASS |
+| P5-T11 | [P5-T11_Build_the_Native_Security_Acceptance_Suite/](P5-T11_Build_the_Native_Security_Acceptance_Suite/) | 2026-07-12 | PASS |
+| P5-T12 | [P5-T12_Enforce_Coverage_and_Reproducible_Rust_CI/](P5-T12_Enforce_Coverage_and_Reproducible_Rust_CI/) | 2026-07-12 | PASS |
+| P5-T13 | [P5-T13_Automate_the_Homebrew_Release_Lifecycle/](P5-T13_Automate_the_Homebrew_Release_Lifecycle/) | 2026-07-12 | PASS |
+| P5-T14 | [P5-T14_Reconcile_the_Specification_Lifecycle/](P5-T14_Reconcile_the_Specification_Lifecycle/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -36,6 +49,19 @@
 | [_Historical/REVIEW_P4-T2_homebrew_tap.md](_Historical/REVIEW_P4-T2_homebrew_tap.md) | Review report for P4-T2 Homebrew tap distribution |
 | [_Historical/REVIEW_P4-T3_linux_evaluation.md](_Historical/REVIEW_P4-T3_linux_evaluation.md) | Review report for P4-T3 Linux support evaluation |
 | [_Historical/REVIEW_v0_1_0_release.md](_Historical/REVIEW_v0_1_0_release.md) | Formal post-release review for Tokenkeeper v0.1.0 |
+| [_Historical/REVIEW_P5-T2_native_acl.md](_Historical/REVIEW_P5-T2_native_acl.md) | Review report for P5-T2 native ACL evaluation |
+| [_Historical/REVIEW_P5-T3_ancestor_chain.md](_Historical/REVIEW_P5-T3_ancestor_chain.md) | Review report for P5-T3 anchored ancestor chain |
+| [_Historical/REVIEW_P5-T4_policy_composition.md](_Historical/REVIEW_P5-T4_policy_composition.md) | Review report for P5-T4 policy composition |
+| [_Historical/REVIEW_P5-T5_canonical_home.md](_Historical/REVIEW_P5-T5_canonical_home.md) | Review report for P5-T5 canonical home |
+| [_Historical/REVIEW_P5-T6_bounded_traversal.md](_Historical/REVIEW_P5-T6_bounded_traversal.md) | Review report for P5-T6 bounded traversal |
+| [_Historical/REVIEW_P5-T7_structured_report.md](_Historical/REVIEW_P5-T7_structured_report.md) | Review report for P5-T7 structured report |
+| [_Historical/REVIEW_P5-T8_cli_scope.md](_Historical/REVIEW_P5-T8_cli_scope.md) | Review report for P5-T8 CLI scope |
+| [_Historical/REVIEW_P5-T9_platform_profiles.md](_Historical/REVIEW_P5-T9_platform_profiles.md) | Review report for P5-T9 platform profiles |
+| [_Historical/REVIEW_P5-T10_location_evidence.md](_Historical/REVIEW_P5-T10_location_evidence.md) | Review report for P5-T10 location evidence |
+| [_Historical/REVIEW_P5-T11_native_acceptance.md](_Historical/REVIEW_P5-T11_native_acceptance.md) | Review report for P5-T11 native acceptance |
+| [_Historical/REVIEW_P5-T12_reproducible_ci.md](_Historical/REVIEW_P5-T12_reproducible_ci.md) | Review report for P5-T12 reproducible CI |
+| [_Historical/REVIEW_P5-T13_homebrew_lifecycle.md](_Historical/REVIEW_P5-T13_homebrew_lifecycle.md) | Review report for P5-T13 Homebrew lifecycle |
+| [_Historical/REVIEW_P5-T14_spec_lifecycle.md](_Historical/REVIEW_P5-T14_spec_lifecycle.md) | Review report for P5-T14 specification lifecycle |
 
 ## Archive Log
 
@@ -65,3 +91,29 @@
 | 2026-07-11 | P4-T3 | Archived REVIEW_P4-T3_linux_evaluation report |
 | 2026-07-12 | P5-T1 | Archived Audit_v0_1_0_Release (PASS) |
 | 2026-07-12 | P5-T1 | Archived REVIEW_v0_1_0_release report |
+| 2026-07-12 | P5-T2 | Archived Correct_Native_macOS_ACL_Evaluation (PASS with repository coverage gap) |
+| 2026-07-12 | P5-T2 | Archived REVIEW_P5-T2_native_acl report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T3 | Archived Inspect_the_Complete_Anchored_Ancestor_Chain (PASS) |
+| 2026-07-12 | P5-T3 | Archived REVIEW_P5-T3_ancestor_chain report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T4 | Archived Compose_Confidentiality_and_Integrity_Policies (PASS) |
+| 2026-07-12 | P5-T4 | Archived REVIEW_P5-T4_policy_composition report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T5 | Archived Resolve_Canonical_User_Home_and_Elevated_Invocation (PASS) |
+| 2026-07-12 | P5-T5 | Archived REVIEW_P5-T5_canonical_home report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T6 | Archived Make_Bounded_Traversal_Fail-closed_and_Resource-bounded (PASS) |
+| 2026-07-12 | P5-T6 | Archived REVIEW_P5-T6_bounded_traversal report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T7 | Archived Implement_the_Structured_Finding_and_Report_Contract (PASS) |
+| 2026-07-12 | P5-T7 | Archived REVIEW_P5-T7_structured_report report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T8 | Archived Make_CLI_Scope_Selection_and_Errors_Unambiguous (PASS) |
+| 2026-07-12 | P5-T8 | Archived REVIEW_P5-T8_cli_scope report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T9 | Archived Implement_Platform-aware_Profile_Availability (PASS) |
+| 2026-07-12 | P5-T9 | Archived REVIEW_P5-T9_platform_profiles report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T10 | Archived Complete_Per-location_Profile_Evidence_and_Validation (PASS) |
+| 2026-07-12 | P5-T10 | Archived REVIEW_P5-T10_location_evidence report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T11 | Archived Build_the_Native_Security_Acceptance_Suite (PASS) |
+| 2026-07-12 | P5-T11 | Archived REVIEW_P5-T11_native_acceptance report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T12 | Archived Enforce_Coverage_and_Reproducible_Rust_CI (PASS) |
+| 2026-07-12 | P5-T12 | Archived REVIEW_P5-T12_reproducible_ci report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T13 | Archived Automate_the_Homebrew_Release_Lifecycle (PASS) |
+| 2026-07-12 | P5-T13 | Archived REVIEW_P5-T13_homebrew_lifecycle report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T14 | Archived Reconcile_the_Specification_Lifecycle (PASS) |
+| 2026-07-12 | P5-T14 | Archived REVIEW_P5-T14_spec_lifecycle report (FOLLOW-UP skipped) |

@@ -168,3 +168,49 @@ fn resolver_requires_an_absolute_home() {
     let error = Resolver::new(Path::new("relative-home")).expect_err("relative home must fail");
     assert_eq!(error, ResolveError::HomeNotAbsolute);
 }
+
+#[test]
+fn resolver_rejects_missing_and_non_directory_homes() {
+    let missing = std::env::temp_dir().join(format!("tokenkeeper-missing-{}", std::process::id()));
+    let _ = std::fs::remove_file(&missing);
+    assert!(matches!(
+        Resolver::new(&missing),
+        Err(ResolveError::HomeMissing(_))
+    ));
+
+    let file = std::env::temp_dir().join(format!("tokenkeeper-home-file-{}", std::process::id()));
+    std::fs::write(&file, "fixture").unwrap();
+    assert!(matches!(
+        Resolver::new(&file),
+        Err(ResolveError::HomeNotDirectory(_))
+    ));
+    let _ = std::fs::remove_file(file);
+}
+
+#[test]
+fn resolver_rejects_invalid_relative_location_and_reports_missing_target() {
+    let root = temp_home("invalid-location");
+    let resolver = Resolver::new(&root).unwrap();
+    let invalid = LocationSpec::exact(
+        Root::Home,
+        "../escape",
+        NodeKind::File,
+        Policy::SecretFile,
+        false,
+    );
+    assert!(matches!(
+        resolver.resolve(&invalid),
+        Err(ResolveError::InvalidRelativePath(_))
+    ));
+    let missing = LocationSpec::exact(
+        Root::Home,
+        "missing/file",
+        NodeKind::File,
+        Policy::SecretFile,
+        true,
+    );
+    let resolved = resolver.resolve(&missing).unwrap();
+    assert_eq!(resolved.len(), 1);
+    assert!(!resolved[0].exists());
+    let _ = std::fs::remove_dir_all(root);
+}

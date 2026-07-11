@@ -56,6 +56,8 @@ fn bounded_traversal_does_not_return_partial_pass() {
             max_depth: 1,
             max_entries: 1,
         },
+        source: None,
+        verified_on: None,
     };
     assert!(matches!(
         resolver.resolve(&location),

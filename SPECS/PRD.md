@@ -2,11 +2,12 @@
 
 | Поле | Значение |
 | --- | --- |
-| Статус | Draft |
-| Версия | 0.1 |
+| Статус | Post-release hardening baseline; successor release pending |
+| Версия | 0.1 (hardening tracked in Phase 5) |
 | Основная платформа | macOS |
 | Язык реализации | Rust |
 | Основной release channel | Homebrew tap |
+| Лицензия | MIT |
 
 ## 1. Резюме
 
@@ -304,3 +305,16 @@ Golden tests фиксируют человекочитаемый report и exit 
 - Каковы GitHub owner и имя maintainer-owned Homebrew tap?
 - Какую open-source license указать для crate, release и formula?
 - Как именно обрабатывать запуск через `sudo` или от `root`, не меняя target user и scope молча?
+
+## 19. Post-release hardening decisions (2026-07-12)
+
+- **Status/version:** this PRD remains the canonical product specification for the `0.1` line; implementation hardening is tracked in Phase 5 of `SPECS/Workplan.md`. A successor release must use a new version and immutable tag.
+- **Incomplete semantics:** `UNKNOWN` is the user-facing status for any incomplete acquisition/evaluation; `INCOMPLETE` is the machine/reporting synonym used in validation prose. Neither may be rendered as `PASS`.
+- **Zero checked targets:** all-optional or platform-unavailable scope exits `0` only when every selected location is an explicit `SKIP` and the report says `0 checked targets`; required missing or operational errors exit `2`.
+- **Policy precedence:** confidentiality and integrity are composable. `CredentialConfig` requires both; a finding from either requirement remains visible.
+- **Home/root:** normal runs validate the current user's owned Home; elevated runs require explicit `SUDO_USER` and canonical Directory Services resolution. Ambient root `HOME` is never trusted.
+- **Selector/platform:** custom `--path`/`--policy` and profile selectors are mutually exclusive. Profiles unavailable on the current platform are not advertised or checked.
+- **Machine-readable output:** structured rule fields are present in the human report now; JSON/SARIF are deferred to a separately owned future task.
+- **Distribution:** the maintainer-owned tap owner remains `SoundBlaster`; formula and release metadata must agree on an immutable successor tag and checksum.
+
+The remaining open questions above are explicitly deferred; they cannot override these canonical semantics without a future PRD change.

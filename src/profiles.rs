@@ -8,6 +8,23 @@ pub enum Platform {
     Linux,
 }
 
+impl Platform {
+    #[cfg(target_os = "macos")]
+    pub const fn current() -> Option<Self> {
+        Some(Self::MacOs)
+    }
+
+    #[cfg(target_os = "linux")]
+    pub const fn current() -> Option<Self> {
+        Some(Self::Linux)
+    }
+
+    #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+    pub const fn current() -> Option<Self> {
+        None
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Root {
     Home,
@@ -31,6 +48,24 @@ pub enum Policy {
     ExecutableConfig,
 }
 
+impl Policy {
+    /// Confidentiality and integrity are independent requirements. Credential
+    /// locations intentionally compose both, rather than choosing one mode.
+    pub const fn requires_confidentiality(self) -> bool {
+        matches!(
+            self,
+            Self::SecretFile | Self::CredentialConfig | Self::PrivateDirectory
+        )
+    }
+
+    pub const fn requires_integrity(self) -> bool {
+        matches!(
+            self,
+            Self::CredentialConfig | Self::TrustedConfig | Self::ExecutableConfig
+        )
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Traversal {
     Exact,
@@ -45,6 +80,8 @@ pub struct LocationSpec {
     pub policy: Policy,
     pub optional: bool,
     pub traversal: Traversal,
+    pub source: Option<String>,
+    pub verified_on: Option<String>,
 }
 
 impl LocationSpec {
@@ -62,6 +99,8 @@ impl LocationSpec {
             policy,
             optional,
             traversal: Traversal::Exact,
+            source: None,
+            verified_on: None,
         }
     }
 
@@ -84,7 +123,19 @@ impl LocationSpec {
                 max_depth,
                 max_entries,
             },
+            source: None,
+            verified_on: None,
         }
+    }
+
+    pub fn with_evidence<S, D>(mut self, source: S, verified_on: D) -> Self
+    where
+        S: Into<String>,
+        D: Into<String>,
+    {
+        self.source = Some(source.into());
+        self.verified_on = Some(verified_on.into());
+        self
     }
 }
 
@@ -124,9 +175,19 @@ impl ProfileSpec {
         S: Into<String>,
         D: Into<String>,
     {
-        self.source = Some(source.into());
-        self.verified_on = Some(verified_on.into());
+        let source = source.into();
+        let verified_on = verified_on.into();
+        self.source = Some(source.clone());
+        self.verified_on = Some(verified_on.clone());
+        for location in &mut self.locations {
+            location.source = Some(source.clone());
+            location.verified_on = Some(verified_on.clone());
+        }
         self
+    }
+
+    pub fn available_on(&self, platform: Option<Platform>) -> bool {
+        platform.is_some_and(|platform| self.platforms.contains(&platform))
     }
 }
 
@@ -280,7 +341,7 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".codex/config.toml",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],
@@ -302,14 +363,14 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".claude/settings.json",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
                 LocationSpec::exact(
                     Root::Home,
                     ".claude/settings.local.json",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],
@@ -373,7 +434,7 @@ pub fn builtin_registry() -> ProfileRegistry {
                     Root::Home,
                     ".aws/config",
                     NodeKind::File,
-                    Policy::ExecutableConfig,
+                    Policy::CredentialConfig,
                     true,
                 ),
             ],

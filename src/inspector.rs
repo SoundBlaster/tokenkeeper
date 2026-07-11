@@ -49,6 +49,14 @@ pub enum FindingReason {
     AclNonOwnerAccess {
         detail: String,
     },
+    AncestorUnsafe {
+        path: PathBuf,
+        detail: String,
+    },
+    AncestorAclAccess {
+        path: PathBuf,
+        detail: String,
+    },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -201,16 +209,11 @@ impl MetadataInspector {
                 actual: summary.node,
             });
         }
-        match policy {
-            Policy::SecretFile | Policy::CredentialConfig | Policy::PrivateDirectory
-                if summary.mode & 0o077 != 0 =>
-            {
-                reasons.push(FindingReason::GroupOrOtherAccess { mode: summary.mode })
-            }
-            Policy::TrustedConfig | Policy::ExecutableConfig if summary.mode & 0o022 != 0 => {
-                reasons.push(FindingReason::GroupOrOtherWrite { mode: summary.mode })
-            }
-            _ => {}
+        if policy.requires_confidentiality() && summary.mode & 0o077 != 0 {
+            reasons.push(FindingReason::GroupOrOtherAccess { mode: summary.mode });
+        }
+        if policy.requires_integrity() && summary.mode & 0o022 != 0 {
+            reasons.push(FindingReason::GroupOrOtherWrite { mode: summary.mode });
         }
         self.add_writable_ancestor_reasons(path, &mut reasons);
         match acl::evaluate_path(path, self.owner_uid, policy) {
@@ -251,13 +254,21 @@ impl MetadataInspector {
     fn add_writable_ancestor_reasons(&self, path: &Path, reasons: &mut Vec<FindingReason>) {
         let mut current = path.parent();
         while let Some(ancestor) = current {
-            if ancestor == self.home {
-                break;
-            }
             match fs::symlink_metadata(ancestor) {
                 Ok(metadata) if metadata.file_type().is_symlink() => {
-                    reasons.push(FindingReason::SymlinkComponent {
+                    reasons.push(FindingReason::AncestorUnsafe {
                         path: ancestor.to_path_buf(),
+                        detail: "ancestor is a symlink".into(),
+                    })
+                }
+                Ok(metadata) if !metadata.is_dir() => reasons.push(FindingReason::AncestorUnsafe {
+                    path: ancestor.to_path_buf(),
+                    detail: "ancestor is not a directory".into(),
+                }),
+                Ok(metadata) if metadata.uid() != self.owner_uid => {
+                    reasons.push(FindingReason::AncestorUnsafe {
+                        path: ancestor.to_path_buf(),
+                        detail: format!("ancestor owner is {}", metadata.uid()),
                     })
                 }
                 Ok(metadata) if metadata.permissions().mode() & 0o022 != 0 => {
@@ -267,7 +278,33 @@ impl MetadataInspector {
                     })
                 }
                 Ok(_) => {}
-                Err(_) => {}
+                Err(error) => reasons.push(FindingReason::AncestorUnsafe {
+                    path: ancestor.to_path_buf(),
+                    detail: format!("ancestor metadata unavailable: {error}"),
+                }),
+            }
+            match acl::evaluate_path(ancestor, self.owner_uid, Policy::TrustedConfig) {
+                AclDecision::Finding { detail } => reasons.push(FindingReason::AncestorAclAccess {
+                    path: ancestor.to_path_buf(),
+                    detail,
+                }),
+                AclDecision::Unknown { detail } => reasons.push(FindingReason::AncestorUnsafe {
+                    path: ancestor.to_path_buf(),
+                    detail: format!("ancestor ACL incomplete: {detail}"),
+                }),
+                AclDecision::Unsupported { detail } => {
+                    #[cfg(target_os = "macos")]
+                    reasons.push(FindingReason::AncestorUnsafe {
+                        path: ancestor.to_path_buf(),
+                        detail: format!("ancestor ACL unsupported: {detail}"),
+                    });
+                    #[cfg(not(target_os = "macos"))]
+                    let _ = detail;
+                }
+                AclDecision::NotPresent | AclDecision::Pass => {}
+            }
+            if ancestor == self.home {
+                break;
             }
             current = ancestor.parent();
         }

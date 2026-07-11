@@ -150,7 +150,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Validation records the repository state without changing production behavior
   - The review and task artifacts complete the full FLOW archive and review lifecycle
 
-#### P5-T2: Correct Native macOS ACL Evaluation
+#### P5-T2: Correct Native macOS ACL Evaluation ✅ Complete
 - **Description:** Replace synthetic ACL assumptions with native macOS ACL acquisition/evaluation and make every backend error explicitly incomplete. Covers `TK-REV-003` and `TK-REV-004`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
@@ -162,7 +162,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `acl_get_file`/conversion failures, unsupported filesystems, permission denial, allocation errors, and target disappearance produce `UNKNOWN/INCOMPLETE`, never `NotPresent` or `PASS`
   - ACL allocations and qualifiers are released on all paths and unsafe FFI remains isolated
 
-#### P5-T3: Inspect the Complete Anchored Ancestor Chain
+#### P5-T3: Inspect the Complete Anchored Ancestor Chain ✅ Complete
 - **Description:** Evaluate every component from canonical Home through the target for owner, node type, Unix mode, symlink, metadata completeness, and replacement-capable ACL rights. Covers `TK-REV-001` and `TK-REV-010`.
 - **Priority:** P0
 - **Dependencies:** P5-T2
@@ -174,7 +174,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Semantic-root components are walked no-follow from Home; a symlink in `Library/Application Support` or another root cannot be followed before diagnosis
   - Known target findings remain visible when another component is incomplete
 
-#### P5-T4: Compose Confidentiality and Integrity Policies
+#### P5-T4: Compose Confidentiality and Integrity Policies ✅ Complete
 - **Description:** Replace the single mutually exclusive policy choice with composable security requirements and correct all credential-bearing built-in locations. Covers `TK-REV-002` and the policy-model portion of `TK-REV-018`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
@@ -186,7 +186,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Node, confidentiality, integrity, ancestor, and ACL requirements compose without profile-specific branching
   - Every built-in location has one explicit, tested effective requirement set
 
-#### P5-T5: Resolve Canonical User Home and Elevated Invocation
+#### P5-T5: Resolve Canonical User Home and Elevated Invocation ✅ Complete
 - **Description:** Derive the audited Home from the OS account identity, compare environment state safely, and define root/sudo behavior. Covers `TK-REV-006`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
@@ -198,7 +198,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Arbitrary same-UID directories cannot produce a misleading all-`SKIP` clean audit
   - root, `sudo`, missing account records, non-absolute Home, and owner mismatch have deterministic exit-2 behavior or an explicitly documented safe target-user flow
 
-#### P5-T6: Make Bounded Traversal Fail-closed and Resource-bounded
+#### P5-T6: Make Bounded Traversal Fail-closed and Resource-bounded ✅ Complete
 - **Description:** Enforce depth and entry budgets without partial success or unbounded directory enumeration. Covers `TK-REV-007` and `TK-REV-011`.
 - **Priority:** P0
 - **Dependencies:** P5-T1
@@ -210,7 +210,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Symlink/error branches do not erase prior scope and cannot convert unvisited siblings into a complete exit code
   - Time and memory scale with declared budgets rather than total directory size
 
-#### P5-T7: Implement the Structured Finding and Report Contract
+#### P5-T7: Implement the Structured Finding and Report Contract ✅ Complete
 - **Description:** Implement the full FR-05 result/report model with stable rules, completeness, human guidance, and checked scope. Covers `TK-REV-005` and report-related parts of `TK-REV-012`/`TK-REV-018`.
 - **Priority:** P0
 - **Dependencies:** P5-T3, P5-T4, P5-T5, P5-T6
@@ -223,7 +223,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Known findings and incomplete checks can coexist without losing evidence; zero checked targets cannot claim a complete clean audit
   - Modes render in conventional octal and output remains stable under golden tests
 
-#### P5-T8: Make CLI Scope Selection and Errors Unambiguous
+#### P5-T8: Make CLI Scope Selection and Errors Unambiguous ✅ Complete
 - **Description:** Define selector composition, duplicate handling, zero-scope behavior, and control-safe rendering for all user-controlled CLI input. Covers `TK-REV-012` and `TK-REV-017`.
 - **Priority:** P1
 - **Dependencies:** P5-T7
@@ -235,7 +235,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - ANSI ESC, C0 controls, non-UTF-8 values, quotes, leading dashes, and newlines cannot alter terminal semantics in success or error output
   - All-optional/all-skipped execution follows the documented completeness and exit-code contract
 
-#### P5-T9: Implement Platform-aware Profile Availability
+#### P5-T9: Implement Platform-aware Profile Availability ✅ Complete
 - **Description:** Derive profile selection, semantic roots, availability, and incomplete-platform results from actual runtime platform metadata. Covers `TK-REV-013`.
 - **Priority:** P1
 - **Dependencies:** P5-T5, P5-T7
@@ -247,7 +247,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - A safe `XDG_CONFIG_HOME` inside canonical Home is handled according to documented semantics; an external value is rejected or reported incomplete
   - Unsupported Linux ACL coverage is incomplete at the per-result level and no target line claims an unconditional `PASS`
 
-#### P5-T10: Complete Per-location Profile Evidence and Validation
+#### P5-T10: Complete Per-location Profile Evidence and Validation ✅ Complete
 - **Description:** Record and validate versioned provenance, availability, and exact fixtures for every built-in location. Covers `TK-REV-014`.
 - **Priority:** P1
 - **Dependencies:** P5-T4, P5-T9
@@ -259,7 +259,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Embedded registry validation runs before auditing and cannot silently accept invalid built-ins
   - Project-scoped/Keychain/unknown locations are represented without false coverage claims
 
-#### P5-T11: Build the Native Security Acceptance Suite
+#### P5-T11: Build the Native Security Acceptance Suite ✅ Complete
 - **Description:** Implement the missing PRD security, golden CLI, and non-operation tests as end-to-end acceptance gates. Covers `TK-REV-015`.
 - **Priority:** P0
 - **Dependencies:** P5-T2, P5-T3, P5-T4, P5-T5, P5-T6, P5-T7, P5-T8, P5-T9, P5-T10
@@ -272,7 +272,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Tests demonstrate that target contents are never opened, target metadata is not mutated, network is not used, and remediation subprocesses are never launched
   - Every PRD acceptance scenario maps to at least one named test
 
-#### P5-T12: Enforce Coverage and Reproducible Rust CI
+#### P5-T12: Enforce Coverage and Reproducible Rust CI ✅ Complete
 - **Description:** Add coverage and supply-chain/reproducibility gates for the Rust project. Covers the Rust/CI portions of `TK-REV-016` and metadata portion of `TK-REV-018`.
 - **Priority:** P1
 - **Dependencies:** P5-T11
@@ -284,7 +284,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Rust version is pinned/documented, GitHub Actions are commit-SHA pinned, and cache/toolchain behavior is reproducible
   - `Cargo.toml` declares the MIT license, supported Rust version, and release metadata consistently with `LICENSE`
 
-#### P5-T13: Automate the Homebrew Release Lifecycle
+#### P5-T13: Automate the Homebrew Release Lifecycle ✅ Complete
 - **Description:** Validate source installation and the full supported Homebrew lifecycle on clean macOS environments. Covers `TK-REV-009` and the Homebrew portion of `TK-REV-016`.
 - **Priority:** P1
 - **Dependencies:** P5-T11
@@ -296,7 +296,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Formula has no post-install scan/service/mutation and tests require no real Home or credentials
   - Validation artifacts identify exact release tag, archive SHA-256, Formula commit, Cargo version, and installed binary version
 
-#### P5-T14: Reconcile the Specification Lifecycle
+#### P5-T14: Reconcile the Specification Lifecycle ✅ Complete
 - **Description:** Finalize PRD status, resolve stale open questions, and define authoritative semantics for incomplete versus unknown, all-optional scope, policy composition, and release metadata. Covers the specification portion of `TK-REV-018`.
 - **Priority:** P1
 - **Dependencies:** P5-T1
