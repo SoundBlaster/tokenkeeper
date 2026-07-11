@@ -1,8 +1,8 @@
 class Tokenkeeper < Formula
   desc "Read-only metadata auditor for AI-agent credentials and configuration"
   homepage "https://github.com/SoundBlaster/tokenkeeper"
-  url "https://github.com/SoundBlaster/tokenkeeper/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "2556a3f259415f0cac2cbc153fb39ff93a195295afac922531b96acc7670bd6c"
+  url "https://github.com/SoundBlaster/tokenkeeper/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "REPLACE_AFTER_TAG_ARCHIVE"
   license "MIT"
 
   depends_on "rust" => :build
