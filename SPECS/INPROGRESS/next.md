@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T14 — Reconcile the Specification Lifecycle
+# Next Task Candidate: P5-T15 — Publish a Traceable Successor Release
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Reconcile Workplan, PRD, archive, and release documentation lifecycle states.
+Publish a successor release from reviewed main-line history without moving `v0.1.0`.
 
 ## Recently Archived
 
@@ -25,7 +25,8 @@ Reconcile Workplan, PRD, archive, and release documentation lifecycle states.
 - `P5-T11` — Build the Native Security Acceptance Suite — `PASS` (2026-07-12)
 - `P5-T12` — Enforce Coverage and Reproducible Rust CI — `PASS` (2026-07-12)
 - `P5-T13` — Automate the Homebrew Release Lifecycle — `PASS` (2026-07-12)
+- `P5-T14` — Reconcile the Specification Lifecycle — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T14`, then PLAN specification lifecycle reconciliation.
+Run SELECT to activate `P5-T15`, then PLAN successor version/tag/release publication.

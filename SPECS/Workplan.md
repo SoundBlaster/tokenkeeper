@@ -296,7 +296,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Formula has no post-install scan/service/mutation and tests require no real Home or credentials
   - Validation artifacts identify exact release tag, archive SHA-256, Formula commit, Cargo version, and installed binary version
 
-#### P5-T14: Reconcile the Specification Lifecycle
+#### P5-T14: Reconcile the Specification Lifecycle ✅ Complete
 - **Description:** Finalize PRD status, resolve stale open questions, and define authoritative semantics for incomplete versus unknown, all-optional scope, policy composition, and release metadata. Covers the specification portion of `TK-REV-018`.
 - **Priority:** P1
 - **Dependencies:** P5-T1
