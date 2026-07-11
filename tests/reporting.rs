@@ -39,6 +39,10 @@ fn statuses_and_exit_codes_are_stable() {
         }),
         Status::Skip
     );
+    assert_eq!(summary.exit_code(), 0);
+    summary.add(&InspectionResult::MissingRequired {
+        path: "/tmp/required".into(),
+    });
     assert_eq!(summary.exit_code(), 2);
 }
 

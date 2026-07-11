@@ -29,7 +29,7 @@ impl Summary {
         }
     }
     pub fn exit_code(self) -> u8 {
-        if self.unknown > 0 || self.skip > 0 {
+        if self.unknown > 0 {
             2
         } else if self.finding > 0 {
             1

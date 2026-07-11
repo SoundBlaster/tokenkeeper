@@ -94,6 +94,8 @@ pub struct ProfileSpec {
     pub display_name: String,
     pub platforms: Vec<Platform>,
     pub locations: Vec<LocationSpec>,
+    pub source: Option<String>,
+    pub verified_on: Option<String>,
 }
 
 impl ProfileSpec {
@@ -112,7 +114,19 @@ impl ProfileSpec {
             display_name: display_name.into(),
             platforms,
             locations,
+            source: None,
+            verified_on: None,
         }
+    }
+
+    pub fn with_evidence<S, D>(mut self, source: S, verified_on: D) -> Self
+    where
+        S: Into<String>,
+        D: Into<String>,
+    {
+        self.source = Some(source.into());
+        self.verified_on = Some(verified_on.into());
+        self
     }
 }
 
@@ -194,7 +208,12 @@ impl ProfileRegistry {
         &self.profiles
     }
 
+    pub fn find(&self, id: &str) -> Option<&ProfileSpec> {
+        self.profiles.iter().find(|profile| profile.id == id)
+    }
+
     pub fn validate(&self) -> Result<(), Vec<ValidationError>> {
+        // ProfileRegistry не должен валидировать, он просто хранит, а валидирует либо сам себя профиль, либо специальный валидатор, либо ValidatableProfileSpec(ProfileSpec)...
         let mut errors = Vec::new();
         let mut ids = HashSet::new();
 
@@ -239,6 +258,128 @@ impl ProfileRegistry {
             Err(errors)
         }
     }
+}
+
+pub fn builtin_registry() -> ProfileRegistry {
+    let source = "docs/agent-storage-locations.md";
+    let date = "2026-07-11";
+    ProfileRegistry::new(vec![
+        ProfileSpec::new(
+            "codex",
+            "OpenAI Codex",
+            vec![Platform::MacOs, Platform::Linux],
+            vec![
+                LocationSpec::exact(
+                    Root::Home,
+                    ".codex/auth.json",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".codex/config.toml",
+                    NodeKind::File,
+                    Policy::ExecutableConfig,
+                    true,
+                ),
+            ],
+        )
+        .with_evidence(source, date),
+        ProfileSpec::new(
+            "claude-code",
+            "Claude Code",
+            vec![Platform::MacOs, Platform::Linux],
+            vec![
+                LocationSpec::exact(
+                    Root::Home,
+                    ".claude.json",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".claude/settings.json",
+                    NodeKind::File,
+                    Policy::ExecutableConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".claude/settings.local.json",
+                    NodeKind::File,
+                    Policy::ExecutableConfig,
+                    true,
+                ),
+            ],
+        )
+        .with_evidence(source, date),
+        ProfileSpec::new(
+            "opencode",
+            "OpenCode",
+            vec![Platform::MacOs, Platform::Linux],
+            vec![
+                LocationSpec::exact(
+                    Root::XdgConfig,
+                    "opencode/opencode.json",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".local/share/opencode/auth.json",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+            ],
+        )
+        .with_evidence(source, date),
+        ProfileSpec::new(
+            "cursor",
+            "Cursor MCP",
+            vec![Platform::MacOs, Platform::Linux],
+            vec![LocationSpec::exact(
+                Root::Home,
+                ".cursor/mcp.json",
+                NodeKind::File,
+                Policy::CredentialConfig,
+                true,
+            )],
+        )
+        .with_evidence(source, date),
+        ProfileSpec::new(
+            "mcp-integrations",
+            "MCP and utility credential configs",
+            vec![Platform::MacOs, Platform::Linux],
+            vec![
+                LocationSpec::exact(
+                    Root::MacApplicationSupport,
+                    "Claude/claude_desktop_config.json",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".aws/credentials",
+                    NodeKind::File,
+                    Policy::CredentialConfig,
+                    true,
+                ),
+                LocationSpec::exact(
+                    Root::Home,
+                    ".aws/config",
+                    NodeKind::File,
+                    Policy::ExecutableConfig,
+                    true,
+                ),
+            ],
+        )
+        .with_evidence(source, date),
+    ])
 }
 
 fn valid_id(id: &str) -> bool {
