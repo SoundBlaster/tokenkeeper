@@ -15,6 +15,7 @@
 |--------|-------------|
 | [_Historical/](_Historical/) | Non-task artifacts (reviews, reports) |
 | [_Historical/REVIEW_P1-T1_bootstrap_rust_project.md](_Historical/REVIEW_P1-T1_bootstrap_rust_project.md) | Review report for P1-T1 bootstrap |
+| [_Historical/REVIEW_P1-T2_agent_storage_locations.md](_Historical/REVIEW_P1-T2_agent_storage_locations.md) | Review report for P1-T2 storage research |
 
 ## Archive Log
 
@@ -23,3 +24,4 @@
 | 2026-07-11 | P1-T1 | Archived Bootstrap_Rust_Project (PASS) |
 | 2026-07-11 | P1-T1 | Archived REVIEW_P1-T1_bootstrap_rust_project report |
 | 2026-07-11 | P1-T2 | Archived Research_Agent_and_Integration_Storage_Locations (PASS) |
+| 2026-07-11 | P1-T2 | Archived REVIEW_P1-T2_agent_storage_locations report |
