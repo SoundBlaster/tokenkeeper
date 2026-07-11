@@ -16,7 +16,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `cargo clippy --all-targets --all-features -- -D warnings` passes
   - `cargo fmt --all --check` passes
 
-#### P1-T2: Research Agent and Integration Storage Locations
+#### P1-T2: Research Agent and Integration Storage Locations **INPROGRESS**
 - **Description:** Verify filesystem and Keychain storage behavior for Codex, Claude Code, OpenCode, Cursor, MCP servers, and credential-bearing utility configs. GitHub Copilot is optional.
 - **Priority:** P0
 - **Dependencies:** None
