@@ -18,6 +18,7 @@
 | P4-T2 | [P4-T2_Add_Homebrew_Tap_Distribution/](P4-T2_Add_Homebrew_Tap_Distribution/) | 2026-07-11 | PASS |
 | P4-T3 | [P4-T3_Evaluate_Linux_Support/](P4-T3_Evaluate_Linux_Support/) | 2026-07-11 | PASS |
 | P5-T1 | [P5-T1_Audit_v0_1_0_Release/](P5-T1_Audit_v0_1_0_Release/) | 2026-07-12 | PASS |
+| P5-T2 | [P5-T2_Correct_Native_macOS_ACL_Evaluation/](P5-T2_Correct_Native_macOS_ACL_Evaluation/) | 2026-07-12 | PASS with repository coverage gap |
 
 ## Historical Artifacts
 
@@ -65,3 +66,4 @@
 | 2026-07-11 | P4-T3 | Archived REVIEW_P4-T3_linux_evaluation report |
 | 2026-07-12 | P5-T1 | Archived Audit_v0_1_0_Release (PASS) |
 | 2026-07-12 | P5-T1 | Archived REVIEW_v0_1_0_release report |
+| 2026-07-12 | P5-T2 | Archived Correct_Native_macOS_ACL_Evaluation (PASS with repository coverage gap) |

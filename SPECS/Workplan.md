@@ -150,7 +150,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Validation records the repository state without changing production behavior
   - The review and task artifacts complete the full FLOW archive and review lifecycle
 
-#### P5-T2: Correct Native macOS ACL Evaluation
+#### P5-T2: Correct Native macOS ACL Evaluation ✅ Complete
 - **Description:** Replace synthetic ACL assumptions with native macOS ACL acquisition/evaluation and make every backend error explicitly incomplete. Covers `TK-REV-003` and `TK-REV-004`.
 - **Priority:** P0
 - **Dependencies:** P5-T1

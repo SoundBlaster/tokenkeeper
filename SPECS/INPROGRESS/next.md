@@ -1,19 +1,20 @@
-# In Progress: P5-T2 — Correct Native macOS ACL Evaluation
+# Next Task Candidate: P5-T3 — Inspect the Complete Anchored Ancestor Chain
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
-**Dependencies:** P5-T1
-**Status:** Selected
+**Dependencies:** P5-T2
+**Status:** Available
 
 ## Description
 
-Correct native macOS ACL evaluation first because ancestor safety and the full security acceptance suite depend on reliable ACL acquisition, permissions, and error semantics.
+Inspect every anchored component from canonical Home through the target, including ancestor ACL replacement rights.
 
 ## Recently Archived
 
 - `P5-T1` — Audit v0.1.0 Release — `PASS` (2026-07-12)
+- `P5-T2` — Correct Native macOS ACL Evaluation — `PASS with repository coverage gap` (2026-07-12)
 
 ## Next Step
 
-PLAN complete: implement conservative native `acl_to_text` parsing, explicit acquisition errors, and regression fixtures.
+Run SELECT to activate `P5-T3`, then PLAN the anchored ancestor component model and adversarial filesystem fixtures.
