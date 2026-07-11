@@ -1,10 +1,10 @@
-# Next Task Candidate: P5-T2 — Correct Native macOS ACL Evaluation
+# In Progress: P5-T2 — Correct Native macOS ACL Evaluation
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Available
+**Status:** Selected
 
 ## Description
 
@@ -16,4 +16,4 @@ Correct native macOS ACL evaluation first because ancestor safety and the full s
 
 ## Next Step
 
-Run SELECT to activate `P5-T2`, then PLAN its native ACL implementation and integration fixtures.
+PLAN complete: implement conservative native `acl_to_text` parsing, explicit acquisition errors, and regression fixtures.
