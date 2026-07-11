@@ -1,3 +1,4 @@
+pub mod acl;
 pub mod cli;
 pub mod inspector;
 pub mod profiles;

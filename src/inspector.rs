@@ -3,6 +3,7 @@ use std::fs;
 use std::os::unix::fs::{MetadataExt, PermissionsExt};
 use std::path::{Path, PathBuf};
 
+use crate::acl::{self, AclDecision};
 use crate::profiles::{LocationSpec, NodeKind, Policy};
 use crate::resolver::{ResolveError, Resolver};
 
@@ -44,6 +45,9 @@ pub enum FindingReason {
     },
     SymlinkComponent {
         path: PathBuf,
+    },
+    AclNonOwnerAccess {
+        detail: String,
     },
 }
 
@@ -210,6 +214,18 @@ impl MetadataInspector {
         }
         if matches!(policy, Policy::ExecutableConfig) {
             self.add_writable_ancestor_reasons(path, &mut reasons);
+        }
+        match acl::evaluate_path(path, self.owner_uid, policy) {
+            AclDecision::Finding { detail } => {
+                reasons.push(FindingReason::AclNonOwnerAccess { detail })
+            }
+            AclDecision::Unknown { detail } | AclDecision::Unsupported { detail } => {
+                return InspectionResult::Unknown {
+                    path: path.to_path_buf(),
+                    reason: detail,
+                }
+            }
+            AclDecision::NotPresent | AclDecision::Pass => {}
         }
         if reasons.is_empty() {
             InspectionResult::Pass {
