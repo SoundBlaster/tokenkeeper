@@ -32,3 +32,7 @@ Document installation/development use, supported audit scope, report interpretat
 ## Out of scope
 
 Homebrew formula/release (P4-T2), Linux support decision (P4-T3), new code features and automatic remediation.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS

@@ -29,6 +29,7 @@
 | [_Historical/REVIEW_P2-T3_macos_acl_backend.md](_Historical/REVIEW_P2-T3_macos_acl_backend.md) | Review report for P2-T3 macOS ACL backend |
 | [_Historical/REVIEW_P3-T1_builtin_profiles.md](_Historical/REVIEW_P3-T1_builtin_profiles.md) | Review report for P3-T1 built-in profiles |
 | [_Historical/REVIEW_P3-T2_security_integration_tests.md](_Historical/REVIEW_P3-T2_security_integration_tests.md) | Review report for P3-T2 security integration tests |
+| [_Historical/REVIEW_P4-T1_user_security_docs.md](_Historical/REVIEW_P4-T1_user_security_docs.md) | Review report for P4-T1 user and security documentation |
 
 ## Archive Log
 
@@ -51,3 +52,4 @@
 | 2026-07-11 | P3-T2 | Archived Complete_Security_Integration_Tests (PASS) |
 | 2026-07-11 | P3-T2 | Archived REVIEW_P3-T2_security_integration_tests report |
 | 2026-07-11 | P4-T1 | Archived Publish_User_and_Security_Documentation (PASS) |
+| 2026-07-11 | P4-T1 | Archived REVIEW_P4-T1_user_security_docs report |
