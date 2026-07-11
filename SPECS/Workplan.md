@@ -41,7 +41,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 2: Audit Core
 
-#### P2-T1: Implement Unix Metadata Policies
+#### P2-T1: Implement Unix Metadata Policies **INPROGRESS**
 - **Description:** Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
 - **Priority:** P0
 - **Dependencies:** P1-T3
