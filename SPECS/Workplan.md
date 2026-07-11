@@ -126,7 +126,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Formula has no `post_install`, daemon setup, implicit Home scan, or credential mutation
   - README documents install, update, upgrade, and uninstall commands
 
-#### P4-T3: Evaluate Linux Support **INPROGRESS**
+#### P4-T3: Evaluate Linux Support ✅ Complete
 - **Description:** Reuse the Unix core on Linux, evaluate ACL semantics, and decide whether Linux can be declared supported.
 - **Priority:** P2
 - **Dependencies:** P3-T2
