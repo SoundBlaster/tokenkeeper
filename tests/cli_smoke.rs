@@ -29,7 +29,7 @@ fn version_reports_the_package_version() {
     assert!(output.status.success());
     assert_eq!(
         String::from_utf8_lossy(&output.stdout).trim(),
-        "tokenkeeper 0.1.0"
+        "tokenkeeper 0.2.0"
     );
     assert!(output.stderr.is_empty());
 }
@@ -86,7 +86,6 @@ fn check_and_profiles_execute_with_explicit_scope() {
 fn check_rejects_unknown_profile() {
     let output = tokenkeeper()
         .args(["check", "--profile", "does-not-exist"])
-        .env("HOME", std::env::temp_dir())
         .output()
         .unwrap();
     assert_eq!(output.status.code(), Some(2));
