@@ -235,7 +235,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - ANSI ESC, C0 controls, non-UTF-8 values, quotes, leading dashes, and newlines cannot alter terminal semantics in success or error output
   - All-optional/all-skipped execution follows the documented completeness and exit-code contract
 
-#### P5-T9: Implement Platform-aware Profile Availability
+#### P5-T9: Implement Platform-aware Profile Availability ✅ Complete
 - **Description:** Derive profile selection, semantic roots, availability, and incomplete-platform results from actual runtime platform metadata. Covers `TK-REV-013`.
 - **Priority:** P1
 - **Dependencies:** P5-T5, P5-T7

@@ -1,4 +1,4 @@
-use tokenkeeper::profiles::{builtin_registry, Policy, Root};
+use tokenkeeper::profiles::{builtin_registry, Platform, Policy, Root};
 
 #[test]
 fn required_profiles_are_embedded_with_evidence() {
@@ -45,4 +45,13 @@ fn builtins_do_not_embed_secret_content() {
     let debug = format!("{:?}", builtin_registry());
     assert!(!debug.contains("sk-"));
     assert!(!debug.contains("Bearer "));
+}
+
+#[test]
+fn profile_availability_is_platform_aware() {
+    let registry = builtin_registry();
+    let profile = registry.find("codex").unwrap();
+    assert!(profile.available_on(Some(Platform::MacOs)));
+    assert!(profile.available_on(Some(Platform::Linux)));
+    assert!(!profile.available_on(None));
 }

@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T9 — Implement Platform-aware Profile Availability
+# Next Task Candidate: P5-T10 — Complete Per-location Profile Evidence and Validation
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Implement platform-aware profile availability and avoid advertising unsupported integrations.
+Complete per-location evidence and validation for built-in integration profiles.
 
 ## Recently Archived
 
@@ -20,7 +20,8 @@ Implement platform-aware profile availability and avoid advertising unsupported 
 - `P5-T6` — Make Bounded Traversal Fail-closed and Resource-bounded — `PASS` (2026-07-12)
 - `P5-T7` — Implement the Structured Finding and Report Contract — `PASS` (2026-07-12)
 - `P5-T8` — Make CLI Scope Selection and Errors Unambiguous — `PASS` (2026-07-12)
+- `P5-T9` — Implement Platform-aware Profile Availability — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T9`, then PLAN platform-aware profile availability.
+Run SELECT to activate `P5-T10`, then PLAN per-location evidence and validation.

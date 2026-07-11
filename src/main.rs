@@ -30,7 +30,11 @@ fn main() -> ExitCode {
 }
 
 fn list_profiles() -> ExitCode {
+    let platform = Platform::current();
     for profile in builtin_registry().profiles() {
+        if !profile.available_on(platform) {
+            continue;
+        }
         let source = profile.source.as_deref().unwrap_or("unspecified");
         println!(
             "{}\t{}\tmacOS/Linux\tevidence={source}",
@@ -114,7 +118,7 @@ fn run_check(options: CheckOptions) -> ExitCode {
     };
     let mut summary = Summary::default();
     for profile in selected {
-        if !profile.platforms.contains(&Platform::MacOs) {
+        if !profile.available_on(Platform::current()) {
             continue;
         }
         for location in &profile.locations {

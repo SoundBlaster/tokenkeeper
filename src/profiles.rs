@@ -8,6 +8,23 @@ pub enum Platform {
     Linux,
 }
 
+impl Platform {
+    #[cfg(target_os = "macos")]
+    pub const fn current() -> Option<Self> {
+        Some(Self::MacOs)
+    }
+
+    #[cfg(target_os = "linux")]
+    pub const fn current() -> Option<Self> {
+        Some(Self::Linux)
+    }
+
+    #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+    pub const fn current() -> Option<Self> {
+        None
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Root {
     Home,
@@ -145,6 +162,10 @@ impl ProfileSpec {
         self.source = Some(source.into());
         self.verified_on = Some(verified_on.into());
         self
+    }
+
+    pub fn available_on(&self, platform: Option<Platform>) -> bool {
+        platform.is_some_and(|platform| self.platforms.contains(&platform))
     }
 }
 
