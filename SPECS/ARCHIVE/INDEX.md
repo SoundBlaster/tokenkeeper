@@ -13,9 +13,11 @@
 | Folder | Description |
 |--------|-------------|
 | [_Historical/](_Historical/) | Non-task artifacts (reviews, reports) |
+| [_Historical/REVIEW_P1-T1_bootstrap_rust_project.md](_Historical/REVIEW_P1-T1_bootstrap_rust_project.md) | Review report for P1-T1 bootstrap |
 
 ## Archive Log
 
 | Date | Task ID | Action |
 |------|---------|--------|
 | 2026-07-11 | P1-T1 | Archived Bootstrap_Rust_Project (PASS) |
+| 2026-07-11 | P1-T1 | Archived REVIEW_P1-T1_bootstrap_rust_project report |
