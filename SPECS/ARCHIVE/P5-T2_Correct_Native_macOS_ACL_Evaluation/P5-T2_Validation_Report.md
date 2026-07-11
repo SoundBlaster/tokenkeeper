@@ -1,7 +1,7 @@
 # P5-T2 Validation Report
 
-**Date:** 2026-07-12  
-**Task:** Correct Native macOS ACL Evaluation  
+**Date:** 2026-07-12
+**Task:** Correct Native macOS ACL Evaluation
 **Verdict:** PASS with repository coverage gap
 
 ## Scope
