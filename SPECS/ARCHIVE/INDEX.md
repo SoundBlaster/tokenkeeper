@@ -47,6 +47,7 @@
 | [_Historical/REVIEW_P5-T4_policy_composition.md](_Historical/REVIEW_P5-T4_policy_composition.md) | Review report for P5-T4 policy composition |
 | [_Historical/REVIEW_P5-T5_canonical_home.md](_Historical/REVIEW_P5-T5_canonical_home.md) | Review report for P5-T5 canonical home |
 | [_Historical/REVIEW_P5-T6_bounded_traversal.md](_Historical/REVIEW_P5-T6_bounded_traversal.md) | Review report for P5-T6 bounded traversal |
+| [_Historical/REVIEW_P5-T7_structured_report.md](_Historical/REVIEW_P5-T7_structured_report.md) | Review report for P5-T7 structured report |
 
 ## Archive Log
 
@@ -87,3 +88,4 @@
 | 2026-07-12 | P5-T6 | Archived Make_Bounded_Traversal_Fail-closed_and_Resource-bounded (PASS) |
 | 2026-07-12 | P5-T6 | Archived REVIEW_P5-T6_bounded_traversal report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T7 | Archived Implement_the_Structured_Finding_and_Report_Contract (PASS) |
+| 2026-07-12 | P5-T7 | Archived REVIEW_P5-T7_structured_report report (FOLLOW-UP skipped) |
