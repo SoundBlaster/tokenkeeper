@@ -4,7 +4,7 @@
 **Phase:** Profiles and Hardening
 **Effort:** 10–14 hours
 **Dependencies:** P1-T2, P1-T3, P2-T1, P2-T3
-**Status:** Ready
+**Status:** Selected
 
 ## Description
 
@@ -21,4 +21,4 @@ Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading t
 
 ## Next Step
 
-Run the SELECT command to begin P3-T1.
+Run the PLAN command to create the implementation-ready task PRD.
