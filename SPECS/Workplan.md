@@ -308,7 +308,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `UNKNOWN`, `INCOMPLETE`, zero checked targets, optional-only scope, and point-in-time verdict semantics are unambiguous
   - Canonical PRD criteria cannot be weakened by task-local acceptance without an explicit PRD change
 
-#### P5-T15: Publish a Traceable Successor Release
+#### P5-T15: Publish a Traceable Successor Release ✅ Complete
 - **Description:** Release the completed hardening work from reviewed main-line history without moving `v0.1.0`. Covers `TK-REV-008`.
 - **Priority:** P0
 - **Dependencies:** P5-T7, P5-T8, P5-T9, P5-T10, P5-T11, P5-T12, P5-T13, P5-T14

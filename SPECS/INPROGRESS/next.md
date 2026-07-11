@@ -1,14 +1,14 @@
-# Next Task Candidate: P5-T15 — Publish a Traceable Successor Release
+# Workplan Complete — successor release v0.2.2 published
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Available
+**Status:** Complete
 
 ## Description
 
-Publish a successor release from reviewed main-line history without moving `v0.1.0`.
+All planned Phase 5 hardening tasks are archived. Successor tag `v0.2.2` and GitHub release identify the reviewed main-line tree; `v0.1.0` remains unchanged.
 
 ## Recently Archived
 
@@ -26,7 +26,8 @@ Publish a successor release from reviewed main-line history without moving `v0.1
 - `P5-T12` — Enforce Coverage and Reproducible Rust CI — `PASS` (2026-07-12)
 - `P5-T13` — Automate the Homebrew Release Lifecycle — `PASS` (2026-07-12)
 - `P5-T14` — Reconcile the Specification Lifecycle — `PASS` (2026-07-12)
+- `P5-T15` — Publish a Traceable Successor Release — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T15`, then PLAN successor version/tag/release publication.
+No open Workplan tasks remain.
