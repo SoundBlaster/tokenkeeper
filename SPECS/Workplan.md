@@ -150,6 +150,177 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Validation records the repository state without changing production behavior
   - The review and task artifacts complete the full FLOW archive and review lifecycle
 
+#### P5-T2: Correct Native macOS ACL Evaluation
+- **Description:** Replace synthetic ACL assumptions with native macOS ACL acquisition/evaluation and make every backend error explicitly incomplete. Covers `TK-REV-003` and `TK-REV-004`.
+- **Priority:** P0
+- **Dependencies:** P5-T1
+- **Parallelizable:** no
+- **Outputs / Artifacts:** `src/acl.rs`, native macOS ACL integration fixtures, ACL error-path tests
+- **Acceptance Criteria:**
+  - A native non-owner read/write allow produces the policy-appropriate finding
+  - Native header, qualifier, flag, permission, inherited, and allow/deny representations are handled conservatively without synthetic-only grammar
+  - `acl_get_file`/conversion failures, unsupported filesystems, permission denial, allocation errors, and target disappearance produce `UNKNOWN/INCOMPLETE`, never `NotPresent` or `PASS`
+  - ACL allocations and qualifiers are released on all paths and unsafe FFI remains isolated
+
+#### P5-T3: Inspect the Complete Anchored Ancestor Chain
+- **Description:** Evaluate every component from canonical Home through the target for owner, node type, Unix mode, symlink, metadata completeness, and replacement-capable ACL rights. Covers `TK-REV-001` and `TK-REV-010`.
+- **Priority:** P0
+- **Dependencies:** P5-T2
+- **Parallelizable:** no
+- **Outputs / Artifacts:** anchored resolver/inspector component model, ancestor ACL policy, adversarial filesystem tests
+- **Acceptance Criteria:**
+  - Parent ACL grants such as `add_file`, `add_subdirectory`, `delete_child`, search, or write cannot produce a clean result
+  - Foreign-owned, non-directory, unreadable, or mutable ancestors and an unsafe trusted Home are findings or incomplete as appropriate
+  - Semantic-root components are walked no-follow from Home; a symlink in `Library/Application Support` or another root cannot be followed before diagnosis
+  - Known target findings remain visible when another component is incomplete
+
+#### P5-T4: Compose Confidentiality and Integrity Policies
+- **Description:** Replace the single mutually exclusive policy choice with composable security requirements and correct all credential-bearing built-in locations. Covers `TK-REV-002` and the policy-model portion of `TK-REV-018`.
+- **Priority:** P0
+- **Dependencies:** P5-T1
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** policy requirement model, corrected Codex/AWS profiles, policy matrix tests
+- **Acceptance Criteria:**
+  - Credential-bearing executable configs enforce both owner-only confidentiality and executable-config integrity
+  - Codex `config.toml` and AWS `config` mode `0644` cannot pass when declared credential-bearing
+  - Node, confidentiality, integrity, ancestor, and ACL requirements compose without profile-specific branching
+  - Every built-in location has one explicit, tested effective requirement set
+
+#### P5-T5: Resolve Canonical User Home and Elevated Invocation
+- **Description:** Derive the audited Home from the OS account identity, compare environment state safely, and define root/sudo behavior. Covers `TK-REV-006`.
+- **Priority:** P0
+- **Dependencies:** P5-T1
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** UID/account Home resolver, elevated-invocation policy, CLI integration tests and documentation
+- **Acceptance Criteria:**
+  - Home is resolved from the intended UID through the OS account database rather than trusted from `$HOME`
+  - `$HOME` mismatch produces an explicit warning while the canonical Home remains the audited scope
+  - Arbitrary same-UID directories cannot produce a misleading all-`SKIP` clean audit
+  - root, `sudo`, missing account records, non-absolute Home, and owner mismatch have deterministic exit-2 behavior or an explicitly documented safe target-user flow
+
+#### P5-T6: Make Bounded Traversal Fail-closed and Resource-bounded
+- **Description:** Enforce depth and entry budgets without partial success or unbounded directory enumeration. Covers `TK-REV-007` and `TK-REV-011`.
+- **Priority:** P0
+- **Dependencies:** P5-T1
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** bounded traversal budget implementation, completeness results, depth/entry/large-directory tests
+- **Acceptance Criteria:**
+  - Detecting descendants beyond `max_depth` produces `INCOMPLETE`, not a shortened success
+  - Directory enumeration consumes at most the remaining entry budget plus one detection entry
+  - Symlink/error branches do not erase prior scope and cannot convert unvisited siblings into a complete exit code
+  - Time and memory scale with declared budgets rather than total directory size
+
+#### P5-T7: Implement the Structured Finding and Report Contract
+- **Description:** Implement the full FR-05 result/report model with stable rules, completeness, human guidance, and checked scope. Covers `TK-REV-005` and report-related parts of `TK-REV-012`/`TK-REV-018`.
+- **Priority:** P0
+- **Dependencies:** P5-T3, P5-T4, P5-T5, P5-T6
+- **Parallelizable:** no
+- **Outputs / Artifacts:** structured finding model, report renderer, rule catalog, golden output and exit-code tests
+- **Acceptance Criteria:**
+  - Every finding exposes profile, absolute path, stable rule ID, severity, current state, expected state, risk, and remediation or manual-guidance reason
+  - `UNKNOWN`, access denial, missing required scope, and backend failures render their sanitized cause
+  - Summary records canonical Home, selected profiles/paths, checked targets, skipped targets, and incomplete branches
+  - Known findings and incomplete checks can coexist without losing evidence; zero checked targets cannot claim a complete clean audit
+  - Modes render in conventional octal and output remains stable under golden tests
+
+#### P5-T8: Make CLI Scope Selection and Errors Unambiguous
+- **Description:** Define selector composition, duplicate handling, zero-scope behavior, and control-safe rendering for all user-controlled CLI input. Covers `TK-REV-012` and `TK-REV-017`.
+- **Priority:** P1
+- **Dependencies:** P5-T7
+- **Parallelizable:** no
+- **Outputs / Artifacts:** CLI validation rules, safe display helper, end-to-end command tests
+- **Acceptance Criteria:**
+  - `--profile` and `--path/--policy` are either explicitly mutually exclusive or both executed and represented in scope
+  - Unknown/duplicate profiles and repeated path/policy flags have deterministic documented behavior
+  - ANSI ESC, C0 controls, non-UTF-8 values, quotes, leading dashes, and newlines cannot alter terminal semantics in success or error output
+  - All-optional/all-skipped execution follows the documented completeness and exit-code contract
+
+#### P5-T9: Implement Platform-aware Profile Availability
+- **Description:** Derive profile selection, semantic roots, availability, and incomplete-platform results from actual runtime platform metadata. Covers `TK-REV-013`.
+- **Priority:** P1
+- **Dependencies:** P5-T5, P5-T7
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** platform/availability evaluator, XDG root policy, profiles output tests, Linux completeness tests
+- **Acceptance Criteria:**
+  - `profiles` prints each declared platform and current availability rather than a hardcoded label
+  - Runtime selects the current platform instead of always checking `Platform::MacOs`
+  - A safe `XDG_CONFIG_HOME` inside canonical Home is handled according to documented semantics; an external value is rejected or reported incomplete
+  - Unsupported Linux ACL coverage is incomplete at the per-result level and no target line claims an unconditional `PASS`
+
+#### P5-T10: Complete Per-location Profile Evidence and Validation
+- **Description:** Record and validate versioned provenance, availability, and exact fixtures for every built-in location. Covers `TK-REV-014`.
+- **Priority:** P1
+- **Dependencies:** P5-T4, P5-T9
+- **Parallelizable:** no
+- **Outputs / Artifacts:** per-location evidence schema, researched version/source mapping, complete built-in fixtures, runtime registry validation
+- **Acceptance Criteria:**
+  - Every location records product/version context, platform, upstream source, verification date, evidence state, policy, optionality, and selector bounds
+  - Tests freeze the complete required location inventory and reject duplicate locations, invalid platforms, missing evidence, and invalid requirement combinations
+  - Embedded registry validation runs before auditing and cannot silently accept invalid built-ins
+  - Project-scoped/Keychain/unknown locations are represented without false coverage claims
+
+#### P5-T11: Build the Native Security Acceptance Suite
+- **Description:** Implement the missing PRD security, golden CLI, and non-operation tests as end-to-end acceptance gates. Covers `TK-REV-015`.
+- **Priority:** P0
+- **Dependencies:** P5-T2, P5-T3, P5-T4, P5-T5, P5-T6, P5-T7, P5-T8, P5-T9, P5-T10
+- **Parallelizable:** no
+- **Outputs / Artifacts:** macOS integration suite, golden reports, profile fixtures, read/network/subprocess enforcement tests
+- **Acceptance Criteria:**
+  - Native target and ancestor ACL allow/deny/inherited/error cases run on macOS CI
+  - Access denied, foreign owner, semantic-root symlink, depth/entry breach, Home mismatch, root/sudo, ESC/non-UTF-8, and zero-scope cases have end-to-end exit assertions
+  - Golden tests cover every status, rule field, remediation suppression, and checked-scope summary
+  - Tests demonstrate that target contents are never opened, target metadata is not mutated, network is not used, and remediation subprocesses are never launched
+  - Every PRD acceptance scenario maps to at least one named test
+
+#### P5-T12: Enforce Coverage and Reproducible Rust CI
+- **Description:** Add coverage and supply-chain/reproducibility gates for the Rust project. Covers the Rust/CI portions of `TK-REV-016` and metadata portion of `TK-REV-018`.
+- **Priority:** P1
+- **Dependencies:** P5-T11
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** CI coverage job, pinned toolchain/actions, locked Cargo gates, package metadata
+- **Acceptance Criteria:**
+  - Line coverage is at least 80% and critical security modules/entrypoints have meaningful branch execution
+  - CI runs format, test, Clippy, explicit check/build, and coverage with `--locked` where applicable
+  - Rust version is pinned/documented, GitHub Actions are commit-SHA pinned, and cache/toolchain behavior is reproducible
+  - `Cargo.toml` declares the MIT license, supported Rust version, and release metadata consistently with `LICENSE`
+
+#### P5-T13: Automate the Homebrew Release Lifecycle
+- **Description:** Validate source installation and the full supported Homebrew lifecycle on clean macOS environments. Covers `TK-REV-009` and the Homebrew portion of `TK-REV-016`.
+- **Priority:** P1
+- **Dependencies:** P5-T11
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** Homebrew CI workflow, clean install/test/upgrade/uninstall evidence, release checklist
+- **Acceptance Criteria:**
+  - CI runs formula style/audit, clean source install, `brew test`, upgrade, uninstall, and post-uninstall config-preservation checks
+  - Intel and Apple Silicon coverage is documented or gaps are explicitly non-supported
+  - Formula has no post-install scan/service/mutation and tests require no real Home or credentials
+  - Validation artifacts identify exact release tag, archive SHA-256, Formula commit, Cargo version, and installed binary version
+
+#### P5-T14: Reconcile the Specification Lifecycle
+- **Description:** Finalize PRD status, resolve stale open questions, and define authoritative semantics for incomplete versus unknown, all-optional scope, policy composition, and release metadata. Covers the specification portion of `TK-REV-018`.
+- **Priority:** P1
+- **Dependencies:** P5-T1
+- **Parallelizable:** yes
+- **Outputs / Artifacts:** updated PRD decisions/status, traceability matrix, release acceptance checklist
+- **Acceptance Criteria:**
+  - PRD status and version reflect the post-release hardening state
+  - Resolved license, tap owner, release, root/sudo, selector, JSON/SARIF, and policy-precedence questions are closed or explicitly deferred with owners/tasks
+  - `UNKNOWN`, `INCOMPLETE`, zero checked targets, optional-only scope, and point-in-time verdict semantics are unambiguous
+  - Canonical PRD criteria cannot be weakened by task-local acceptance without an explicit PRD change
+
+#### P5-T15: Publish a Traceable Successor Release
+- **Description:** Release the completed hardening work from reviewed main-line history without moving `v0.1.0`. Covers `TK-REV-008`.
+- **Priority:** P0
+- **Dependencies:** P5-T7, P5-T8, P5-T9, P5-T10, P5-T11, P5-T12, P5-T13, P5-T14
+- **Parallelizable:** no
+- **Outputs / Artifacts:** version bump, immutable signed tag, GitHub release, source checksum, updated tap Formula and release validation report
+- **Acceptance Criteria:**
+  - Existing `v0.1.0` tag remains unchanged and documented as superseded
+  - Successor tag is an ancestor of `main` and identifies the exact reviewed tree
+  - Cargo version, binary `--version`, tag, release archive, Formula URL/version/checksum, and documentation agree
+  - Full PRD acceptance, native security suite, coverage, Rust CI, and Homebrew lifecycle gates pass before publication
+  - Post-publication install retrieves the successor behavior and no two different source trees share its version
+
 ## Task Status Legend
 
 - **Not Started** — task is available or waiting on dependencies

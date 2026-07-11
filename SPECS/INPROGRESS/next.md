@@ -1,14 +1,14 @@
-# No Active Task — v0.1.0 Review Pending
+# Next Task Candidate: P5-T2 — Correct Native macOS ACL Evaluation
 
 **Priority:** P0
 **Phase:** Post-release Hardening
-**Effort:** —
+**Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Available after review
+**Status:** Available
 
 ## Description
 
-`P5-T1` completed the formal `v0.1.0` audit and was archived with a `PASS` verdict for the audit task. The release findings require structured REVIEW and FOLLOW-UP processing.
+Correct native macOS ACL evaluation first because ancestor safety and the full security acceptance suite depend on reliable ACL acquisition, permissions, and error semantics.
 
 ## Recently Archived
 
@@ -16,4 +16,4 @@
 
 ## Next Step
 
-Run REVIEW for subject `v0_1_0_release`, then create and prioritize follow-up tasks from actionable findings.
+Run SELECT to activate `P5-T2`, then PLAN its native ACL implementation and integration fixtures.
