@@ -4,7 +4,7 @@
 **Phase:** Distribution
 **Effort:** 10–16 hours
 **Dependencies:** P3-T2
-**Status:** Ready
+**Status:** Selected
 
 ## Description
 
@@ -25,4 +25,4 @@ Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading t
 
 ## Next Step
 
-Run the SELECT command to begin P4-T3.
+Run the PLAN command to create the implementation-ready task PRD.
