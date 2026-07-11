@@ -49,6 +49,7 @@
 | [_Historical/REVIEW_P5-T5_canonical_home.md](_Historical/REVIEW_P5-T5_canonical_home.md) | Review report for P5-T5 canonical home |
 | [_Historical/REVIEW_P5-T6_bounded_traversal.md](_Historical/REVIEW_P5-T6_bounded_traversal.md) | Review report for P5-T6 bounded traversal |
 | [_Historical/REVIEW_P5-T7_structured_report.md](_Historical/REVIEW_P5-T7_structured_report.md) | Review report for P5-T7 structured report |
+| [_Historical/REVIEW_P5-T8_cli_scope.md](_Historical/REVIEW_P5-T8_cli_scope.md) | Review report for P5-T8 CLI scope |
 
 ## Archive Log
 
@@ -91,3 +92,4 @@
 | 2026-07-12 | P5-T7 | Archived Implement_the_Structured_Finding_and_Report_Contract (PASS) |
 | 2026-07-12 | P5-T7 | Archived REVIEW_P5-T7_structured_report report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T8 | Archived Make_CLI_Scope_Selection_and_Errors_Unambiguous (PASS) |
+| 2026-07-12 | P5-T8 | Archived REVIEW_P5-T8_cli_scope report (FOLLOW-UP skipped) |
