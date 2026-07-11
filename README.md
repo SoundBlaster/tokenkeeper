@@ -12,7 +12,14 @@ cd tokenkeeper
 cargo install --path .
 ```
 
-The planned Homebrew tap is tracked in [`SPECS/Workplan.md`](SPECS/Workplan.md) and is not available until the versioned release contract is published.
+The maintainer-owned tap contract is documented in [`docs/homebrew.md`](docs/homebrew.md). After the formula is published to the tap:
+
+```bash
+brew tap SoundBlaster/homebrew-tap
+brew install SoundBlaster/homebrew-tap/tokenkeeper
+brew update && brew upgrade tokenkeeper
+brew uninstall tokenkeeper
+```
 
 ## Usage
 
