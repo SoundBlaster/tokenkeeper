@@ -72,3 +72,7 @@ Profile registry, path resolver, Unix metadata, owner/mode policies, ACL backend
 ## Notes
 
 После выполнения обновить только task artifacts и status P1-T1. Следующим кандидатом остаётся P1-T2 — research agent and integration storage locations.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS

@@ -4,7 +4,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 1: Foundation
 
-#### P1-T1: Bootstrap Rust Project **INPROGRESS**
+#### P1-T1: Bootstrap Rust Project ✅ Complete
 - **Description:** Create the minimal Rust binary crate, module skeleton, local quality gates, and baseline CLI entry point.
 - **Priority:** P0
 - **Dependencies:** None
