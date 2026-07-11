@@ -11,6 +11,120 @@ pub enum Status {
     Skip,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Severity {
+    High,
+    Medium,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct FindingRecord {
+    pub rule_id: &'static str,
+    pub severity: Severity,
+    pub current: String,
+    pub expected: String,
+    pub risk: String,
+    pub scope: String,
+}
+
+pub fn structured_findings(result: &InspectionResult) -> Vec<FindingRecord> {
+    let InspectionResult::Finding { path, reasons, .. } = result else {
+        return Vec::new();
+    };
+    reasons
+        .iter()
+        .map(|reason| {
+            let (rule_id, severity, current, expected, risk, scope) = match reason {
+                FindingReason::WrongOwner { actual, expected } => (
+                    "TK-META-001",
+                    Severity::High,
+                    format!("owner uid {actual}"),
+                    format!("owner uid {expected}"),
+                    "foreign ownership can alter credentials".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::GroupOrOtherAccess { mode } => (
+                    "TK-META-002",
+                    Severity::High,
+                    format!("mode {mode:o}"),
+                    "owner-only access".into(),
+                    "non-owner disclosure of credentials".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::GroupOrOtherWrite { mode } => (
+                    "TK-META-003",
+                    Severity::High,
+                    format!("mode {mode:o}"),
+                    "no group/other write".into(),
+                    "unauthorized modification".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::WritableAncestor { path, mode } => (
+                    "TK-ANC-001",
+                    Severity::High,
+                    format!("ancestor mode {mode:o}"),
+                    "non-writable anchored ancestors".into(),
+                    "replacement or deletion of the target".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::SymlinkComponent { path } => (
+                    "TK-ANC-002",
+                    Severity::High,
+                    "symlink component".into(),
+                    "no symlink components".into(),
+                    "trusted-root escape".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::AclNonOwnerAccess { detail } => (
+                    "TK-ACL-001",
+                    Severity::High,
+                    detail.clone(),
+                    "no non-owner policy-relevant ACL allow".into(),
+                    "ACL-based disclosure or modification".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::UnexpectedNodeType { actual, expected } => (
+                    "TK-META-004",
+                    Severity::High,
+                    format!("node {actual:?}"),
+                    format!("node {expected:?}"),
+                    "unexpected object can redirect or alter checks".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::AncestorUnsafe { path, detail } => (
+                    "TK-ANC-003",
+                    Severity::High,
+                    detail.clone(),
+                    "complete owner-controlled directory metadata".into(),
+                    "incomplete trust boundary".into(),
+                    path.display().to_string(),
+                ),
+                FindingReason::AncestorAclAccess { path, detail } => (
+                    "TK-ACL-002",
+                    Severity::High,
+                    detail.clone(),
+                    "no replacement-capable ancestor ACL".into(),
+                    "target replacement through an ancestor".into(),
+                    path.display().to_string(),
+                ),
+            };
+            let mut record = FindingRecord {
+                rule_id,
+                severity,
+                current,
+                expected,
+                risk,
+                scope,
+            };
+            record.current = sanitize_text(&record.current);
+            record.expected = sanitize_text(&record.expected);
+            record.risk = sanitize_text(&record.risk);
+            record.scope = sanitize_text(&record.scope);
+            record
+        })
+        .collect()
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct Summary {
     pub pass: usize,
@@ -117,6 +231,17 @@ pub fn render(result: &InspectionResult, policy: Option<Policy>) -> String {
     );
     if let InspectionResult::Finding { reasons, .. } = result {
         output.push_str(&format!("         reasons: {reasons:?}\n"));
+        for finding in structured_findings(result) {
+            output.push_str(&format!(
+                "         rule={} severity={:?} current={} expected={} risk={} scope={}\n",
+                finding.rule_id,
+                finding.severity,
+                finding.current,
+                finding.expected,
+                finding.risk,
+                finding.scope
+            ));
+        }
     }
     if let Some(policy) = policy.and_then(|policy| remediation(result, policy)) {
         output.push_str(&format!("         suggested: {policy}\n"));
@@ -128,6 +253,19 @@ fn display_path(path: &Path) -> String {
     let Some(value) = path.to_str() else {
         return "<non-utf8 path>".into();
     };
+    value
+        .chars()
+        .map(|character| match character {
+            '\n' => "\\n".to_owned(),
+            '\r' => "\\r".to_owned(),
+            '\t' => "\\t".to_owned(),
+            character if character.is_control() => format!("\\u{{{:x}}}", character as u32),
+            character => character.to_string(),
+        })
+        .collect()
+}
+
+fn sanitize_text(value: &str) -> String {
     value
         .chars()
         .map(|character| match character {

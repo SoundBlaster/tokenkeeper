@@ -2,7 +2,9 @@ use std::path::PathBuf;
 
 use tokenkeeper::inspector::{FindingReason, InspectionResult, MetadataSummary, NodeType};
 use tokenkeeper::profiles::Policy;
-use tokenkeeper::report::{label, remediation, status_of, Status, Summary};
+use tokenkeeper::report::{
+    label, remediation, status_of, structured_findings, Severity, Status, Summary,
+};
 
 fn finding(path: &str, reasons: Vec<FindingReason>) -> InspectionResult {
     InspectionResult::Finding {
@@ -83,4 +85,19 @@ fn acl_findings_suppress_chmod_guidance() {
         }],
     );
     assert!(remediation(&result, Policy::CredentialConfig).is_none());
+}
+
+#[test]
+fn findings_have_stable_structured_contract() {
+    let result = finding(
+        "/tmp/config",
+        vec![FindingReason::GroupOrOtherWrite { mode: 0o666 }],
+    );
+    let records = structured_findings(&result);
+    assert_eq!(records.len(), 1);
+    assert_eq!(records[0].rule_id, "TK-META-003");
+    assert_eq!(records[0].severity, Severity::High);
+    assert!(records[0].current.contains("666"));
+    assert!(records[0].expected.contains("write"));
+    assert!(records[0].scope.contains("/tmp/config"));
 }
