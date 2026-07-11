@@ -52,7 +52,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Missing optional, missing required, access denied, and unsafe permissions remain distinct outcomes
   - Tests cover safe, unsafe, malformed, and incomplete filesystem states
 
-#### P2-T2: Implement CLI Reporting and Guidance **INPROGRESS**
+#### P2-T2: Implement CLI Reporting and Guidance ✅ Complete
 - **Description:** Add profile selection, custom path checks, stable findings, summaries, exit codes, and conservative remediation output.
 - **Priority:** P0
 - **Dependencies:** P2-T1
