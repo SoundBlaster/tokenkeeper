@@ -39,3 +39,7 @@ Expose the audit core through a minimal, manual CLI that reports stable statuses
 ## Out of scope
 
 Built-in agent profiles (P3-T1), macOS ACL evaluation (P2-T3), JSON/SARIF output, content scanning, automatic fixes and Linux-specific behavior.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
