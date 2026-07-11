@@ -166,32 +166,24 @@ impl Resolver {
             return Err(ResolveError::SymlinkComponent(path.to_path_buf()));
         }
 
-        resolved.push(ResolvedPath {
-            path: path.to_path_buf(),
-            exists: true,
-        });
-        if resolved.len() > max_entries {
+        if resolved.len() >= max_entries {
             return Err(ResolveError::TraversalLimitExceeded {
                 path: path.to_path_buf(),
                 max_entries,
             });
         }
+        resolved.push(ResolvedPath {
+            path: path.to_path_buf(),
+            exists: true,
+        });
         if !metadata.is_dir() || depth >= max_depth {
             return Ok(());
         }
 
-        let mut children = fs::read_dir(path)
-            .map_err(|error| io_error(path.to_path_buf(), error))?
-            .map(|entry| entry.map(|entry| entry.path()))
-            .collect::<Result<Vec<_>, _>>()
-            .map_err(|error| io_error(path.to_path_buf(), error))?;
-        children.sort_by_key(|child| {
-            child
-                .file_name()
-                .map(|name| name.to_string_lossy().into_owned())
-                .unwrap_or_default()
-        });
-        for child in children {
+        for entry in fs::read_dir(path).map_err(|error| io_error(path.to_path_buf(), error))? {
+            let child = entry
+                .map_err(|error| io_error(path.to_path_buf(), error))?
+                .path();
             self.walk(&child, depth + 1, max_depth, max_entries, resolved)?;
         }
         Ok(())
