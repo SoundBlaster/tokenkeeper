@@ -59,6 +59,7 @@
 | [_Historical/REVIEW_P5-T10_location_evidence.md](_Historical/REVIEW_P5-T10_location_evidence.md) | Review report for P5-T10 location evidence |
 | [_Historical/REVIEW_P5-T11_native_acceptance.md](_Historical/REVIEW_P5-T11_native_acceptance.md) | Review report for P5-T11 native acceptance |
 | [_Historical/REVIEW_P5-T12_reproducible_ci.md](_Historical/REVIEW_P5-T12_reproducible_ci.md) | Review report for P5-T12 reproducible CI |
+| [_Historical/REVIEW_P5-T13_homebrew_lifecycle.md](_Historical/REVIEW_P5-T13_homebrew_lifecycle.md) | Review report for P5-T13 Homebrew lifecycle |
 
 ## Archive Log
 
@@ -111,3 +112,4 @@
 | 2026-07-12 | P5-T12 | Archived Enforce_Coverage_and_Reproducible_Rust_CI (PASS) |
 | 2026-07-12 | P5-T12 | Archived REVIEW_P5-T12_reproducible_ci report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T13 | Archived Automate_the_Homebrew_Release_Lifecycle (PASS) |
+| 2026-07-12 | P5-T13 | Archived REVIEW_P5-T13_homebrew_lifecycle report (FOLLOW-UP skipped) |
