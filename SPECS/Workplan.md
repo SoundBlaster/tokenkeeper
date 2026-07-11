@@ -136,6 +136,20 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Linux ACL behavior is implemented and tested or explicitly reported unsupported
   - Documentation distinguishes supported behavior from best-effort compilation
 
+## Phase 5: Post-release Hardening
+
+#### P5-T1: Audit v0.1.0 Release **INPROGRESS**
+- **Description:** Perform a formal post-release traceability, security, code-quality, verification, and distribution audit of `v0.1.0`; preserve the review evidence and convert every actionable finding into a tracked follow-up task.
+- **Priority:** P0
+- **Dependencies:** P4-T1, P4-T2, P4-T3
+- **Parallelizable:** no
+- **Acceptance Criteria:**
+  - A standalone `v0.1.0` review records PRD/Workplan coverage, reproducible findings, release-lineage evidence, quality-gate results, and remediation priorities
+  - Findings are classified by severity and reference exact source/spec locations
+  - Every actionable finding is represented by an atomic follow-up task with dependencies and verifiable acceptance criteria
+  - Validation records the repository state without changing production behavior
+  - The review and task artifacts complete the full FLOW archive and review lifecycle
+
 ## Task Status Legend
 
 - **Not Started** — task is available or waiting on dependencies

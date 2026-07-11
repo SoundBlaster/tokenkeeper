@@ -1,29 +1,15 @@
-# Plan Complete — No Remaining Tasks
+# Next Task: P5-T1 — Audit v0.1.0 Release
 
 **Priority:** P0
-**Phase:** Distribution
-**Effort:** 10–16 hours
-**Dependencies:** P3-T2
-**Status:** Complete
+**Phase:** Post-release Hardening
+**Effort:** 6–10 hours
+**Dependencies:** P4-T1, P4-T2, P4-T3
+**Status:** Selected
 
 ## Description
 
-Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
-
-## Recently Archived
-
-- `P1-T1` — Bootstrap Rust Project — `PASS` (2026-07-11)
-- `P1-T2` — Research Agent and Integration Storage Locations — `PASS` (2026-07-11)
-- `P1-T3` — Implement Profile Schema and Resolver — `PASS` (2026-07-11)
-- `P2-T1` — Implement Unix Metadata Policies — `PASS` (2026-07-11)
-- `P2-T2` — Implement CLI Reporting and Guidance — `PASS` (2026-07-11)
-- `P2-T3` — Implement macOS ACL Backend — `PASS` (2026-07-11)
-- `P3-T1` — Add Built-in Agent and Integration Profiles — `PASS` (2026-07-11)
-- `P3-T2` — Complete Security Integration Tests — `PASS` (2026-07-11)
-- `P4-T1` — Publish User and Security Documentation — `PASS` (2026-07-11)
-- `P4-T2` — Add Homebrew Tap Distribution — `PASS` (2026-07-11)
-- `P4-T3` — Evaluate Linux Support — `PASS` (2026-07-11)
+Perform a formal post-release audit of `v0.1.0`, preserve the review as a standalone artifact, and convert all actionable findings into atomic Workplan tasks.
 
 ## Next Step
 
-All planned tasks are complete. Review the archive index and release artifacts.
+Run the PLAN command to generate the implementation-ready audit PRD.
