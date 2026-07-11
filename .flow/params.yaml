@@ -1,0 +1,22 @@
+# Project-owned Flow configuration. Flow updates must preserve this file.
+
+project:
+  name: Tokenkeeper
+  description: Read-only permission auditor for AI agent credentials and configuration
+  language: Rust
+  package_manager: cargo
+  default_branch: main
+
+verify:
+  tests: cargo test --all-targets --all-features
+  lint: cargo clippy --all-targets --all-features -- -D warnings
+  format: cargo fmt --all --check
+
+task_system:
+  kind: file
+  project_key: TK
+  task_url_template: "SPECS/Workplan.md#{task_id}-{task_name_slug}"
+
+structure:
+  source: src/
+  tests: tests/
