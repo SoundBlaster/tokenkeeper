@@ -11,6 +11,7 @@
 | P1-T3 | [P1-T3_Implement_Profile_Schema_and_Resolver/](P1-T3_Implement_Profile_Schema_and_Resolver/) | 2026-07-11 | PASS |
 | P2-T1 | [P2-T1_Implement_Unix_Metadata_Policies/](P2-T1_Implement_Unix_Metadata_Policies/) | 2026-07-11 | PASS |
 | P2-T2 | [P2-T2_Implement_CLI_Reporting_and_Guidance/](P2-T2_Implement_CLI_Reporting_and_Guidance/) | 2026-07-11 | PASS |
+| P2-T3 | [P2-T3_Implement_macOS_ACL_Backend/](P2-T3_Implement_macOS_ACL_Backend/) | 2026-07-11 | PASS |
 
 ## Historical Artifacts
 
@@ -37,3 +38,4 @@
 | 2026-07-11 | P2-T1 | Archived REVIEW_P2-T1_unix_metadata_policies report |
 | 2026-07-11 | P2-T2 | Archived Implement_CLI_Reporting_and_Guidance (PASS) |
 | 2026-07-11 | P2-T2 | Archived REVIEW_P2-T2_cli_reporting_and_guidance report |
+| 2026-07-11 | P2-T3 | Archived Implement_macOS_ACL_Backend (PASS) |
