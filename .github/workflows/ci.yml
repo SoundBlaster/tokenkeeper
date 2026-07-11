@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust quality gates (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install stable Rust
+        run: rustup toolchain install stable --profile minimal
+
+      - name: Install quality components
+        run: rustup component add rustfmt clippy --toolchain stable
+
+      - name: Check formatting
+        run: cargo +stable fmt --all --check
+
+      - name: Run tests
+        run: cargo +stable test --all-targets --all-features
+
+      - name: Run Clippy
+        run: cargo +stable clippy --all-targets --all-features -- -D warnings

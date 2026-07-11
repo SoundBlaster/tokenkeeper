@@ -1,0 +1,11 @@
+[package]
+name = "tokenkeeper"
+version = "0.1.0"
+edition = "2021"
+description = "Read-only permission auditor for AI agent credentials and configuration"
+repository = "https://github.com/SoundBlaster/tokenkeeper"
+readme = "README.md"
+
+[[bin]]
+name = "tokenkeeper"
+path = "src/main.rs"

@@ -4,7 +4,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 1: Foundation
 
-#### P1-T1: Bootstrap Rust Project
+#### P1-T1: Bootstrap Rust Project ✅ Complete
 - **Description:** Create the minimal Rust binary crate, module skeleton, local quality gates, and baseline CLI entry point.
 - **Priority:** P0
 - **Dependencies:** None
@@ -16,7 +16,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `cargo clippy --all-targets --all-features -- -D warnings` passes
   - `cargo fmt --all --check` passes
 
-#### P1-T2: Research Agent and Integration Storage Locations
+#### P1-T2: Research Agent and Integration Storage Locations ✅ Complete
 - **Description:** Verify filesystem and Keychain storage behavior for Codex, Claude Code, OpenCode, Cursor, MCP servers, and credential-bearing utility configs. GitHub Copilot is optional.
 - **Priority:** P0
 - **Dependencies:** None
@@ -28,7 +28,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Keychain-only or unknown storage is documented without a false coverage claim
   - No real credential content enters documentation or fixtures
 
-#### P1-T3: Implement Profile Schema and Resolver
+#### P1-T3: Implement Profile Schema and Resolver ✅ Complete
 - **Description:** Add the data-only embedded profile model, registry validation, semantic roots, and bounded path resolution.
 - **Priority:** P0
 - **Dependencies:** P1-T1, P1-T2
@@ -41,7 +41,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 2: Audit Core
 
-#### P2-T1: Implement Unix Metadata Policies
+#### P2-T1: Implement Unix Metadata Policies ✅ Complete
 - **Description:** Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
 - **Priority:** P0
 - **Dependencies:** P1-T3
@@ -52,7 +52,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Missing optional, missing required, access denied, and unsafe permissions remain distinct outcomes
   - Tests cover safe, unsafe, malformed, and incomplete filesystem states
 
-#### P2-T2: Implement CLI Reporting and Guidance
+#### P2-T2: Implement CLI Reporting and Guidance ✅ Complete
 - **Description:** Add profile selection, custom path checks, stable findings, summaries, exit codes, and conservative remediation output.
 - **Priority:** P0
 - **Dependencies:** P2-T1
@@ -64,7 +64,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Spaces, quotes, control characters, and shell metacharacters cannot inject commands or terminal output
   - Tokenkeeper never executes remediation
 
-#### P2-T3: Implement macOS ACL Backend
+#### P2-T3: Implement macOS ACL Backend ✅ Complete
 - **Description:** Inspect macOS extended ACL and map effective or conservatively unknown non-owner access into policy results.
 - **Priority:** P0
 - **Dependencies:** P2-T1
@@ -77,7 +77,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 3: Profiles and Hardening
 
-#### P3-T1: Add Built-in Agent and Integration Profiles
+#### P3-T1: Add Built-in Agent and Integration Profiles ✅ Complete
 - **Description:** Add validated embedded profiles for the required agents, MCP integrations, and credential-bearing utility configs using the researched evidence.
 - **Priority:** P0
 - **Dependencies:** P1-T2, P1-T3, P2-T1, P2-T3
@@ -89,7 +89,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Optional, version-dependent, Keychain, and unsupported storage are reported honestly
   - Profile fixtures contain no secrets
 
-#### P3-T2: Complete Security Integration Tests
+#### P3-T2: Complete Security Integration Tests ✅ Complete
 - **Description:** Validate the full CLI against adversarial filesystem trees and all PRD acceptance scenarios.
 - **Priority:** P0
 - **Dependencies:** P2-T2, P2-T3, P3-T1
@@ -102,7 +102,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 4: Distribution
 
-#### P4-T1: Publish User and Security Documentation
+#### P4-T1: Publish User and Security Documentation ✅ Complete
 - **Description:** Document installation, supported scope, output interpretation, limitations, and manual remediation workflow.
 - **Priority:** P1
 - **Dependencies:** P3-T2
@@ -113,7 +113,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Supported profile/version evidence is discoverable
   - Example output contains no real usernames or credentials
 
-#### P4-T2: Add Homebrew Tap Distribution
+#### P4-T2: Add Homebrew Tap Distribution ✅ Complete
 - **Description:** Create the versioned release contract and Homebrew formula for installation from a maintainer-owned tap.
 - **Priority:** P1
 - **Dependencies:** P4-T1
@@ -126,7 +126,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Formula has no `post_install`, daemon setup, implicit Home scan, or credential mutation
   - README documents install, update, upgrade, and uninstall commands
 
-#### P4-T3: Evaluate Linux Support
+#### P4-T3: Evaluate Linux Support ✅ Complete
 - **Description:** Reuse the Unix core on Linux, evaluate ACL semantics, and decide whether Linux can be declared supported.
 - **Priority:** P2
 - **Dependencies:** P3-T2

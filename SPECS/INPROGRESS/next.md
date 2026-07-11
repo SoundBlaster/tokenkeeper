@@ -1,21 +1,29 @@
-# Next Task: P1-T1 — Bootstrap Rust Project
+# Plan Complete — No Remaining Tasks
 
 **Priority:** P0
-**Phase:** Foundation
-**Effort:** 4–6 hours
-**Dependencies:** None
-**Status:** Selected
+**Phase:** Distribution
+**Effort:** 10–16 hours
+**Dependencies:** P3-T2
+**Status:** Complete
 
 ## Description
 
-Create the minimal Rust binary crate, module skeleton, local quality gates, and baseline CLI entry point. The bootstrap must establish a clean foundation without implementing permission-audit behavior prematurely.
+Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
 
-## Acceptance Criteria
+## Recently Archived
 
-- `Cargo.toml`, `Cargo.lock`, `src/`, and `tests/` exist
-- `tokenkeeper --help` runs without filesystem mutations
-- Configured Cargo test, Clippy, and formatting gates pass
+- `P1-T1` — Bootstrap Rust Project — `PASS` (2026-07-11)
+- `P1-T2` — Research Agent and Integration Storage Locations — `PASS` (2026-07-11)
+- `P1-T3` — Implement Profile Schema and Resolver — `PASS` (2026-07-11)
+- `P2-T1` — Implement Unix Metadata Policies — `PASS` (2026-07-11)
+- `P2-T2` — Implement CLI Reporting and Guidance — `PASS` (2026-07-11)
+- `P2-T3` — Implement macOS ACL Backend — `PASS` (2026-07-11)
+- `P3-T1` — Add Built-in Agent and Integration Profiles — `PASS` (2026-07-11)
+- `P3-T2` — Complete Security Integration Tests — `PASS` (2026-07-11)
+- `P4-T1` — Publish User and Security Documentation — `PASS` (2026-07-11)
+- `P4-T2` — Add Homebrew Tap Distribution — `PASS` (2026-07-11)
+- `P4-T3` — Evaluate Linux Support — `PASS` (2026-07-11)
 
 ## Next Step
 
-Run the PLAN command to create the implementation-ready task PRD.
+All planned tasks are complete. Review the archive index and release artifacts.
