@@ -43,6 +43,7 @@
 | [_Historical/REVIEW_P5-T2_native_acl.md](_Historical/REVIEW_P5-T2_native_acl.md) | Review report for P5-T2 native ACL evaluation |
 | [_Historical/REVIEW_P5-T3_ancestor_chain.md](_Historical/REVIEW_P5-T3_ancestor_chain.md) | Review report for P5-T3 anchored ancestor chain |
 | [_Historical/REVIEW_P5-T4_policy_composition.md](_Historical/REVIEW_P5-T4_policy_composition.md) | Review report for P5-T4 policy composition |
+| [_Historical/REVIEW_P5-T5_canonical_home.md](_Historical/REVIEW_P5-T5_canonical_home.md) | Review report for P5-T5 canonical home |
 
 ## Archive Log
 
@@ -79,3 +80,4 @@
 | 2026-07-12 | P5-T4 | Archived Compose_Confidentiality_and_Integrity_Policies (PASS) |
 | 2026-07-12 | P5-T4 | Archived REVIEW_P5-T4_policy_composition report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T5 | Archived Resolve_Canonical_User_Home_and_Elevated_Invocation (PASS) |
+| 2026-07-12 | P5-T5 | Archived REVIEW_P5-T5_canonical_home report (FOLLOW-UP skipped) |
