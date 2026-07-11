@@ -1,4 +1,4 @@
-# Next Task Candidate: P5-T11 — Build the Native Security Acceptance Suite
+# Next Task Candidate: P5-T12 — Enforce Coverage and Reproducible Rust CI
 
 **Priority:** P0
 **Phase:** Post-release Hardening
@@ -8,7 +8,7 @@
 
 ## Description
 
-Build native security acceptance fixtures covering ACLs, ancestors, identity, policies, traversal, and reporting.
+Enforce coverage threshold and reproducible Rust CI/toolchain behavior.
 
 ## Recently Archived
 
@@ -22,7 +22,8 @@ Build native security acceptance fixtures covering ACLs, ancestors, identity, po
 - `P5-T8` — Make CLI Scope Selection and Errors Unambiguous — `PASS` (2026-07-12)
 - `P5-T9` — Implement Platform-aware Profile Availability — `PASS` (2026-07-12)
 - `P5-T10` — Complete Per-location Profile Evidence and Validation — `PASS` (2026-07-12)
+- `P5-T11` — Build the Native Security Acceptance Suite — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run SELECT to activate `P5-T11`, then PLAN the native security acceptance suite.
+Run SELECT to activate `P5-T12`, then PLAN coverage and reproducibility gates.

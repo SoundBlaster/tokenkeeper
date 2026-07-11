@@ -27,6 +27,7 @@
 | P5-T8 | [P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/](P5-T8_Make_CLI_Scope_Selection_and_Errors_Unambiguous/) | 2026-07-12 | PASS |
 | P5-T9 | [P5-T9_Implement_Platform-aware_Profile_Availability/](P5-T9_Implement_Platform-aware_Profile_Availability/) | 2026-07-12 | PASS |
 | P5-T10 | [P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/](P5-T10_Complete_Per-location_Profile_Evidence_and_Validation/) | 2026-07-12 | PASS |
+| P5-T11 | [P5-T11_Build_the_Native_Security_Acceptance_Suite/](P5-T11_Build_the_Native_Security_Acceptance_Suite/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -101,3 +102,4 @@
 | 2026-07-12 | P5-T9 | Archived REVIEW_P5-T9_platform_profiles report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T10 | Archived Complete_Per-location_Profile_Evidence_and_Validation (PASS) |
 | 2026-07-12 | P5-T10 | Archived REVIEW_P5-T10_location_evidence report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T11 | Archived Build_the_Native_Security_Acceptance_Suite (PASS) |

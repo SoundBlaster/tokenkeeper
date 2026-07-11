@@ -259,7 +259,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Embedded registry validation runs before auditing and cannot silently accept invalid built-ins
   - Project-scoped/Keychain/unknown locations are represented without false coverage claims
 
-#### P5-T11: Build the Native Security Acceptance Suite
+#### P5-T11: Build the Native Security Acceptance Suite ✅ Complete
 - **Description:** Implement the missing PRD security, golden CLI, and non-operation tests as end-to-end acceptance gates. Covers `TK-REV-015`.
 - **Priority:** P0
 - **Dependencies:** P5-T2, P5-T3, P5-T4, P5-T5, P5-T6, P5-T7, P5-T8, P5-T9, P5-T10

@@ -28,9 +28,13 @@ struct Entry {
 pub fn evaluate_text(text: &str, owner_uid: u32, policy: Policy) -> AclDecision {
     let mut entries = Vec::new();
     for line in text.lines().map(str::trim).filter(|line| !line.is_empty()) {
-        if line.starts_with("flags:") {
+        if line.starts_with("flags:") || line.starts_with("!#acl") {
             continue;
         }
+        let line = line
+            .split_once(':')
+            .filter(|(prefix, _)| prefix.chars().all(|character| character.is_ascii_digit()))
+            .map_or(line, |(_, entry)| entry.trim());
         match parse_entry(line) {
             Ok(entry) => entries.push(entry),
             Err(detail) => return AclDecision::Unknown { detail },
@@ -69,6 +73,12 @@ pub fn evaluate_text(text: &str, owner_uid: u32, policy: Policy) -> AclDecision 
 }
 
 fn parse_entry(line: &str) -> Result<Entry, String> {
+    if line
+        .split_whitespace()
+        .any(|field| matches!(field.to_ascii_lowercase().as_str(), "allow" | "deny"))
+    {
+        return parse_space_entry(line);
+    }
     let fields: Vec<_> = line.split(':').map(str::trim).collect();
     if fields.len() < 3 || fields.iter().any(|field| field.is_empty()) {
         return Err(format!("malformed ACL entry: {line}"));
@@ -131,6 +141,42 @@ fn parse_entry(line: &str) -> Result<Entry, String> {
         effect,
         permissions: permissions.join(","),
         inherited,
+    })
+}
+
+fn parse_space_entry(line: &str) -> Result<Entry, String> {
+    let fields: Vec<_> = line.split_whitespace().collect();
+    let effect_index = fields
+        .iter()
+        .position(|field| matches!(field.to_ascii_lowercase().as_str(), "allow" | "deny"))
+        .ok_or_else(|| format!("unknown ACL effect: {line}"))?;
+    if effect_index == 0 || effect_index + 1 >= fields.len() {
+        return Err(format!("malformed ACL entry: {line}"));
+    }
+    let permissions = fields[effect_index + 1..]
+        .join(",")
+        .split([',', '/', ' ', '\t'])
+        .filter(|permission| !permission.is_empty())
+        .map(str::to_ascii_lowercase)
+        .collect::<Vec<_>>();
+    if permissions.is_empty()
+        || permissions
+            .iter()
+            .any(|permission| !is_acl_permission(permission))
+    {
+        return Err(format!("unknown ACL permission: {line}"));
+    }
+    Ok(Entry {
+        principal: fields[..effect_index].join(" "),
+        effect: if fields[effect_index].eq_ignore_ascii_case("allow") {
+            Effect::Allow
+        } else {
+            Effect::Deny
+        },
+        permissions: permissions.join(","),
+        inherited: fields[effect_index + 1..]
+            .iter()
+            .any(|field| is_acl_flag(field)),
     })
 }
 
