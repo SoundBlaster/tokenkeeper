@@ -102,7 +102,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 4: Distribution
 
-#### P4-T1: Publish User and Security Documentation
+#### P4-T1: Publish User and Security Documentation **INPROGRESS**
 - **Description:** Document installation, supported scope, output interpretation, limitations, and manual remediation workflow.
 - **Priority:** P1
 - **Dependencies:** P3-T2
