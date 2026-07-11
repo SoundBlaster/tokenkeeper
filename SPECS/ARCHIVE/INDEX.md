@@ -57,6 +57,7 @@
 | [_Historical/REVIEW_P5-T9_platform_profiles.md](_Historical/REVIEW_P5-T9_platform_profiles.md) | Review report for P5-T9 platform profiles |
 | [_Historical/REVIEW_P5-T10_location_evidence.md](_Historical/REVIEW_P5-T10_location_evidence.md) | Review report for P5-T10 location evidence |
 | [_Historical/REVIEW_P5-T11_native_acceptance.md](_Historical/REVIEW_P5-T11_native_acceptance.md) | Review report for P5-T11 native acceptance |
+| [_Historical/REVIEW_P5-T12_reproducible_ci.md](_Historical/REVIEW_P5-T12_reproducible_ci.md) | Review report for P5-T12 reproducible CI |
 
 ## Archive Log
 
@@ -107,3 +108,4 @@
 | 2026-07-12 | P5-T11 | Archived Build_the_Native_Security_Acceptance_Suite (PASS) |
 | 2026-07-12 | P5-T11 | Archived REVIEW_P5-T11_native_acceptance report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T12 | Archived Enforce_Coverage_and_Reproducible_Rust_CI (PASS) |
+| 2026-07-12 | P5-T12 | Archived REVIEW_P5-T12_reproducible_ci report (FOLLOW-UP skipped) |
