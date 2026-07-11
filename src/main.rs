@@ -1,6 +1,6 @@
-mod cli;
-
 use std::process::ExitCode;
+
+use tokenkeeper::cli;
 
 fn main() -> ExitCode {
     match cli::parse(std::env::args_os().skip(1)) {
