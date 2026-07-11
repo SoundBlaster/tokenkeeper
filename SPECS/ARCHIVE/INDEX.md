@@ -41,6 +41,7 @@
 | [_Historical/REVIEW_v0_1_0_release.md](_Historical/REVIEW_v0_1_0_release.md) | Formal post-release review for Tokenkeeper v0.1.0 |
 | [_Historical/REVIEW_P5-T2_native_acl.md](_Historical/REVIEW_P5-T2_native_acl.md) | Review report for P5-T2 native ACL evaluation |
 | [_Historical/REVIEW_P5-T3_ancestor_chain.md](_Historical/REVIEW_P5-T3_ancestor_chain.md) | Review report for P5-T3 anchored ancestor chain |
+| [_Historical/REVIEW_P5-T4_policy_composition.md](_Historical/REVIEW_P5-T4_policy_composition.md) | Review report for P5-T4 policy composition |
 
 ## Archive Log
 
@@ -75,3 +76,4 @@
 | 2026-07-12 | P5-T3 | Archived Inspect_the_Complete_Anchored_Ancestor_Chain (PASS) |
 | 2026-07-12 | P5-T3 | Archived REVIEW_P5-T3_ancestor_chain report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T4 | Archived Compose_Confidentiality_and_Integrity_Policies (PASS) |
+| 2026-07-12 | P5-T4 | Archived REVIEW_P5-T4_policy_composition report (FOLLOW-UP skipped) |
