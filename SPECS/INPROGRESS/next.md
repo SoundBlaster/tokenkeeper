@@ -1,29 +1,19 @@
-# Plan Complete — No Remaining Tasks
+# Next Task Candidate: P5-T2 — Correct Native macOS ACL Evaluation
 
 **Priority:** P0
-**Phase:** Distribution
-**Effort:** 10–16 hours
-**Dependencies:** P3-T2
-**Status:** Complete
+**Phase:** Post-release Hardening
+**Effort:** 8–16 hours
+**Dependencies:** P5-T1
+**Status:** Available
 
 ## Description
 
-Inspect node type, UID/GID, mode bits, ancestors, and symlinks without reading target contents.
+Correct native macOS ACL evaluation first because ancestor safety and the full security acceptance suite depend on reliable ACL acquisition, permissions, and error semantics.
 
 ## Recently Archived
 
-- `P1-T1` — Bootstrap Rust Project — `PASS` (2026-07-11)
-- `P1-T2` — Research Agent and Integration Storage Locations — `PASS` (2026-07-11)
-- `P1-T3` — Implement Profile Schema and Resolver — `PASS` (2026-07-11)
-- `P2-T1` — Implement Unix Metadata Policies — `PASS` (2026-07-11)
-- `P2-T2` — Implement CLI Reporting and Guidance — `PASS` (2026-07-11)
-- `P2-T3` — Implement macOS ACL Backend — `PASS` (2026-07-11)
-- `P3-T1` — Add Built-in Agent and Integration Profiles — `PASS` (2026-07-11)
-- `P3-T2` — Complete Security Integration Tests — `PASS` (2026-07-11)
-- `P4-T1` — Publish User and Security Documentation — `PASS` (2026-07-11)
-- `P4-T2` — Add Homebrew Tap Distribution — `PASS` (2026-07-11)
-- `P4-T3` — Evaluate Linux Support — `PASS` (2026-07-11)
+- `P5-T1` — Audit v0.1.0 Release — `PASS` (2026-07-12)
 
 ## Next Step
 
-All planned tasks are complete. Review the archive index and release artifacts.
+Run SELECT to activate `P5-T2`, then PLAN its native ACL implementation and integration fixtures.
