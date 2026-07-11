@@ -20,6 +20,7 @@
 | P5-T1 | [P5-T1_Audit_v0_1_0_Release/](P5-T1_Audit_v0_1_0_Release/) | 2026-07-12 | PASS |
 | P5-T2 | [P5-T2_Correct_Native_macOS_ACL_Evaluation/](P5-T2_Correct_Native_macOS_ACL_Evaluation/) | 2026-07-12 | PASS with repository coverage gap |
 | P5-T3 | [P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/](P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/) | 2026-07-12 | PASS |
+| P5-T4 | [P5-T4_Compose_Confidentiality_and_Integrity_Policies/](P5-T4_Compose_Confidentiality_and_Integrity_Policies/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -73,3 +74,4 @@
 | 2026-07-12 | P5-T2 | Archived REVIEW_P5-T2_native_acl report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T3 | Archived Inspect_the_Complete_Anchored_Ancestor_Chain (PASS) |
 | 2026-07-12 | P5-T3 | Archived REVIEW_P5-T3_ancestor_chain report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T4 | Archived Compose_Confidentiality_and_Integrity_Policies (PASS) |
