@@ -19,6 +19,7 @@
 | [_Historical/REVIEW_P1-T1_bootstrap_rust_project.md](_Historical/REVIEW_P1-T1_bootstrap_rust_project.md) | Review report for P1-T1 bootstrap |
 | [_Historical/REVIEW_P1-T2_agent_storage_locations.md](_Historical/REVIEW_P1-T2_agent_storage_locations.md) | Review report for P1-T2 storage research |
 | [_Historical/REVIEW_P1-T3_profile_schema_resolver.md](_Historical/REVIEW_P1-T3_profile_schema_resolver.md) | Review report for P1-T3 schema/resolver |
+| [_Historical/REVIEW_P2-T1_unix_metadata_policies.md](_Historical/REVIEW_P2-T1_unix_metadata_policies.md) | Review report for P2-T1 Unix metadata policies |
 
 ## Archive Log
 
@@ -31,3 +32,4 @@
 | 2026-07-11 | P1-T3 | Archived Implement_Profile_Schema_and_Resolver (PASS) |
 | 2026-07-11 | P1-T3 | Archived REVIEW_P1-T3_profile_schema_resolver report |
 | 2026-07-11 | P2-T1 | Archived Implement_Unix_Metadata_Policies (PASS) |
+| 2026-07-11 | P2-T1 | Archived REVIEW_P2-T1_unix_metadata_policies report |

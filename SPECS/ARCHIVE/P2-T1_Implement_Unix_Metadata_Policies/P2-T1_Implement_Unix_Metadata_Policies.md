@@ -49,3 +49,7 @@ macOS extended ACL evaluation, report rendering, exit-code aggregation, profile 
 ## Notes
 
 The inspector API should be reusable by P2-T2 reporting and P2-T3 ACL composition. Keep metadata types stable and avoid embedding product names in policy code.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
