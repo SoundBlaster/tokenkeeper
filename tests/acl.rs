@@ -46,6 +46,40 @@ fn malformed_acl_never_passes() {
     ));
 }
 
+#[test]
+fn native_acl_to_text_order_is_evaluated_conservatively() {
+    let text =
+        "flags:0x0\nuser:alice:allow:read_data,write_data\nowner@:allow:read,write,execute\n";
+    assert!(matches!(
+        evaluate_text(text, 501, Policy::SecretFile),
+        AclDecision::Finding { .. }
+    ));
+}
+
+#[test]
+fn unknown_native_permission_never_passes() {
+    assert!(matches!(
+        evaluate_text(
+            "user:alice:allow:future_permission",
+            501,
+            Policy::SecretFile
+        ),
+        AclDecision::Unknown { .. }
+    ));
+}
+
+#[test]
+fn native_inheritance_flag_is_incomplete() {
+    assert!(matches!(
+        evaluate_text(
+            "user:alice:allow:read:file_inherit",
+            501,
+            Policy::SecretFile
+        ),
+        AclDecision::Unknown { .. }
+    ));
+}
+
 #[cfg(not(target_os = "macos"))]
 #[test]
 fn non_macos_backend_is_explicitly_unsupported() {
