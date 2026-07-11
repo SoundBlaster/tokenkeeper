@@ -162,7 +162,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - `acl_get_file`/conversion failures, unsupported filesystems, permission denial, allocation errors, and target disappearance produce `UNKNOWN/INCOMPLETE`, never `NotPresent` or `PASS`
   - ACL allocations and qualifiers are released on all paths and unsafe FFI remains isolated
 
-#### P5-T3: Inspect the Complete Anchored Ancestor Chain
+#### P5-T3: Inspect the Complete Anchored Ancestor Chain ✅ Complete
 - **Description:** Evaluate every component from canonical Home through the target for owner, node type, Unix mode, symlink, metadata completeness, and replacement-capable ACL rights. Covers `TK-REV-001` and `TK-REV-010`.
 - **Priority:** P0
 - **Dependencies:** P5-T2
