@@ -162,6 +162,27 @@ fn writable_ancestor_is_reported_for_executable_config() {
 }
 
 #[test]
+fn writable_ancestor_is_reported_for_credential_config() {
+    let home = temp_home("credential-ancestor");
+    let parent = home.join("credentials");
+    let file = parent.join("config.json");
+    fs::create_dir(&parent).expect("create parent");
+    fs::write(&file, "fixture").expect("create file");
+    fs::set_permissions(&parent, fs::Permissions::from_mode(0o777)).expect("set writable parent");
+    fs::set_permissions(&file, fs::Permissions::from_mode(0o600)).expect("set safe file");
+    let result = first(inspector(&home).inspect_location(&file_location(
+        "credentials/config.json",
+        Policy::CredentialConfig,
+        false,
+    )));
+    assert!(result.is_finding());
+    assert!(result
+        .reasons()
+        .iter()
+        .any(|reason| matches!(reason, FindingReason::WritableAncestor { .. })));
+}
+
+#[test]
 fn missing_required_and_optional_locations_are_distinct() {
     let home = temp_home("missing");
     let inspector = inspector(&home);

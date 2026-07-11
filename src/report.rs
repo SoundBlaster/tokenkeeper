@@ -96,6 +96,7 @@ pub fn remediation(result: &InspectionResult, policy: Policy) -> Option<String> 
                 | FindingReason::UnexpectedNodeType { .. }
                 | FindingReason::WritableAncestor { .. }
                 | FindingReason::SymlinkComponent { .. }
+                | FindingReason::AclNonOwnerAccess { .. }
         )
     }) {
         return None;

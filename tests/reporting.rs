@@ -73,3 +73,14 @@ fn unsafe_context_suppresses_remediation() {
     );
     assert!(remediation(&result, Policy::TrustedConfig).is_none());
 }
+
+#[test]
+fn acl_findings_suppress_chmod_guidance() {
+    let result = finding(
+        "/tmp/config",
+        vec![FindingReason::AclNonOwnerAccess {
+            detail: "foreign read".into(),
+        }],
+    );
+    assert!(remediation(&result, Policy::CredentialConfig).is_none());
+}

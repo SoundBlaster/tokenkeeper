@@ -212,9 +212,7 @@ impl MetadataInspector {
             }
             _ => {}
         }
-        if matches!(policy, Policy::ExecutableConfig) {
-            self.add_writable_ancestor_reasons(path, &mut reasons);
-        }
+        self.add_writable_ancestor_reasons(path, &mut reasons);
         match acl::evaluate_path(path, self.owner_uid, policy) {
             AclDecision::Finding { detail } => {
                 reasons.push(FindingReason::AclNonOwnerAccess { detail })

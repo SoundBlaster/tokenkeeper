@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use std::process::ExitCode;
 
 use tokenkeeper::cli::{self, CheckOptions};
+use tokenkeeper::identity::current_uid;
 use tokenkeeper::inspector::MetadataInspector;
 use tokenkeeper::profiles::{
     builtin_registry, LocationSpec, NodeKind, Platform, Policy, ProfileSpec, Root,
@@ -60,7 +61,16 @@ fn run_check(options: CheckOptions) -> ExitCode {
             return ExitCode::from(2);
         }
     };
-    let inspector = match MetadataInspector::new(&home, metadata.uid()) {
+    let owner_uid = current_uid();
+    if metadata.uid() != owner_uid {
+        eprintln!(
+            "HOME is owned by UID {}, but the current OS user is UID {}; refusing to audit",
+            metadata.uid(),
+            owner_uid
+        );
+        return ExitCode::from(2);
+    }
+    let inspector = match MetadataInspector::new(&home, owner_uid) {
         Ok(inspector) => inspector,
         Err(error) => {
             eprintln!("cannot initialize inspector: {error}");
@@ -78,7 +88,13 @@ fn run_check(options: CheckOptions) -> ExitCode {
                 return ExitCode::from(2);
             }
         };
-        let location = LocationSpec::exact(Root::Home, relative, NodeKind::Either, policy, false);
+        let location = LocationSpec::exact(
+            Root::Home,
+            relative,
+            node_kind_for_policy(policy),
+            policy,
+            false,
+        );
         return inspect_locations(&inspector, [("custom", &location, policy)]);
     }
     let registry = builtin_registry();
@@ -123,6 +139,16 @@ fn run_check(options: CheckOptions) -> ExitCode {
     } else {
         summary.exit_code()
     })
+}
+
+fn node_kind_for_policy(policy: Policy) -> NodeKind {
+    match policy {
+        Policy::PrivateDirectory => NodeKind::Directory,
+        Policy::SecretFile
+        | Policy::CredentialConfig
+        | Policy::TrustedConfig
+        | Policy::ExecutableConfig => NodeKind::File,
+    }
 }
 
 fn inspect_locations<'a, I>(inspector: &MetadataInspector, locations: I) -> ExitCode
