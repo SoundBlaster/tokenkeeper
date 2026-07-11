@@ -1,6 +1,6 @@
 # Tasks Archive
 
-**Last Updated:** 2026-07-11
+**Last Updated:** 2026-07-12
 
 ## Archived Tasks
 
@@ -17,6 +17,7 @@
 | P4-T1 | [P4-T1_Publish_User_and_Security_Documentation/](P4-T1_Publish_User_and_Security_Documentation/) | 2026-07-11 | PASS |
 | P4-T2 | [P4-T2_Add_Homebrew_Tap_Distribution/](P4-T2_Add_Homebrew_Tap_Distribution/) | 2026-07-11 | PASS |
 | P4-T3 | [P4-T3_Evaluate_Linux_Support/](P4-T3_Evaluate_Linux_Support/) | 2026-07-11 | PASS |
+| P5-T1 | [P5-T1_Audit_v0_1_0_Release/](P5-T1_Audit_v0_1_0_Release/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -61,3 +62,4 @@
 | 2026-07-11 | P4-T2 | Archived REVIEW_P4-T2_homebrew_tap report |
 | 2026-07-11 | P4-T3 | Archived Evaluate_Linux_Support (PASS) |
 | 2026-07-11 | P4-T3 | Archived REVIEW_P4-T3_linux_evaluation report |
+| 2026-07-12 | P5-T1 | Archived Audit_v0_1_0_Release (PASS) |

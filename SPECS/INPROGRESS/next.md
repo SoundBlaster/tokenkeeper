@@ -1,15 +1,19 @@
-# Next Task: P5-T1 — Audit v0.1.0 Release
+# No Active Task — v0.1.0 Review Pending
 
 **Priority:** P0
 **Phase:** Post-release Hardening
-**Effort:** 6–10 hours
-**Dependencies:** P4-T1, P4-T2, P4-T3
-**Status:** Selected
+**Effort:** —
+**Dependencies:** P5-T1
+**Status:** Available after review
 
 ## Description
 
-Perform a formal post-release audit of `v0.1.0`, preserve the review as a standalone artifact, and convert all actionable findings into atomic Workplan tasks.
+`P5-T1` completed the formal `v0.1.0` audit and was archived with a `PASS` verdict for the audit task. The release findings require structured REVIEW and FOLLOW-UP processing.
+
+## Recently Archived
+
+- `P5-T1` — Audit v0.1.0 Release — `PASS` (2026-07-12)
 
 ## Next Step
 
-Run the PLAN command to generate the implementation-ready audit PRD.
+Run REVIEW for subject `v0_1_0_release`, then create and prioritize follow-up tasks from actionable findings.

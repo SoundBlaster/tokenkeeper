@@ -138,7 +138,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
 
 ## Phase 5: Post-release Hardening
 
-#### P5-T1: Audit v0.1.0 Release **INPROGRESS**
+#### P5-T1: Audit v0.1.0 Release ✅ Complete
 - **Description:** Perform a formal post-release traceability, security, code-quality, verification, and distribution audit of `v0.1.0`; preserve the review evidence and convert every actionable finding into a tracked follow-up task.
 - **Priority:** P0
 - **Dependencies:** P4-T1, P4-T2, P4-T3
