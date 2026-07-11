@@ -46,7 +46,7 @@ The command prints `PASS`, `FINDING`, `UNKNOWN` or `SKIP`. Exit code `0` means a
 
 ## Supported scope
 
-The required built-in profiles cover Codex, Claude Code, OpenCode, Cursor, and MCP/utility file-backed configurations. Source locations, evidence dates and Keychain/project-scope limitations are recorded in [`docs/agent-storage-locations.md`](docs/agent-storage-locations.md). Security assumptions and limitations are in [`docs/security.md`](docs/security.md).
+The required built-in profiles cover Codex, Claude Code, OpenCode, Cursor, and MCP/utility file-backed configurations. macOS is the supported platform with ACL evaluation; Linux reuses the Unix mode/resolver core as best-effort and reports ACL coverage as incomplete. Source locations, evidence dates and Keychain/project-scope limitations are recorded in [`docs/agent-storage-locations.md`](docs/agent-storage-locations.md). Security assumptions and limitations are in [`docs/security.md`](docs/security.md).
 
 ## Development
 

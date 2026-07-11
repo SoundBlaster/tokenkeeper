@@ -41,6 +41,11 @@ fn list_profiles() -> ExitCode {
 }
 
 fn run_check(options: CheckOptions) -> ExitCode {
+    if cfg!(not(target_os = "macos")) {
+        eprintln!(
+            "warning: macOS ACL evaluation is unsupported on this platform; audit is incomplete"
+        );
+    }
     let home = match std::env::var_os("HOME") {
         Some(home) => PathBuf::from(home),
         None => {
@@ -113,7 +118,11 @@ fn run_check(options: CheckOptions) -> ExitCode {
         }
     }
     println!("{}", tokenkeeper::report::summary_line(summary));
-    ExitCode::from(summary.exit_code())
+    ExitCode::from(if cfg!(not(target_os = "macos")) {
+        2
+    } else {
+        summary.exit_code()
+    })
 }
 
 fn inspect_locations<'a, I>(inspector: &MetadataInspector, locations: I) -> ExitCode
@@ -136,5 +145,9 @@ where
         }
     }
     println!("{}", tokenkeeper::report::summary_line(summary));
-    ExitCode::from(summary.exit_code())
+    ExitCode::from(if cfg!(not(target_os = "macos")) {
+        2
+    } else {
+        summary.exit_code()
+    })
 }

@@ -219,11 +219,20 @@ impl MetadataInspector {
             AclDecision::Finding { detail } => {
                 reasons.push(FindingReason::AclNonOwnerAccess { detail })
             }
-            AclDecision::Unknown { detail } | AclDecision::Unsupported { detail } => {
+            AclDecision::Unknown { detail } => {
                 return InspectionResult::Unknown {
                     path: path.to_path_buf(),
                     reason: detail,
                 }
+            }
+            AclDecision::Unsupported { detail } => {
+                #[cfg(target_os = "macos")]
+                return InspectionResult::Unknown {
+                    path: path.to_path_buf(),
+                    reason: detail,
+                };
+                #[cfg(not(target_os = "macos"))]
+                let _ = detail;
             }
             AclDecision::NotPresent | AclDecision::Pass => {}
         }

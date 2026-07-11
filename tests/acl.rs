@@ -45,3 +45,14 @@ fn malformed_acl_never_passes() {
         AclDecision::Unknown { .. }
     ));
 }
+
+#[cfg(not(target_os = "macos"))]
+#[test]
+fn non_macos_backend_is_explicitly_unsupported() {
+    let decision = tokenkeeper::acl::evaluate_path(
+        std::path::Path::new("/tmp/config"),
+        501,
+        Policy::TrustedConfig,
+    );
+    assert!(matches!(decision, AclDecision::Unsupported { .. }));
+}

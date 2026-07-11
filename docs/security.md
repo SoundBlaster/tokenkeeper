@@ -19,7 +19,7 @@ Review any suggested command before copying it. The tool prints commands only fo
 
 The normal-user audit is not protection from a process with the same UID, `root`, malware, a compromised agent, or a process racing the check. It does not prove token validity, inspect environment variables or process arguments, detect secrets in unknown files, or protect against exposure through backups, cloud sync, snapshots, crash dumps or terminal logs. A file may change between the audit and a manually executed command.
 
-Keychain-only credentials and remote MCP state are outside this metadata-only tool. Project-root-dependent configs are not recursively discovered; use an explicit path or a future bounded profile. Linux ACL semantics are not declared supported until the separate evaluation task completes.
+Keychain-only credentials and remote MCP state are outside this metadata-only tool. Project-root-dependent configs are not recursively discovered; use an explicit path or a future bounded profile. Linux reuses the Unix resolver and mode checks in CI, but the macOS extended-ACL backend is unavailable there. Linux checks print an incomplete-audit warning and exit `2`; Linux ACL semantics are not declared supported.
 
 ## Safe operating practice
 
