@@ -198,7 +198,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Arbitrary same-UID directories cannot produce a misleading all-`SKIP` clean audit
   - root, `sudo`, missing account records, non-absolute Home, and owner mismatch have deterministic exit-2 behavior or an explicitly documented safe target-user flow
 
-#### P5-T6: Make Bounded Traversal Fail-closed and Resource-bounded
+#### P5-T6: Make Bounded Traversal Fail-closed and Resource-bounded ✅ Complete
 - **Description:** Enforce depth and entry budgets without partial success or unbounded directory enumeration. Covers `TK-REV-007` and `TK-REV-011`.
 - **Priority:** P0
 - **Dependencies:** P5-T1

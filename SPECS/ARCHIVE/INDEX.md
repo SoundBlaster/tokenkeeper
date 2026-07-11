@@ -22,6 +22,7 @@
 | P5-T3 | [P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/](P5-T3_Inspect_the_Complete_Anchored_Ancestor_Chain/) | 2026-07-12 | PASS |
 | P5-T4 | [P5-T4_Compose_Confidentiality_and_Integrity_Policies/](P5-T4_Compose_Confidentiality_and_Integrity_Policies/) | 2026-07-12 | PASS |
 | P5-T5 | [P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/](P5-T5_Resolve_Canonical_User_Home_and_Elevated_Invocation/) | 2026-07-12 | PASS |
+| P5-T6 | [P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/](P5-T6_Make_Bounded_Traversal_Fail-closed_and_Resource-bounded/) | 2026-07-12 | PASS |
 
 ## Historical Artifacts
 
@@ -81,3 +82,4 @@
 | 2026-07-12 | P5-T4 | Archived REVIEW_P5-T4_policy_composition report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T5 | Archived Resolve_Canonical_User_Home_and_Elevated_Invocation (PASS) |
 | 2026-07-12 | P5-T5 | Archived REVIEW_P5-T5_canonical_home report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T6 | Archived Make_Bounded_Traversal_Fail-closed_and_Resource-bounded (PASS) |
