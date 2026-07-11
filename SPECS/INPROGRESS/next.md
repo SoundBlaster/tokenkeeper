@@ -1,10 +1,10 @@
-# Next Task Candidate: P5-T3 — Inspect the Complete Anchored Ancestor Chain
+# In Progress: P5-T3 — Inspect the Complete Anchored Ancestor Chain
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T2
-**Status:** Available
+**Status:** Selected
 
 ## Description
 
@@ -17,4 +17,4 @@ Inspect every anchored component from canonical Home through the target, includi
 
 ## Next Step
 
-Run SELECT to activate `P5-T3`, then PLAN the anchored ancestor component model and adversarial filesystem fixtures.
+PLAN: implement anchored ancestor metadata/ACL inspection and adversarial filesystem fixtures.
