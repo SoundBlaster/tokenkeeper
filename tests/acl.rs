@@ -80,6 +80,18 @@ fn native_inheritance_flag_is_incomplete() {
     ));
 }
 
+#[test]
+fn replacement_capable_ancestor_permissions_are_relevant() {
+    assert!(matches!(
+        evaluate_text("group:staff:allow:add_file", 501, Policy::TrustedConfig),
+        AclDecision::Finding { .. }
+    ));
+    assert!(matches!(
+        evaluate_text("group:staff:allow:search", 501, Policy::TrustedConfig),
+        AclDecision::Finding { .. }
+    ));
+}
+
 #[cfg(not(target_os = "macos"))]
 #[test]
 fn non_macos_backend_is_explicitly_unsupported() {

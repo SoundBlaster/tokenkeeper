@@ -186,7 +186,13 @@ fn relevant_permission(permissions: &str, policy: Policy) -> bool {
                 || permissions.contains("write")
                 || permissions.contains("execute")
         }
-        Policy::TrustedConfig | Policy::ExecutableConfig => permissions.contains("write"),
+        Policy::TrustedConfig | Policy::ExecutableConfig => {
+            permissions.contains("write")
+                || permissions.contains("add_file")
+                || permissions.contains("add_subdirectory")
+                || permissions.contains("delete_child")
+                || permissions.contains("search")
+        }
     }
 }
 
