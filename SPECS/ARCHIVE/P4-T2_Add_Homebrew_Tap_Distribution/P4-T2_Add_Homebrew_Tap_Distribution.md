@@ -33,3 +33,7 @@ Publish the release contract and a maintainer-owned Homebrew formula that builds
 ## Out of scope
 
 Bottle publishing, homebrew-core submission, automatic release CI and Linux packaging.
+
+---
+**Archived:** 2026-07-11
+**Verdict:** PASS
