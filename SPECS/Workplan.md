@@ -321,7 +321,7 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Full PRD acceptance, native security suite, coverage, Rust CI, and Homebrew lifecycle gates pass before publication
   - Post-publication install retrieves the successor behavior and no two different source trees share its version
 
-#### P5-T16: Publish Architecture-aware Homebrew Distribution v0.2.3
+#### P5-T16: Publish Architecture-aware Homebrew Distribution v0.2.3 ✅ Complete
 - **Description:** Publish the architecture-specific Homebrew distribution change as a new immutable successor release, keeping `v0.2.2` unchanged.
 - **Priority:** P1
 - **Dependencies:** P5-T15

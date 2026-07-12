@@ -1,10 +1,10 @@
-# P5-T16 — Publish Architecture-aware Homebrew Distribution v0.2.3
+# Workplan Complete — successor release v0.2.3 published
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** INPROGRESS
+**Status:** Complete
 
 ## Description
 
@@ -27,6 +27,10 @@ Publish a new immutable release because the Homebrew distribution path changed a
 - `P5-T13` — Automate the Homebrew Release Lifecycle — `PASS` (2026-07-12)
 - `P5-T14` — Reconcile the Specification Lifecycle — `PASS` (2026-07-12)
 - `P5-T15` — Publish a Traceable Successor Release — `PASS` (2026-07-12)
+
+## Recently Archived
+
+- `P5-T16` — Publish Architecture-aware Homebrew Distribution v0.2.3 — `PASS with host-toolchain caveat` (2026-07-12)
 
 ## Deliverables
 
