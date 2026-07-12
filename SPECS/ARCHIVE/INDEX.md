@@ -32,6 +32,7 @@
 | P5-T13 | [P5-T13_Automate_the_Homebrew_Release_Lifecycle/](P5-T13_Automate_the_Homebrew_Release_Lifecycle/) | 2026-07-12 | PASS |
 | P5-T14 | [P5-T14_Reconcile_the_Specification_Lifecycle/](P5-T14_Reconcile_the_Specification_Lifecycle/) | 2026-07-12 | PASS |
 | P5-T15 | [P5-T15_Publish_a_Traceable_Successor_Release/](P5-T15_Publish_a_Traceable_Successor_Release/) | 2026-07-12 | PASS |
+| P5-T16 | [P5-T16_Publish_Architecture-aware_Homebrew_Distribution_v0.2.3/](P5-T16_Publish_Architecture-aware_Homebrew_Distribution_v0.2.3/) | 2026-07-12 | PASS with host-toolchain caveat |
 
 ## Historical Artifacts
 
@@ -64,6 +65,7 @@
 | [_Historical/REVIEW_P5-T13_homebrew_lifecycle.md](_Historical/REVIEW_P5-T13_homebrew_lifecycle.md) | Review report for P5-T13 Homebrew lifecycle |
 | [_Historical/REVIEW_P5-T14_spec_lifecycle.md](_Historical/REVIEW_P5-T14_spec_lifecycle.md) | Review report for P5-T14 specification lifecycle |
 | [_Historical/REVIEW_P5-T15_successor_release.md](_Historical/REVIEW_P5-T15_successor_release.md) | Review report for P5-T15 successor release |
+| [_Historical/REVIEW_P5-T16_release_traceability.md](_Historical/REVIEW_P5-T16_release_traceability.md) | Review report for P5-T16 release traceability |
 
 ## Archive Log
 
@@ -120,4 +122,6 @@
 | 2026-07-12 | P5-T14 | Archived Reconcile_the_Specification_Lifecycle (PASS) |
 | 2026-07-12 | P5-T15 | Archived Publish_a_Traceable_Successor_Release (PASS) |
 | 2026-07-12 | P5-T15 | Archived REVIEW_P5-T15_successor_release report (FOLLOW-UP skipped) |
+| 2026-07-12 | P5-T16 | Archived Publish_Architecture-aware_Homebrew_Distribution_v0.2.3 (PASS with host-toolchain caveat) |
+| 2026-07-12 | P5-T16 | Archived REVIEW_P5-T16_release_traceability report (FOLLOW-UP skipped) |
 | 2026-07-12 | P5-T14 | Archived REVIEW_P5-T14_spec_lifecycle report (FOLLOW-UP skipped) |

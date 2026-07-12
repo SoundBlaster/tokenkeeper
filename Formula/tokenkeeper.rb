@@ -4,11 +4,11 @@ class Tokenkeeper < Formula
   license "MIT"
 
   if Hardware::CPU.arm?
-    url "https://github.com/SoundBlaster/tokenkeeper/releases/download/v0.2.2/tokenkeeper-v0.2.2-aarch64-apple-darwin.tar.gz"
-    sha256 "f1e5fd6d73b4d895d5ccc21ce0574568c55c7702d972accf89362e7a2c1b7b9b"
+    url "https://github.com/SoundBlaster/tokenkeeper/releases/download/v0.2.3/tokenkeeper-v0.2.3-aarch64-apple-darwin.tar.gz"
+    sha256 "c8741f35d6f7bdfe9a07b95693ab86c13bfac809ce2c8e532ba4f9c7f961b9d9"
   else
-    url "https://github.com/SoundBlaster/tokenkeeper/archive/refs/tags/v0.2.2.tar.gz"
-    sha256 "2f76f4b19cb57bb1088461e12a2cc66f6a3300fc36875f706d23bb53c5264b96"
+    url "https://github.com/SoundBlaster/tokenkeeper/releases/download/v0.2.3/tokenkeeper-v0.2.3-source.tar.gz"
+    sha256 "e523c29918c2a334ba6fef2c91505922bfc067e8413ecf47ae46ef7991c2c151"
     depends_on "rust" => :build
   end
 

@@ -1,6 +1,6 @@
 [package]
 name = "tokenkeeper"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 description = "Read-only permission auditor for AI agent credentials and configuration"
 license = "MIT"
