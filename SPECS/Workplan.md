@@ -321,6 +321,19 @@ Source requirements: [`SPECS/PRD.md`](PRD.md).
   - Full PRD acceptance, native security suite, coverage, Rust CI, and Homebrew lifecycle gates pass before publication
   - Post-publication install retrieves the successor behavior and no two different source trees share its version
 
+#### P5-T16: Publish Architecture-aware Homebrew Distribution v0.2.3
+- **Description:** Publish the architecture-specific Homebrew distribution change as a new immutable successor release, keeping `v0.2.2` unchanged.
+- **Priority:** P1
+- **Dependencies:** P5-T15
+- **Parallelizable:** no
+- **Outputs / Artifacts:** version bump, arm64 release asset, updated Formula, release validation report
+- **Acceptance Criteria:**
+  - `Cargo.toml`, `Cargo.lock`, binary `--version`, tag, release asset, Formula, and documentation agree on `0.2.3`
+  - `v0.2.2` remains unchanged and its release asset/checksum stay valid
+  - Apple Silicon installs from the release asset without invoking Homebrew `rustc`
+  - Intel retains the documented source-build fallback
+  - Rust and Homebrew quality gates pass and evidence is recorded
+
 ## Task Status Legend
 
 - **Not Started** — task is available or waiting on dependencies

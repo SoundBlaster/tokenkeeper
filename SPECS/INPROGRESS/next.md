@@ -1,14 +1,14 @@
-# Workplan Complete — successor release v0.2.2 published
+# P5-T16 — Publish Architecture-aware Homebrew Distribution v0.2.3
 
 **Priority:** P0
 **Phase:** Post-release Hardening
 **Effort:** 8–16 hours
 **Dependencies:** P5-T1
-**Status:** Complete
+**Status:** INPROGRESS
 
 ## Description
 
-All planned Phase 5 hardening tasks are archived. Successor tag `v0.2.2` and GitHub release identify the reviewed main-line tree; `v0.1.0` remains unchanged.
+Publish a new immutable release because the Homebrew distribution path changed after `v0.2.2`: Apple Silicon will consume a prebuilt release asset while Intel retains a source-build fallback. The existing `v0.2.2` tag and release remain unchanged.
 
 ## Recently Archived
 
@@ -28,6 +28,8 @@ All planned Phase 5 hardening tasks are archived. Successor tag `v0.2.2` and Git
 - `P5-T14` — Reconcile the Specification Lifecycle — `PASS` (2026-07-12)
 - `P5-T15` — Publish a Traceable Successor Release — `PASS` (2026-07-12)
 
-## Next Step
+## Deliverables
 
-No open Workplan tasks remain.
+- `v0.2.3` release with an Apple Silicon asset
+- Formula and tap documentation updated to `v0.2.3`
+- Validation report covering Cargo, release, and Homebrew gates
